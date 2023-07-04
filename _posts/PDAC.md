@@ -1,8 +1,8 @@
 ---
-title: "SQL: Data Analytics For an Online Retailer Part 1"
-date: "2020-05-21"
-tags: [MySQL, MySQL Workbench, R Studio, R Markdown, RMariaDB]
-excerpt: "MySQL for Advnaced Analytics and Business Intelligence"
+title: "R: Differential Expression of Genes in PDAC Tumor Samples"
+date: "2021-09-12"
+tags: [R Studio, R Markdown, tweedie, ggplot2]
+excerpt: "Statistical Analysis of Differentially Expressed Genes"
 mathjax: true
 classes: wide
 ---
