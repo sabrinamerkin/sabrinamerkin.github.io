@@ -2,7 +2,7 @@
 title: "About Me"
 permalink: /about/
 header:
-  image: "/images/zakim.jpg"
+  image: "/images/bean.jpg"
 ---
 
 B.S. in Mathematics with a concentration in Statistics (4.0 GPA) from the the University of North Carolina at Charlotte.
