@@ -5,10 +5,10 @@ header:
   image: "/images/bean.jpg"
 ---
 
-B.S. in Mathematics with a concentration in Statistics (4.0 GPA) from the the University of North Carolina at Charlotte.
+I have a passion for utilizing statistical models and optimization techniques in data analysis to draw meaningful conclusions. My background in statistics and computer programming has enabled me to derive predictive inferences from data and effectively approach associated problems. I am familiar with statisticsl modeling techniques such as Regression Analysis, Time Series Analysis, Experimental Design, and Statistical Testing. I also have a strong understanding of concepts in Operations Research and Linear Programming.
 
-I have a passion for constructing statistical models and optimization algorithms to draw results from large databases. My background in statistics and computer programming enables me to derive predictive inferences from data and effectively address associated problems.
+I have the most experience using SQL, Tableau, R programming, and Python. I am currently taking courses on DataCamp to master these tools and further develop my skills as a Data Scientist.
 
-I have experience using SQL, Tableau, Python, R programming, and Java.
+I graduated in May 2023 from the University of North Carolina at Charlotte with a Bachelor of Science in Mathematics and a concentration in statistics (GPA: 4.0). I had several statistics-based research opportunities such as identifying differentially expressed genes through Poisson-Tweedie modeling, exploring variable selection in logistic regression modeling, and developing my own simplex algorithm software in Python! I served as the 2021-2022 President and Co-Founder of the Undergraduate Mathematics Club at UNCC. I also tutored for a course in operations research (Deterministic Models) during the spring semester of 2023.
 
-2021-2022 President and Co-Founder of the Undergraduate Mathematics Club at UNCC.
+Feel free to contact me via email at ethanfeiza@gmail.com.
