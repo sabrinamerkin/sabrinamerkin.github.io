@@ -20,7 +20,11 @@ The goal of this study is to identify the presence of differentially expressed (
 
 Modeling gene expression for this study requires a probability model that can measure genetic count data from PDAC tumor samples. The following table depicts a simple example of how the count data is formatted. Both the Poisson and Negative Binomial distributions are two common count-data probability models that were initially considered. It is important to note the presence of overdispersion in certain data sets. Overdispersion is a property that occurs in a data set when the variance of the data is greater than the expected value of the data, denoted as µ. This particular study of DE genes requires a probability distribution that can model over-dispersed count data. When considering the Poisson model, it was important to recognize the expected value of the distribution is always equal to the variance of the distribution. Therefore, a Poisson model cannot account for overdispersion in a count data set, and thus was not the best choice to model the data. The Negative Binomial model, on the other hand, has the ability to model overdispersion in count data. However, it is still rare for a Negative Binomial distribution to model a count data set with the desired accuracy for this study. The Poisson-Tweedie (PT) model utilizes more parameters than both previous distributions and consequently offers more accuracy in modeling an over-dispersed count data set. These parameters include µ, the expected value; D, the dispersion index; and α, the shape parameter of the distribution. By modifying the shape parameter α, a PT model can mimic both the Poisson and Negative Binomial distributions, providing the most flexible model for this data study (this will also be seen in the following slides). Multiple simulation studies were conducted to further analyze the benefits of using the PT model.
 
-Four simulation studies were conducted to evaluate estimated PT distribution parameters. These simulations tested the accuracy of a PT-parameter estimating function. Each scenario was tested using 3 different sample sizes (100, 200, and 500). This was done to investigate the effectiveness of the function when increasing the sample size of the simulated data. Here is a standard procedure for one of the simulations:
+Four simulation studies were conducted to evaluate estimated PT distribution parameters. These simulations tested the accuracy of a PT-parameter estimating function. Each scenario was tested using 3 different sample sizes (100, 200, and 500). This was done to investigate the effectiveness of the function when increasing the sample size of the simulated data. 
+
+![]({{ site.url }}{{ site.baseurl }}/images/sim_trials_1.png)<!-- -->
+
+Here is a standard procedure for one of the simulations:
 
 ``` r
 # rtweedie Scenario III
@@ -65,6 +69,7 @@ hist(mu.res)
 hist(d.res)
 hist(a.res)
 ```
+
 
 
 
