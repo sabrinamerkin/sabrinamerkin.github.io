@@ -22,9 +22,12 @@ Modeling gene expression for this study requires a probability model that can me
 
 Four simulation studies were conducted to evaluate estimated PT distribution parameters. These simulations tested the accuracy of a PT-parameter estimating function. Each scenario was tested using 3 different sample sizes (100, 200, and 500). This was done to investigate the effectiveness of the function when increasing the sample size of the simulated data. 
 
+
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_trials_1.png)<!-- -->
 
+
 Here is a standard procedure for one of the simulations in scenario II:
+
 
 ``` r
 # rtweedie Scenario II
@@ -70,9 +73,18 @@ hist(d.res)
 hist(a.res)
 ```
 
+
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_plots_1.png)<!-- -->
+
 
 By repeating similar simulations that meet the sample size requirements for each scenario, we obtain the following visual:
 
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_tables_1.png)<!-- -->
+
+
+The results show that the PT-parameter estimating function provides good estimates of the PT parameters µ and D regardless of sample size. As for the PT parameter α, increasing the sample size of the simulated data improved the parameter estimates.
+
+The same four simulated scenarios were also used to test the empirical power of the PT-goodness-of-fit function. These simulations tested whether or not a particular scenario’s distribution shape deviated from that of the Negative Binomial or Poisson distribution. The shape of each distribution from the four scenarios were compared to the Negative Binomial and Poisson distributions holding PT parameter values α=0 and α=1, respectively. This shape test was performed on each of the 1000 replicates for every simulation.
 
 
