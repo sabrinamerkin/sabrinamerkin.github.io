@@ -215,7 +215,9 @@ DE.res <- tweeDE(counts, group = G)
 par(mfrow(c(1,2)))
 hist(DE.res$pval.adjust, breaks = seq(0,1,.01), main="Histogram of Adjusted P-Values", xlab="Adjusted P-Value") #Histogram of adjusted P-values
 hist(DE.res$log2fc, main="Histogram of log2 Fold-Change", xlab="log2 Fold-Change", breaks=96, xaxp=c(-3,3,12)) #Histogram of fold change
-``` 
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/analysis_1.png)<!-- -->
 
 From the first analysis, a histogram of the adjusted P-values from the DE test depicts a spike of significant p-values (less than 0.05) indicating a surplus of DE genes that were detected between both groups. A histogram of the log2 Fold-Change from the DE test shows several genes fall beyond a cutoff point of 1.5. This indicates the presence of over-dispersed genes in the data set. These over-dispersed genes have a significant difference in quantity between both groups
 
@@ -226,8 +228,4 @@ In this analysis, an overrepresented gene is said to have passed the DE-test wit
 h
 ```
 
-
-
-
-
-![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/analysis_1.png)<!-- -->
+image...
