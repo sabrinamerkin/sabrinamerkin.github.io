@@ -130,3 +130,30 @@ Another set of simulation studies were conducted to test the empirical power of 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/DE_sim.png)<!-- -->
 
 
+Here is an example of how these simulations were executed. Note that parameters were properly adjusted to fit the requirements for each simulated trial in the final visual:
+
+``` r
+library(tweeDEseq)
+set.seed(123)
+n=100 # number of individuals in each group
+pvalues <- c()
+
+for (i in 1 : 10)
+{
+  counts_0 <- matrix(rPT(n = 1000, a = 0.5, mu = 20, D = 5), ncol = 100) # generate read counts data for 10 genes in the first group
+  counts_1 <- matrix(rPT(n=1000, a=0.5, mu=20, D=5), ncol=100) # generate read counts data for 10 genes in the second group. 
+  counts <- cbind(counts_0, counts_1) # combine them together
+  G <- rep(c(1,2), each=100) # generate group label.
+  # Test for differences between the two groups
+ DE.res <- tweeDE(counts, group = G) # test
+  pvalues <- rbind(pvalues, DE.res$pval.adjust)
+}
+``` 
+
+The 2 following bar plots show the average DE detection rate when the DE-test was performed in 9 trials for both tables.
+
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/results_3.png)<!-- -->
+
+
+This set of simulations demonstrated that the proportion of tests rejecting the Null Hypothesis increases as the parameter difference grows further apart for both parameters µ and D. This was the case for all simulated data sets from both the Negative Binomial and Pólya distributions. Again, the type one error rate (0.05) is well maintained around the nominal level when comparing two PT distributions with equivalent µ values (as seen in both Null vs. Null scenarios). Larger D parameter values lead to a moderately inflated type one error rate which slightly lowered the test’s empirical power. However, it was concluded that the DE-testing function was efficient on different PT distributions as well as its practicality on real data sets varying from a Negative Binomial shape.
