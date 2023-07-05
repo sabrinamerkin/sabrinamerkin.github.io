@@ -189,7 +189,7 @@ Two analyses were conducted on the PDAC count data set to detect DE genes using 
 
 Similarly, let 𝑥<sub>𝑖𝑐</sub> and 𝑥<sub>𝑖𝑛</sub> denote the proportion of cancerous and normal cells in a given sample.
 
-Primary linear regression model: log⁡(𝜇<sub>𝑔</sub>)=𝛽<sub>0</sub>+𝛽<sub>1</sub> 𝑥<sub>𝑖𝑐</sub>
+Primary linear regression model: log⁡(𝜇<sub>𝑔</sub>)=𝛽<sub>0</sub>+𝛽<sub>1</sub>𝑥<sub>𝑖𝑐</sub>
 
 The first analysis was conducted by the previous DE-testing function between Group 0 and Group 1 based on neoplastic cellularity. Here, all neoplastic cellularity values are possible inputs for 𝑥<sub>𝑖𝑐</sub>.
 
