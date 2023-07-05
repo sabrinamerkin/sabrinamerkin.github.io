@@ -157,3 +157,25 @@ The 2 following bar plots show the average DE detection rate when the DE-test wa
 
 
 This set of simulations demonstrated that the proportion of tests rejecting the Null Hypothesis increases as the parameter difference grows further apart for both parameters µ and D. This was the case for all simulated data sets from both the Negative Binomial and Pólya distributions. Again, the type one error rate (0.05) is well maintained around the nominal level when comparing two PT distributions with equivalent µ values (as seen in both Null vs. Null scenarios). Larger D parameter values lead to a moderately inflated type one error rate which slightly lowered the test’s empirical power. However, it was concluded that the DE-testing function was efficient on different PT distributions as well as its practicality on real data sets varying from a Negative Binomial shape.
+
+For the real PDAC data analysis, all the data was downloaded from The Cancer Genome Atlas (TCGA) Project. This data was made up of 148 PDAC tumor samples consisting of 17,394 genes per sample. Each tumor sample was also labeled with neoplastic cellularity. From there, each tumor sample was sorted into one-of-two groups based on its neoplastic cellularity. Samples placed in Group 0 had purity levels less than 50%, while samples placed in Group 1 had purity levels greater than or equal to 50%. After sorting the tumor samples, a goodness-of-fit test was used to test the fit of both groups to a Negative Binomial function producing the following quantile-quantile plots. Both plots depict chi-square statistics as standard normal scores that assess the goodness-of-fit between group data and the Negative Binomial model. The genes in both groups have expression profiles that deviate significantly from the Negative binomial model. Therefore, an alternative distribution (like the PT distribution) should be used to accurately model this count data. 
+
+
+``` r
+library(readr)
+clinic <- read_csv("UNCC/2021-2022 Research/PAAD_clinic.csv")
+
+group0 <- which(clinic$paper_ABSOLUTE.Purity < 0.5) # Minority group
+group1 <- which(clinic$paper_ABSOLUTE.Purity >= 0.5) # Majority group
+
+sortedG0 <- RNAdata[group0] #Ordered group0 data
+sortedG1 <- RNAdata[group1] #Ordered group1 data
+
+counts <- cbind(sortedG0, sortedG1) #DE Analysis
+G <- rep(0,148)
+G[108:148] <- 1
+DE.res <- tweeDE(counts, group = G)
+
+hist(DE.res$pval.adjust, breaks = seq(0,1,.01), main="Histogram of Adjusted P-Values", xlab="Adjusted P-Value") #Histogram of adjusted P-values
+hist(DE.res$log2fc, main="Histogram of log2 Fold-Change", xlab="log2 Fold-Change", breaks=96, xaxp=c(-3,3,12)) #Histogram of fold change
+``` 
