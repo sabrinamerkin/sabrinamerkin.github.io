@@ -26,7 +26,7 @@ Four simulation studies were conducted to evaluate estimated PT distribution par
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_trials_1.png)<!-- -->
 
 
-Here is a standard procedure for one of the simulations in scenario II:
+Here is a standard procedure for conducting the simulations in Scenario II when sample size n=200:
 
 
 ``` r
@@ -47,11 +47,11 @@ d.res[i] <- getParam(thetahat)[2]
 a.res [i] <- getParam(thetahat)[3]
 
 
-#Test fit to Negative Binomial Distribution
+# Test fit to Negative Binomial Distribution
 NB.pval <- testShapePT(thetahat, a=0)
 NB.pvalues[i] <- NB.pval$pvalue
 
-#Test fit to Poisson Distribution
+# Test fit to Poisson Distribution
 Pois.pval <- testShapePT(thetahat, a=1)
 Pois.pvalues[i] <- Pois.pval$pvalue
 
@@ -77,7 +77,7 @@ hist(a.res)
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_plots_1.png)<!-- -->
 
 
-By repeating similar simulations that meet the sample size requirements for each scenario, we obtain the following visual:
+We see that the estimated shape parameters in each histogram are normally disrtibuted with a mean value close to the true parameter value of these simulated Poisson-Tweedie distributions. It is worth noting the cluster of outliers in the alpha parameter histogram. By repeating similar simulations that meet the sample size requirements for each scenario, we obtain the following visual:
 
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_tables_1.png)<!-- -->
@@ -85,6 +85,38 @@ By repeating similar simulations that meet the sample size requirements for each
 
 The results show that the PT-parameter estimating function provides good estimates of the PT parameters µ and D regardless of sample size. As for the PT parameter α, increasing the sample size of the simulated data improved the parameter estimates.
 
-The same four simulated scenarios were also used to test the empirical power of the PT-goodness-of-fit function. These simulations tested whether or not a particular scenario’s distribution shape deviated from that of the Negative Binomial or Poisson distribution. The shape of each distribution from the four scenarios were compared to the Negative Binomial and Poisson distributions holding PT parameter values α=0 and α=1, respectively. This shape test was performed on each of the 1000 replicates for every simulation.
+The same four simulated scenarios were also used to test the empirical power of the PT-goodness-of-fit function. These simulations tested whether or not a particular scenario’s distribution shape deviated from that of the Negative Binomial or Poisson distribution. The shape of each distribution from the four scenarios were compared to the Negative Binomial and Poisson distributions holding PT parameter values α=0 and α=1, respectively. This shape test was performed on each of the 1000 replicates for every simulation. Here is an example of how both tests were performed in Scenario II with sample size n=200:
 
 
+``` r
+library(tweeDEseq)
+set.seed(123)
+mu.res <- d.res <- a.res <- NB.pvalues <- Pois.pvalues <- c(1:1000) #Create five vectors of size 1000
+
+for (i in 1 : 1000)
+{
+  y <- rnbinom(n=200, size=5, p=0.2)
+  thetahat <- mlePoissonTweedie(y)
+  
+  mu.res[i] <- getParam(thetahat)[1]
+  d.res[i] <- getParam(thetahat)[2]
+  a.res [i] <- getParam(thetahat)[3]
+  
+  # Test fit to Negative Binomial Distribution
+  NB.pval <- testShapePT(thetahat, a=0)
+  NB.pvalues[i] <- NB.pval$pvalue
+  
+  # Test fit to Poisson Distribution
+  Pois.pval <- testShapePT(thetahat, a=1)
+  Pois.pvalues[i] <- Pois.pval$pvalue
+}
+
+length(which(NB.pvalues<0.05)) # total significant tests for the Negative Binomial distribution
+length(which(Pois.pvalues<0.05)) # total significant tests for the Negative Binomial distribution
+```
+
+
+Similar tests were performed for the remaining scenarios and sample sizes. This visual depicts the results of these simulations:
+
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_tab_2.png)<!-- -->
