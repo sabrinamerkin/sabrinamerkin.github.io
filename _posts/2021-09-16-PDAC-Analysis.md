@@ -185,15 +185,15 @@ norm1 <- qqchisq(gof1, normal=TRUE, main="Normal Q-Q Plot for Group 1", ylim = c
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/qq_plots.png)<!-- -->
 
 
-Two analyses were conducted on the PDAC count data set to detect DE genes using the following statistical model. The expression level 𝑌_𝑖𝑔 of a given gene (𝑔) in a sample (𝑖) follows the following PT distribution: 𝑌<sub>𝑖𝑔</sub>~𝑃𝑇(𝜇<sub>𝑔</sub>,𝐷<sub>𝑔</sub>,α<sub>𝑔</sub>)
+Two analyses were conducted on the PDAC count data set to detect DE genes using the following statistical model. The expression level 𝑌<sub>𝑖𝑔</sub> of a given gene (𝑔) in a sample (𝑖) follows the following PT distribution: 𝑌<sub>𝑖𝑔</sub>~𝑃𝑇(𝜇<sub>𝑔</sub>,𝐷<sub>𝑔</sub>,α<sub>𝑔</sub>)
 
-Similarly, let 𝑥_𝑖𝑐 and 𝑥_𝑖𝑛 denote the proportion of cancerous and normal cells in a given sample.
+Similarly, let 𝑥<sub>𝑖𝑐</sub> and 𝑥<sub>𝑖𝑛</sub> denote the proportion of cancerous and normal cells in a given sample.
 
-Primary linear regression model: log⁡(𝜇_𝑔)=𝛽_0+𝛽_1 𝑥_𝑖𝑐
+Primary linear regression model: log⁡(𝜇<sub>𝑔</sub>)=𝛽<sub>0</sub>+𝛽<sub>1</sub> 𝑥<sub>𝑖𝑐</sub>
 
-The first analysis was conducted by the previous DE-testing function between Group 0 and Group 1 based on neoplastic cellularity. Here, all neoplastic cellularity values are possible inputs for 𝑥_𝑖𝑐.
+The first analysis was conducted by the previous DE-testing function between Group 0 and Group 1 based on neoplastic cellularity. Here, all neoplastic cellularity values are possible inputs for 𝑥<sub>𝑖𝑐</sub>.
 
-The second analysis of the data used a linear regression model to test for differential expression strictly based on a gene’s neoplastic cellularity level being above 50%. This type of binary approach only allowed for the values 0 or 1 as functional inputs for 𝑥_𝑖𝑐.
+The second analysis of the data used a linear regression model to test for differential expression strictly based on a gene’s neoplastic cellularity level being above 50%. This type of binary approach only allowed for the values 0 or 1 as functional inputs for 𝑥<sub>𝑖𝑐</sub>.
 
 A DE test was then performed on the genes by determining H0: 𝛽_1=0 vs. Ha: 𝛽_1≠0 in either analysis.
 
