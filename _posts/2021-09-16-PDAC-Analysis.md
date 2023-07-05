@@ -195,7 +195,7 @@ The first analysis was conducted by the previous DE-testing function between Gro
 
 The second analysis of the data used a linear regression model to test for differential expression strictly based on a gene’s neoplastic cellularity level being above 50%. This type of binary approach only allowed for the values 0 or 1 as functional inputs for 𝑥<sub>𝑖𝑐</sub>.
 
-A DE test was then performed on the genes by determining H0: 𝛽_1=0 vs. Ha: 𝛽_1≠0 in either analysis.
+A DE test was then performed on the genes by determining H0: 𝛽<sub>1</sub>=0 vs. Ha:𝛽<sub>1</sub>≠0 in either analysis.
 
 
 
