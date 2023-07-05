@@ -217,5 +217,17 @@ hist(DE.res$pval.adjust, breaks = seq(0,1,.01), main="Histogram of Adjusted P-Va
 hist(DE.res$log2fc, main="Histogram of log2 Fold-Change", xlab="log2 Fold-Change", breaks=96, xaxp=c(-3,3,12)) #Histogram of fold change
 ``` 
 
+From the first analysis, a histogram of the adjusted P-values from the DE test depicts a spike of significant p-values (less than 0.05) indicating a surplus of DE genes that were detected between both groups. A histogram of the log2 Fold-Change from the DE test shows several genes fall beyond a cutoff point of 1.5. This indicates the presence of over-dispersed genes in the data set. These over-dispersed genes have a significant difference in quantity between both groups
+
+In this analysis, an overrepresented gene is said to have passed the DE-test with a p-value less than 0.05 and exceeds a log2 Fold-Change of 1.5 between the low and high neoplastic cellularity groups. Note that by increasing the log2 Fold-Change cutoff value, the number of overrepresented genes decreases. The following volcano plots depict these overrepresented genes using two different log2 Fold-Change cutoff values. Fisher’s exact test was performed on both contingency tables and returned significant p-values. This confirmed the presence of overrepresented genes in the data set. 
+
+
+``` r
+h
+```
+
+
+
+
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/analysis_1.png)<!-- -->
