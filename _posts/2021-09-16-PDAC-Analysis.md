@@ -185,7 +185,7 @@ norm1 <- qqchisq(gof1, normal=TRUE, main="Normal Q-Q Plot for Group 1", ylim = c
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/qq_plots.png)<!-- -->
 
 
-Two analyses were conducted on the PDAC count data set to detect DE genes using the following statistical model. The expression level 𝑌_𝑖𝑔 of a given gene (𝑔) in a sample (𝑖) follows the following PT distribution: 𝑌_𝑖𝑔~𝑃𝑇(𝜇_𝑔,𝐷_𝑔,α_𝑔)
+Two analyses were conducted on the PDAC count data set to detect DE genes using the following statistical model. The expression level 𝑌_𝑖𝑔 of a given gene (𝑔) in a sample (𝑖) follows the following PT distribution: 𝑌<sub>𝑖𝑔</sub>~𝑃𝑇(𝜇<sub>𝑔</sub>,𝐷<sub>𝑔</sub>,α<sub>𝑔</sub>)
 
 Similarly, let 𝑥_𝑖𝑐 and 𝑥_𝑖𝑛 denote the proportion of cancerous and normal cells in a given sample.
 
