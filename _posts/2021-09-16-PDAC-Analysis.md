@@ -85,7 +85,7 @@ We see that the estimated shape parameters in each histogram are normally disrti
 
 The results show that the PT-parameter estimating function provides good estimates of the PT parameters µ and D regardless of sample size. As for the PT parameter α, increasing the sample size of the simulated data improved the parameter estimates.
 
-The same four simulated scenarios were also used to test the empirical power of the PT-goodness-of-fit function. These simulations tested whether or not a particular scenario’s distribution shape deviated from that of the Negative Binomial or Poisson distribution. The shape of each distribution from the four scenarios were compared to the Negative Binomial and Poisson distributions holding PT parameter values α=0 and α=1, respectively. This shape test was performed on each of the 1000 replicates for every simulation. Here is an example of how both tests were performed in Scenario II with sample size n=200:
+The same four simulated scenarios were also used to test the empirical power of the PT-goodness-of-fit function. These simulations tested whether or not a particular scenario’s distribution shape deviated from that of the Negative Binomial or Poisson distribution. The shape of each distribution from the four scenarios were compared to the Negative Binomial and Poisson distributions holding PT parameter values α=0 and α=1, respectively. This shape test was performed on each of the 1000 replicates for every simulation. The following 2-sided hypothesis test was performed to detect the number of distributions out-of-1000 that rejected the null hypothesis (H0: α=0 for Negative Binomial test or H0: α=1 for Poisson test). In other words, how many distributions had shapes that were deemed significantly different from the shape of a Negative Binomial or Poisson distribution.  Here is an example of how both tests were performed in Scenario II with sample size n=200:
 
 
 ``` r
@@ -120,3 +120,13 @@ Similar tests were performed for the remaining scenarios and sample sizes. This 
 
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_tab_2.png)<!-- -->
+
+
+One can conclude from the following simulated tests that the type one error rate (0.05) is well maintained around the nominal level when comparing two negative binomial distributions to one another (as seen in scenario one). Further deviation from the null scenario (such as scenario 3) shows the highest empirical power for the test. Additionally, the power of this goodness-of-fit function improves as sample size increases.
+
+Another set of simulation studies were conducted to test the empirical power of the DE-testing function by strategically modifying parameters µ and D. The DE-testing function tests the following null hypothesis to determine whether or not 2 PT distributions share the same parameter value µ. This 2-sided hypothesis test was performed on the following 18 simulations to detect the number of distributions out of 1000 replicates that rejected this null hypothesis. 9 simulated tests were performed on the Negative Binomial distribution (where a=0) and 9 additional tests were performed on the Pólya distribution (where a=-1). The following example shows how each of the 18 tests were performed to test the DE-detection capability of this function for two different PT distributions. For each simulation, two count-data groups were assigned 1000 read counts. These read counts were then sorted to represent the count data of 10 different genes for 100 individuals. A DE-test was then performed between the two groups and replicated 1000 times.
+
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/DE_sim.png)<!-- -->
+
+
