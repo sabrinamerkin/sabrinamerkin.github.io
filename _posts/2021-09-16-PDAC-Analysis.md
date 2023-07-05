@@ -1,6 +1,6 @@
 ---
 title: "R: Differential Expression of Genes in PDAC Tumor Samples"
-date: 2021-09-16
+date: 2022-04-14
 tags: [R, Rstudio, ggplot2, tweedie]
 excerpt: "Identifying DE genes using R"
 ---
