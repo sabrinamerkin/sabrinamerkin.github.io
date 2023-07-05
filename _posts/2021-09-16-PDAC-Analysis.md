@@ -16,4 +16,55 @@ Pancreatic Ductal Adenocarcinoma (often referred to as PDAC) is a type of pancre
 ![]({{ site.url }}{{ site.baseurl }}/images/Neo_cell.png)<!-- -->
 
 With a lack of screening biomarkers for PDAC, this low neoplastic cellularity in tumor samples makes the disease difficult to diagnose in its early stages.
-The goal of this study is to identify the presence of differentially expressed (DE) genes between the healthy and cancerous cells that make up PDAC tumor samples. 
+The goal of this study is to identify the presence of differentially expressed (DE) genes between the healthy and cancerous cells that make up PDAC tumor samples.
+
+Modeling gene expression for this study requires a probability model that can measure genetic count data from PDAC tumor samples. The following table depicts a simple example of how the count data is formatted. Both the Poisson and Negative Binomial distributions are two common count-data probability models that were initially considered. It is important to note the presence of overdispersion in certain data sets. Overdispersion is a property that occurs in a data set when the variance of the data is greater than the expected value of the data, denoted as µ. This particular study of DE genes requires a probability distribution that can model over-dispersed count data. When considering the Poisson model, it was important to recognize the expected value of the distribution is always equal to the variance of the distribution. Therefore, a Poisson model cannot account for overdispersion in a count data set, and thus was not the best choice to model the data. The Negative Binomial model, on the other hand, has the ability to model overdispersion in count data. However, it is still rare for a Negative Binomial distribution to model a count data set with the desired accuracy for this study. The Poisson-Tweedie (PT) model utilizes more parameters than both previous distributions and consequently offers more accuracy in modeling an over-dispersed count data set. These parameters include µ, the expected value; D, the dispersion index; and α, the shape parameter of the distribution. By modifying the shape parameter α, a PT model can mimic both the Poisson and Negative Binomial distributions, providing the most flexible model for this data study (this will also be seen in the following slides). Multiple simulation studies were conducted to further analyze the benefits of using the PT model.
+
+Four simulation studies were conducted to evaluate estimated PT distribution parameters. These simulations tested the accuracy of a PT-parameter estimating function. Each scenario was tested using 3 different sample sizes (100, 200, and 500). This was done to investigate the effectiveness of the function when increasing the sample size of the simulated data. Here is a standard procedure for one of the simulations:
+
+``` r
+# rtweedie Scenario III
+
+library(tweedie)
+library(tweeDEseq)
+set.seed(123)
+mu.res <- d.res <- a.res <- NB.pvalues <- Pois.pvalues <- c(1:1000) #Create five vectors of size 1000
+
+for (i in 1:1000){
+  
+y <- rPT(n=200, mu=20, D=5, a=-1)
+thetahat <- mlePoissonTweedie(y)
+
+mu.res[i] <- getParam(thetahat)[1]
+d.res[i] <- getParam(thetahat)[2]
+a.res [i] <- getParam(thetahat)[3]
+
+
+#Test fit to Negative Binomial Distribution
+NB.pval <- testShapePT(thetahat, a=0)
+NB.pvalues[i] <- NB.pval$pvalue
+
+#Test fit to Poisson Distribution
+Pois.pval <- testShapePT(thetahat, a=1)
+Pois.pvalues[i] <- Pois.pval$pvalue
+
+
+}
+
+mean(mu.res) #Average mu value
+mean(d.res) #Average D value
+mean(a.res) #Average a value
+
+NB.pvalues <- sort(NB.pvalues, decreasing = FALSE) #Sorts p-values from lowest to highst
+which(NB.pvalues<0.05) #Lists indicies of significant p.values lower than 0.05
+
+Pois.pvalues <- sort(Pois.pvalues, decreasing = FALSE) #Sorts p-values from lowest to highst
+which(Pois.pvalues<0.05) #Lists indicies of significant p.values lower than 0.05
+
+hist(mu.res)
+hist(d.res)
+hist(a.res)
+```
+
+
+
