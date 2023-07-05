@@ -13,7 +13,7 @@ The purpose of this project was to identify differentially expressed genes from 
 
 Pancreatic Ductal Adenocarcinoma (often referred to as PDAC) is a type of pancreatic cancer that is the 4th leading cause of cancer-related deaths around the world today. This disease is projected to become the 2nd leading cause of cancer deaths by 2030. There are several challenges in treating PDAC. Due to the lack of effective treatment options, the median survival of PDAC is 6 months, and the 5-year survival rate is less than 10% after diagnosis. Neoplastic cellularity is the term used to define the proportion of cancerous cells to healthy cells within a bulk tumor sample. PDAC tumor samples tend to have low neoplastic cellularity, meaning they are comprised of significantly fewer cancerous cells than normal cells.
 
-![]({{ site.url }}{{ site.baseurl }}/images/Neo_cell.png)<!-- -->
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/Neo_cell.png)<!-- -->
 
 With a lack of screening biomarkers for PDAC, this low neoplastic cellularity in tumor samples makes the disease difficult to diagnose in its early stages.
 The goal of this study is to identify the presence of differentially expressed (DE) genes between the healthy and cancerous cells that make up PDAC tumor samples.
@@ -22,12 +22,12 @@ Modeling gene expression for this study requires a probability model that can me
 
 Four simulation studies were conducted to evaluate estimated PT distribution parameters. These simulations tested the accuracy of a PT-parameter estimating function. Each scenario was tested using 3 different sample sizes (100, 200, and 500). This was done to investigate the effectiveness of the function when increasing the sample size of the simulated data. 
 
-![]({{ site.url }}{{ site.baseurl }}/images/sim_trials_1.png)<!-- -->
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_trials_1.png)<!-- -->
 
-Here is a standard procedure for one of the simulations:
+Here is a standard procedure for one of the simulations in scenario II:
 
 ``` r
-# rtweedie Scenario III
+# rtweedie Scenario II
 
 library(tweedie)
 library(tweeDEseq)
@@ -70,6 +70,9 @@ hist(d.res)
 hist(a.res)
 ```
 
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_plots_1.png)<!-- -->
+
+By repeating similar simulations that meet the sample size requirements for each scenario, we obtain the following visual:
 
 
 
