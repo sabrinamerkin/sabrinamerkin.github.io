@@ -164,6 +164,7 @@ For the real PDAC data analysis, all the data was downloaded from The Cancer Gen
 ``` r
 library(readr)
 clinic <- read_csv("UNCC/2021-2022 Research/PAAD_clinic.csv")
+RNAdata = read.table("UNCC/2021-2022 Research/PAAD_RNAseq.txt")
 
 group0 <- which(clinic$paper_ABSOLUTE.Purity < 0.5) # Minority group
 group1 <- which(clinic$paper_ABSOLUTE.Purity >= 0.5) # Majority group
@@ -198,4 +199,19 @@ The second analysis of the data used a linear regression model to test for diffe
 A DE test was then performed on the genes by determining H0: 𝛽<sub>1</sub>=0 vs. Ha:𝛽<sub>1</sub>≠0 in either analysis.
 
 
+``` r
+# Analysis I
 
+library(tweeDEseq)
+counts <- cbind(sortedG0, sortedG1) #DE Analysis
+G <- rep(0,148)
+G[108:148] <- 1
+DE.res <- tweeDE(counts, group = G)
+
+par(mfrow(c(1,2)))
+hist(DE.res$pval.adjust, breaks = seq(0,1,.01), main="Histogram of Adjusted P-Values", xlab="Adjusted P-Value") #Histogram of adjusted P-values
+hist(DE.res$log2fc, main="Histogram of log2 Fold-Change", xlab="log2 Fold-Change", breaks=96, xaxp=c(-3,3,12)) #Histogram of fold change
+``` 
+
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/analysis_1.png)<!-- -->
