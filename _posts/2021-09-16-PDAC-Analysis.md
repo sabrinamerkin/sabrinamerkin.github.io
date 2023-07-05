@@ -171,11 +171,31 @@ group1 <- which(clinic$paper_ABSOLUTE.Purity >= 0.5) # Majority group
 sortedG0 <- RNAdata[group0] #Ordered group0 data
 sortedG1 <- RNAdata[group1] #Ordered group1 data
 
-counts <- cbind(sortedG0, sortedG1) #DE Analysis
-G <- rep(0,148)
-G[108:148] <- 1
-DE.res <- tweeDE(counts, group = G)
+#Goodness-of-fit
+gof0 <- gofTest(sortedG0, a=0)
+gof1 <- gofTest(sortedG1, a=0)
 
-hist(DE.res$pval.adjust, breaks = seq(0,1,.01), main="Histogram of Adjusted P-Values", xlab="Adjusted P-Value") #Histogram of adjusted P-values
-hist(DE.res$log2fc, main="Histogram of log2 Fold-Change", xlab="log2 Fold-Change", breaks=96, xaxp=c(-3,3,12)) #Histogram of fold change
-``` 
+chi0 <- qqchisq(gof0, main="Chi2 Q-Q Plot for Group 0", ylim = c(0, 2000)) #Chi2 Q-Q Plot
+norm0 <- qqchisq(gof0, normal=TRUE, main="Normal Q-Q Plot for Group 0", ylim = c(-4, 10)) #Normal Q-Q Plot
+
+chi1 <- qqchisq(gof1, main="Chi2 Q-Q Plot for Group 1", ylim = c(0, 2000)) #Chi2 Q-Q Plot
+norm1 <- qqchisq(gof1, normal=TRUE, main="Normal Q-Q Plot for Group 1", ylim = c(-4, 10)) #Normal Q-Q Plot
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/qq_plots.png)<!-- -->
+
+
+Two analyses were conducted on the PDAC count data set to detect DE genes using the following statistical model. The expression level 𝑌_𝑖𝑔 of a given gene (𝑔) in a sample (𝑖) follows the following PT distribution: 𝑌_𝑖𝑔~𝑃𝑇(𝜇_𝑔,𝐷_𝑔,α_𝑔)
+
+Similarly, let 𝑥_𝑖𝑐 and 𝑥_𝑖𝑛 denote the proportion of cancerous and normal cells in a given sample.
+
+Primary linear regression model: log⁡(𝜇_𝑔)=𝛽_0+𝛽_1 𝑥_𝑖𝑐
+
+The first analysis was conducted by the previous DE-testing function between Group 0 and Group 1 based on neoplastic cellularity. Here, all neoplastic cellularity values are possible inputs for 𝑥_𝑖𝑐.
+
+The second analysis of the data used a linear regression model to test for differential expression strictly based on a gene’s neoplastic cellularity level being above 50%. This type of binary approach only allowed for the values 0 or 1 as functional inputs for 𝑥_𝑖𝑐.
+
+A DE test was then performed on the genes by determining H0: 𝛽_1=0 vs. Ha: 𝛽_1≠0 in either analysis.
+
+
+
