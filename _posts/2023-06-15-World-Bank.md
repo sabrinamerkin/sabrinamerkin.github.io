@@ -37,7 +37,20 @@ postgresql:///international_debt
     
 SELECT * FROM international_debt LIMIT 10; 
 ```
-![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip1.png)
+
+| country_name |	country_code | indicator_name | indicator_code | debt |
+| --- | --: | --: | --: | --: |
+| Afghanistan	| AFG	| Disbursements on external debt, long-term (DIS, current US$)	| DT.DIS.DLXF.CD |	72894453.700000003
+| Afghanistan	| AFG	| Interest payments on external debt, long-term (INT, current US$)	| DT.INT.DLXF.CD |	53239440.100000001
+| Afghanistan	| AFG	| PPG, bilateral (AMT, current US$)	| DT.AMT.BLAT.CD	| 61739336.899999999
+| Afghanistan	| AFG	| PPG, bilateral (DIS, current US$)	| DT.DIS.BLAT.CD	| 49114729.399999999
+| Afghanistan	| AFG	| PPG, bilateral (INT, current US$)	| DT.INT.BLAT.CD	| 39903620.100000001
+| Afghanistan	| AFG	| PPG, multilateral (AMT, current US$)	| DT.AMT.MLAT.CD	| 39107845
+| Afghanistan	| AFG	| PPG, multilateral (DIS, current US$)	| DT.DIS.MLAT.CD	| 23779724.300000001
+| Afghanistan	| AFG	| PPG, multilateral (INT, current US$)	| DT.INT.MLAT.CD	| 13335820
+| Afghanistan	| AFG	| PPG, official creditors (AMT, current US$)	| DT.AMT.OFFT.CD	| 100847181.900000006
+| Afghanistan	| AFG	| PPG, official creditors (DIS, current US$)	| DT.DIS.OFFT.CD	| 72894453.700000003
+
 
 This reveals the amount of debt owed by Afghanistan in 10 different debt indicators. However, the amount of distinct countries in the table remains unknown.
 
@@ -47,7 +60,9 @@ SELECT COUNT(DISTINCT country_name) AS total_distinct_countries
 FROM international_debt;
 ```
 
-![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip2.png)
+| total_distinct_countries |
+| --- |
+| 124 |
 
 We can see the table holds a total of 124 distinct countries. As we saw earlier, there is a column called indicator_name that describes the purpose of taking the debt. Just beside that column, there is another column called indicator_code which symbolizes the category of these debts. Knowing about these various debt indicators will help us to understand the areas in which a country can possibly be indebted to.
 
@@ -58,7 +73,33 @@ FROM international_debt
 ORDER BY distinct_debt_indicators
 ```
 
-![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip3.png)
+| distinct_debt_indicators |
+| --- |
+| DT.AMT.BLAT.CD |
+| DT.AMT.DLXF.CD |
+| DT.AMT.DPNG.CD |
+| DT.AMT.MLAT.CD |
+| DT.AMT.OFFT.CD |
+| DT.AMT.PBND.CD |
+| DT.AMT.PCBK.CD |
+| DT.AMT.PROP.CD |
+| DT.AMT.PRVT.CD |
+| DT.DIS.BLAT.CD |
+| DT.DIS.DLXF.CD |
+| DT.DIS.MLAT.CD |
+| DT.DIS.OFFT.CD |
+| DT.DIS.PCBK.CD |
+| DT.DIS.PROP.CD |
+| DT.DIS.PRVT.CD |
+| DT.INT.BLAT.CD |
+| DT.INT.DLXF.CD |
+| DT.INT.DPNG.CD |
+| DT.INT.MLAT.CD |
+| DT.INT.OFFT.CD |
+| DT.INT.PBND.CD |
+| DT.INT.PCBK.CD |
+| DT.INT.PROP.CD |
+| DT.INT.PRVT.CD |
 
 ### Debt Analysis
 
@@ -71,7 +112,9 @@ SELECT
 FROM international_debt; 
 ```
 
-![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip4.png)
+| total_debt |
+| --- |
+| 3079734.49 |
 
 This value exceeds 3 million **million** US dollars, which is slightly easier (but still quite difficult) for one to comprehend. Next, we can find which country owns the highest amount of debt along with the amount. **Note** that this debt is the sum of all debts owed by a country.
 
@@ -87,7 +130,7 @@ LIMIT 1;
 ```
 
 | country_name | total_debt |
-| --- | --- |
+| :-- | :-- |
 | China | 285793494734.20 |
 
 We see that china owns the highest amount of debt amongst all countries.
