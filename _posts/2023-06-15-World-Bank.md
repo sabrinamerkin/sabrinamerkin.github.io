@@ -8,10 +8,20 @@ mathjax: true
 
 ## Background
 
-In this project, I analyzed international debt data collected by The World Bank using PostgreSQL querying, gaining valuable insights into the economic landscape of developing countries.
+In this project, I analyzed international debt data collected by The World Bank using PostgreSQL querying. I first completed this assignment on DataCamp after finishing the prerequisite 'Intermediate SQL` course. Upon completing the 'Data Manipulation in SQL' course on DataCamp, I returned back to this project to incorporate new skills I learned. This analysis was performed using Jupyter Notebook. Access to the international_debt database was provided by DataCamp.
+
+**SQL Concepts Implemented**
+
+  - The Big 5: `SELECT`–\>`FROM`–\>`WHERE`–\>`GROUP
+    BY`–\>`ORDER BY`
+  - Aggregation (`COUNT`, `SUM`, `MAX`, ect.)
+  - `LEFT JOIN`
+  - `VIEW`’s and Subqueries
+  - `CASE` and `COUNT(DISTINCT CASE WHEN...)` (count-case pivoting)
+
+## Project
 
 I began exploring this data set by determining which countries and distinct debt indicators were included in a particular table retrieved from the World Bank database. Using standard grouping and ordering techniques, I constructed a query with a 'total debt' field that calculated a sum of debts (combining values each debt indicator) for each country and sorted them.
-
 
 ``` sql
 ```
