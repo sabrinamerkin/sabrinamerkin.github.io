@@ -27,7 +27,7 @@ Key questions to answer:
 - Which country owns the maximum amount of debt and what does that amount look like?
 - What is the average amount of debt owed by countries across different debt indicators?
 
-### Find the number of disinct debt countries
+### Data Exploration
 
 ``` sql
 %%sql
