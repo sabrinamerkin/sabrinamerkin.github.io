@@ -265,8 +265,31 @@ bigFoldB <- which(abs(DE.res$log2fc) > 2.0 & DE.res$pval.adjust < 0.05) # Indice
 smallFoldB <- which(abs(DE.res$log2fc) < 2.0 & DE.res$pval.adjust < 0.05) # Indices of DE genes with fold <= 2.0
 
 length(intersect(overdispersed, allGenes[nonDEG])) # non-DE and overdispersed
-length(intersect(overdispersed, allGenes[bigFoldB])) # DE and Fold > 2.0, overdispersed
-length(intersect(overdispersed, allGenes[smallFoldB])) # DE and Fold <= 2.0, overdispersed
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/a1_res.png)<!-- -->
+
+
+Consensus DE genes were discovered by identifying which genes were detected in both sets of analyses. These 1403 consensus genes are the most likely to express true differential expression. Identified genes that were not consensus DE genes may suggest true DE genes OR other marker genes due to neoplastic cellularity
+length(intersect(overdispersed, allGenes[bigFoldB])) # DE and Fold > 2.0, overdispersed
+length(intersect(overdispersed, allGenes[smallFoldB])) # DE and Fold <= 2.0, overdispersed
+
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/cluster.png)<!-- -->
+
+
+Here, the top 10 consensus DE genes are recorded. It is important to note that the majority of these consensus DE genes have already been determined as prognostic markers in human cancer. To name one example, one literary report previously associated the consensus DE gene COL3A1 with PDAC. 
+
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/10_DE_genes.png)<!-- -->
+
+
+Gene clusters from analysis (II) provided insight into the genetic category that the consensus DE genes belong to. DNA purity values closer to 1 fit genes to a given cluster with more certainty. Neoplastic cellularity values indicate the average cancer purity value for the genes in that cluster. Here, the oncogene cluster stands out as the most prominent cluster for DE genes to reside in. This cluster contains the highest DNA purity and neoplastic cellularity levels with the greatest up-regulation.
+
+
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/gene_clusters.png)<!-- -->
+
+
+## Conclusion
+
+This probability model study required the conduction of various simulation studies to test Poisson-Tweedie model performance. By applying the Poisson-Tweedie model to analyze a TCGA data set, I successfully detected 1403 promising differentially expressed genes associated with PDAC. I explored the functionals of both concensus and non-consensus DE genes. It is important to note that some of the non-consensus DE genes may be true marker genes of healthy cells. Further research could integrate this analysis with other genomic analyses for more insight in biological mechanisms underlying PDAC. The combination of neoplastic cellularity information and DE gene identification could possibly be considered under one unified mathematical model as well.
