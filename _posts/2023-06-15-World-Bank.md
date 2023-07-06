@@ -37,4 +37,6 @@ postgresql:///international_debt
     
 SELECT * FROM international_debt LIMIT 10; 
 ```
+![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip1.png)
+
 
