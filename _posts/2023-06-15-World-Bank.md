@@ -85,11 +85,10 @@ GROUP BY country_name
 ORDER BY total_debt DESC
 LIMIT 1;
 ```
-| country_name | total_debt |
-| :----------- | :-------- |
-| China        | 285793494734.20 |
 
-![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip5.png)
+| country_name | total_debt |
+| --- | --- |
+| China | 285793494734.20 |
 
 We see that china owns the highest amount of debt amongst all countries.
 
