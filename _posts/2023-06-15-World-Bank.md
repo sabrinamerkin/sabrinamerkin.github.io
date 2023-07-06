@@ -133,6 +133,47 @@ LIMIT 1;
 | :-- | :-- |
 | China | 285793494734.20 |
 
-We see that china owns the highest amount of debt amongst all countries.
+We now see that china owns the highest amount of debt amongst all countries.
+
+Window functions can be used to pass running aggregate values along rows. We can use a window functuion to create a running_debt field that tracks the contribution of each debt indicator owed by China. 
+
+``` sql
+%%sql
+WITH china_table AS (SELECT * FROM international_debt WHERE country_name = 'China')
+
+SELECT indicator_name, SUM(debt) OVER(ORDER BY indicator_name ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_debt
+FROM china_table
+```
+
+| indicator_name |	running_debt |
+| --: | --: |
+| Disbursements on external debt, long-term (DIS, current US$) |	15692563746.100000381 |
+| Interest payments on external debt, long-term (INT, current US$) |	33559112397.500001907 |
+| Interest payments on external debt, private nonguaranteed (PNG) (INT, current US$) |	47701831149.100002288 |
+| PPG, bilateral (AMT, current US$) |	54234277591.000001907 |
+| PPG, bilateral (INT, current US$) |	54749175998.100001931 |
+| PPG, bonds (AMT, current US$)	| 64583852998.100001931 |
+| PPG, bonds (INT, current US$)	| 65808101998.100001931 |
+| PPG, commercial banks (AMT, current US$) |	69854345296.600001931 |
+| PPG, commercial banks (DIS, current US$)	| 73631395569.900002122 |
+| PPG, commercial banks (INT, current US$) |	74601328659.900002122 |
+| PPG, multilateral (AMT, current US$) |	77217052374.000002027 |
+| PPG, multilateral (DIS, current US$) |	80296553646.100001932 |
+| PPG, multilateral (INT, current US$) |	81154960620.900001884 |
+| PPG, official creditors (AMT, current US$) |	90303130776.900001884 |
+| PPG, official creditors (DIS, current US$) |	93382632049.000001789 |
+| PPG, official creditors (INT, current US$) |	94755937430.900001884 |
+| PPG, other private creditors (AMT, current US$) |	95552481598.300001860 |
+| PPG, other private creditors (DIS, current US$) |	95886493799.000001848 |
+| PPG, other private creditors (INT, current US$) |	96042836226.900001854 |
+| PPG, private creditors (AMT, current US$) |	110720300692.800001473 |
+| PPG, private creditors (DIS, current US$) |	114831363166.800001473 |
+| PPG, private creditors (INT, current US$) |	117181887684.700001568 |
+| Principal repayments on external debt, long-term (AMT, current US$) |	213400508520.399998516 |
+| Principal repayments on external debt, private nonguaranteed (PNG) (AMT, current US$) |	285793494734.200001568 |
 
 
+This running_debt field provides an interesting insight on how each debt indicator contributes to the growth of China's total debt.
+
+
+### Lable and Sort Debt Severity
