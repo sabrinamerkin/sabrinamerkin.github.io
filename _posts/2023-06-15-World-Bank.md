@@ -73,7 +73,7 @@ FROM international_debt;
 
 ![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip4.png)
 
-This value exceeds 3 million **million** US dollars, which is slightly easier (but still quite difficult) for one to comprehend. Next, we can find which country  owns the highest amount of debt along with the amount. **Note** that this debt is the sum of all debts owed by a country.
+This value exceeds 3 million **million** US dollars, which is slightly easier (but still quite difficult) for one to comprehend. Next, we can find which country owns the highest amount of debt along with the amount. **Note** that this debt is the sum of all debts owed by a country.
 
 ``` sql
 %%sql
@@ -85,9 +85,11 @@ GROUP BY country_name
 ORDER BY total_debt DESC
 LIMIT 1;
 ```
+| country_name | total_debt |
+| China | 285793494734.200001568s |
 
 ![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip5.png)
 
-
+We see that china owns the highest amount of debt amongst all countries.
 
 
