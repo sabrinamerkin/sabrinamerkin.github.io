@@ -39,4 +39,19 @@ SELECT * FROM international_debt LIMIT 10;
 ```
 ![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip1.png)
 
+This reveals the amount of debt owed by Afghanistan in 10 different debt indicators. However, the amount of distinct countries in the table remains unknown.
+
+``` sql
+%%sql
+SELECT COUNT(DISTINCT country_name) AS total_distinct_countries
+FROM international_debt;
+```
+![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip2.png)
+
+We can see the table holds a total of 124 distinct countries. As we saw earlier, there is a column called indicator_name that describes the purpose of taking the debt. Just beside that column, there is another column called indicator_code which symbolizes the category of these debts. Knowing about these various debt indicators will help us to understand the areas in which a country can possibly be indebted to.
+
+
+
+
+
 
