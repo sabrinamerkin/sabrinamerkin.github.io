@@ -79,14 +79,15 @@ This value exceeds 3 million **million** US dollars, which is slightly easier (b
 %%sql
 SELECT 
     country_name, 
-    SUM(debt) AS total_debt
+    ROUND(SUM(debt),2) AS total_debt
 FROM international_debt
 GROUP BY country_name
 ORDER BY total_debt DESC
 LIMIT 1;
 ```
 | country_name | total_debt |
-| China | 285793494734.200001568s |
+| :----------- | :-------- |
+| China        | 285793494734.20 |
 
 ![]({{ site.url }}{{ site.baseurl }}/images/World Bank/snip5.png)
 
