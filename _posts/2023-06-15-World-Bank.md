@@ -135,7 +135,7 @@ LIMIT 1;
 
 We now see that china owns the highest amount of debt amongst all countries.
 
-Window functions can be used to pass running aggregate values along rows. We can use a window functuion to create a running_debt field that tracks the contribution of each debt indicator owed by China. 
+Window functions can be used to pass running aggregate values along rows. We can use a window functuion to create a running_debt field that tracks the contribution of each debt owed by China. 
 
 ``` sql
 %%sql
