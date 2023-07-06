@@ -64,10 +64,10 @@ mean(mu.res) #Average mu value
 mean(d.res) #Average D value
 mean(a.res) #Average a value
 
-NB.pvalues <- sort(NB.pvalues, decreasing = FALSE) #Sorts p-values from lowest to highst
+NB.pvalues <- sort(NB.pvalues, decreasing = FALSE) #Sorts P-values from lowest to highst
 which(NB.pvalues<0.05) #Lists indicies of significant p.values lower than 0.05
 
-Pois.pvalues <- sort(Pois.pvalues, decreasing = FALSE) #Sorts p-values from lowest to highst
+Pois.pvalues <- sort(Pois.pvalues, decreasing = FALSE) #Sorts P-values from lowest to highst
 which(Pois.pvalues<0.05) #Lists indicies of significant p.values lower than 0.05
 
 hist(mu.res)
@@ -211,15 +211,15 @@ G[108:148] <- 1
 DE.res <- tweeDE(counts, group = G)
 
 par(mfrow(c(1,2)))
-hist(DE.res$pval.adjust, breaks = seq(0,1,.01), main="Histogram of Adjusted P-Values", xlab="Adjusted P-Value") #Histogram of adjusted P-values
+hist(DE.res$pval.adjust, breaks = seq(0,1,.01), main="Histogram of Adjusted P-values", xlab="Adjusted P-Value") #Histogram of adjusted P-values
 hist(DE.res$log2fc, main="Histogram of log2 Fold-Change", xlab="log2 Fold-Change", breaks=96, xaxp=c(-3,3,12)) #Histogram of fold change
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/analysis_1.png)<!-- -->
 
-From the first analysis, a histogram of the adjusted P-values from the DE test depicts a spike of significant p-values (less than 0.05) indicating a surplus of DE genes that were detected between both groups. A histogram of the log2 Fold-Change from the DE test shows several genes fall beyond a cutoff point of 1.5. This indicates the presence of over-dispersed genes in the data set. These over-dispersed genes have a significant difference in quantity between both groups
+From the first analysis, a histogram of the adjusted P-values from the DE test depicts a spike of significant P-values (less than 0.05) indicating a surplus of DE genes that were detected between both groups. A histogram of the log2 Fold-Change from the DE test shows several genes fall beyond a cutoff point of 1.5. This indicates the presence of over-dispersed genes in the data set. These over-dispersed genes have a significant difference in quantity between both groups
 
-In this analysis, an overrepresented gene is said to have passed the DE-test with a p-value less than 0.05 and exceeds a log2 Fold-Change of 1.5 between the low and high neoplastic cellularity groups. Note that by increasing the log2 Fold-Change cutoff value, the number of overrepresented genes decreases. The following volcano plots depict these overrepresented genes using two different log2 Fold-Change cutoff values. Fisher’s exact test was performed on both contingency tables and returned significant p-values. This confirmed the presence of overrepresented genes in the data set. 
+In this analysis, an overrepresented gene is said to have passed the DE-test with a p-value less than 0.05 and exceeds a log2 Fold-Change of 1.5 between the low and high neoplastic cellularity groups. Note that by increasing the log2 Fold-Change cutoff value, the number of overrepresented genes decreases. The following volcano plots depict these overrepresented genes using two different log2 Fold-Change cutoff values. Fisher’s exact test was performed on both contingency tables and returned significant P-values. This confirmed the presence of overrepresented genes in the data set. 
 
 
 ``` r
