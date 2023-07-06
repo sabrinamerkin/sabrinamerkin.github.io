@@ -225,7 +225,48 @@ In this analysis, an overrepresented gene is said to have passed the DE-test wit
 
 
 ``` r
-h
+deGenesA <- rownames(print(DE.res, n=Inf, log2fc=log2(1.5), pval.adjust=0.05, print=FALSE))
+deGenesB <-  rownames(print(DE.res, n=Inf, log2fc=log2(2.0), pval.adjust=0.05, print=FALSE))
+deGenesC <-  rownames(print(DE.res, n=Inf, log2fc=log2(2.5), pval.adjust=0.05, print=FALSE))
+
+# Goodness-of-fit
+gof0 <- gofTest(sortedG0, a=0)
+gof1 <- gofTest(sortedG1, a=0)
+
+chi0 <- qqchisq(gof0, main="Chi2 Q-Q Plot for Group 0", ylim = c(0, 2000)) #Chi2 Q-Q Plot
+norm0 <- qqchisq(gof0, normal=TRUE, main="Normal Q-Q Plot for Group 0", ylim = c(-4, 10)) #Normal Q-Q Plot
+
+chi1 <- qqchisq(gof1, main="Chi2 Q-Q Plot for Group 1", ylim = c(0, 2000)) #Chi2 Q-Q Plot
+norm1 <- qqchisq(gof1, normal=TRUE, main="Normal Q-Q Plot for Group 1", ylim = c(-4, 10)) #Normal Q-Q Plot
+
+# Volcano Plot(s)
+hl <- list(genes=deGenesA, pch=1, col="red", lwd=2, cex=1.5)
+Vplot(DE.res, cex=0.7, highlight=hl, log2fc.cutoff=log2(1.5), pval.adjust.cutoff=0.05, main="Volcano plot", xlab="Log2 Mean Expression")
+---------------------------
+# Contingency Table
+Pf0 <- -pchisq(gof0, df=1, lower.tail=FALSE) 
+Pf1 <- -pchisq(gof1, df=1, lower.tail=FALSE)
+overdispersed <- names(gof0)[Pf0 < 0.05 & Pf1 < 0.05 & !is.na(Pf0) & !is.na(Pf1)]
+
+allGenes <- rownames(counts) # List of all gene names
+
+nonDEG <- which(DE.res$pval.adjust >= 0.05) # Indices of all non-DE genes
+
+# Log2FoldChange = 1.5 Table
+bigFoldA <- which(abs(DE.res$log2fc) > 1.5 & DE.res$pval.adjust < 0.05) # Indices of DE genes with fold > 1.5
+smallFoldA <- which(abs(DE.res$log2fc) < 1.5 & DE.res$pval.adjust < 0.05) # Indices of DE genes with fold <= 1.5
+
+length(intersect(overdispersed, allGenes[nonDEG])) # non-DE and overdispersed
+length(intersect(overdispersed, allGenes[bigFoldA])) # DE and Fold > 1.5, overdispersed
+length(intersect(overdispersed, allGenes[smallFoldA])) # DE and Fold <= 1.5, overdispersed
+---------------------------
+# Log2FoldChange = 2.0 Table
+bigFoldB <- which(abs(DE.res$log2fc) > 2.0 & DE.res$pval.adjust < 0.05) # Indices of DE genes with fold > 2.0
+smallFoldB <- which(abs(DE.res$log2fc) < 2.0 & DE.res$pval.adjust < 0.05) # Indices of DE genes with fold <= 2.0
+
+length(intersect(overdispersed, allGenes[nonDEG])) # non-DE and overdispersed
+length(intersect(overdispersed, allGenes[bigFoldB])) # DE and Fold > 2.0, overdispersed
+length(intersect(overdispersed, allGenes[smallFoldB])) # DE and Fold <= 2.0, overdispersed
 ```
 
-image...
+![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/a1_res.png)<!-- -->
