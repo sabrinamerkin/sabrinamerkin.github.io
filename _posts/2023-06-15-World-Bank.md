@@ -142,7 +142,7 @@ Window functions can be used to pass running aggregate values along rows. We can
 WITH china_table AS (SELECT * FROM international_debt WHERE country_name = 'China')
 
 SELECT indicator_name, SUM(debt) OVER(ORDER BY indicator_name ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_debt
-FROM china_table
+FROM china_table;
 ```
 
 | indicator_name |	running_debt |
