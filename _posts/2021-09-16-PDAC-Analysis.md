@@ -204,8 +204,6 @@ A DE test was then performed on the genes by determining H0: 𝛽<sub>1</sub>=0 
 
 
 ``` r
-# Analysis I
-
 library(tweeDEseq)
 counts <- cbind(sortedG0, sortedG1) #DE Analysis
 G <- rep(0,148)
@@ -265,14 +263,14 @@ bigFoldB <- which(abs(DE.res$log2fc) > 2.0 & DE.res$pval.adjust < 0.05) # Indice
 smallFoldB <- which(abs(DE.res$log2fc) < 2.0 & DE.res$pval.adjust < 0.05) # Indices of DE genes with fold <= 2.0
 
 length(intersect(overdispersed, allGenes[nonDEG])) # non-DE and overdispersed
+length(intersect(overdispersed, allGenes[bigFoldB])) # DE and Fold > 2.0, overdispersed
+length(intersect(overdispersed, allGenes[smallFoldB])) # DE and Fold <= 2.0, overdispersed
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/a1_res.png)<!-- -->
 
 
 Consensus DE genes were discovered by identifying which genes were detected in both sets of analyses. These 1403 consensus genes are the most likely to express true differential expression. Identified genes that were not consensus DE genes may suggest true DE genes OR other marker genes due to neoplastic cellularity
-length(intersect(overdispersed, allGenes[bigFoldB])) # DE and Fold > 2.0, overdispersed
-length(intersect(overdispersed, allGenes[smallFoldB])) # DE and Fold <= 2.0, overdispersed
 
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/cluster.png)<!-- -->
