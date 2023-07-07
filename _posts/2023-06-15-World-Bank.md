@@ -294,5 +294,25 @@ LIMIT 10;
 
 The indicator `DT.AMT.DLXF.CD` holds the greatest average debt. This category is representative of debts requiring long-term repayments. This makes sense as long-term debts often acquire immediate capital.
 
+An interesting observation in the above finding is that there is a significant difference in the average debts following the second highest indicator. This implies that the first two indicators might not be the most severe debt categories amongst **all** countries. 
+
+We can investigate this further to discover which country owes the highest debt in the long-term debts (DT.AMT.DLXF.CD) category. This will allow us to observe whether this particular country has an inflated long-term debt category.
+
+``` sql
+%%sql
+SELECT 
+    country_name, 
+    indicator_name
+FROM international_debt
+WHERE debt = (SELECT 
+                 max(debt)
+             FROM international_debt
+             where indicator_code = 'DT.AMT.DLXF.CD');
+```
+
+| country_name |	indicator_name |
+| :-- | --: |
+| China	| Principal repayments on external debt, long-term (AMT, current US$) |
+
 
 
