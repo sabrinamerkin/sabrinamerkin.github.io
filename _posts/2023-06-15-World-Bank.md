@@ -175,5 +175,97 @@ FROM china_table;
 
 This running_debt field provides an interesting insight on how each debt indicator contributes to the growth of China's total debt.
 
+Next, we use case-statements and a common table expression to label the debt severity of each country. Countries with total debt less than $95 billion are labeled as having `low` debt severity. Countries with total debt above $95 billion and less than $190 billion are labeled as having `medium` debt severity. Countries with total debt exceeding $95 billion are have `high` debt severity. The results are sorted by debt severity in decending order and limited to 10 rows.
 
-### Lable and Sort Debt Severity
+
+``` sql
+%%sql
+WITH debt_table AS
+    (SELECT country_name, SUM(debt) AS total_debt FROM international_debt GROUP BY country_name ORDER BY total_debt DESC)
+
+SELECT country_name, total_debt, (CASE WHEN total_debt < 9.5E+10 THEN 'low'
+                                 WHEN total_debt >= 9.5E+10 AND total_debt < 1.9E+11 THEN 'medium'
+                                 ELSE 'high' END) AS debt_severity
+FROM debt_table
+GROUP BY country_name, total_debt
+ORDER BY total_debt DESC
+LIMIT 10;
+```
+
+| country_name |	total_debt |	debt_severity |
+| --: | --: | --: |
+| China	| 285793494734.200001568	| high |
+| Brazil |	280623966140.800007581	| high |
+| South Asia |	247608723990.600003211	| high |
+| Least developed countries: UN classification |	212880992791.900000988 |	high |
+| Russian Federation |	191289057259.200001943	| high |
+| IDA only |	179048127207.299999298	| medium |
+| Turkey |	151125758035.300003616	| medium |
+| India	| 133627060958.399997148	| medium |
+| Mexico	| 124596786217.300001668	| medium |
+| Indonesia	| 113435696693.499999149	| medium |
+
+
+To experiment a bit with table joins, we demonstrate two ways to query a list of all countries possessing any individual debts that fall between $100 thousand - $10 million. The first (and more complicated) method involves creating two common table expressions that meet the constraints of this problem. We then intersect these two common table expressions.
+
+``` sql
+%%sql
+
+with greater_debt as (SELECT country_name, debt FROM international_debt WHERE debt > 1.0E+5),
+smaller_debt as (SELECT country_name, debt FROM international_debt WHERE debt < 1.0E+7)
+
+SELECT * FROM greater_debt
+
+INTERSECT
+
+SELECT * FROM smaller_debt
+
+ORDER BY debt
+LIMIT 10;
+```
+
+| country_name	| debt |
+| --: | --: |
+| Nicaragua	| 105260.3 |
+| Central African Republic |	120000 |
+| Madagascar |	120000 |
+| Albania	| 120324.7 |
+| Djibouti |	127000 |
+| Bangladesh |	131000 |
+| Dominica |	137037.1 |
+| Comoros	| 154358.4 |
+| Lesotho	| 157326.4 |
+| Albania	| 170018.4 |
+
+
+
+Next, we see a much simpler approach to this problem.
+
+
+``` sql
+%%sql
+
+Select distinct country_name, debt
+From international_debt
+WHERE debt > 1.0E+5 AND debt < 1.0E+7
+ORDER BY debt
+Limit 10;
+```
+
+| country_name	| debt |
+| --: | --: |
+| Nicaragua	| 105260.3 |
+| Central African Republic |	120000 |
+| Madagascar |	120000 |
+| Albania	| 120324.7 |
+| Djibouti |	127000 |
+| Bangladesh |	131000 |
+| Dominica |	137037.1 |
+| Comoros	| 154358.4 |
+| Lesotho	| 157326.4 |
+| Albania	| 170018.4 |
+
+Although the first method may seem redundant, it is neat to see there are are more ways than one to obtain a SQL query.
+
+
+
