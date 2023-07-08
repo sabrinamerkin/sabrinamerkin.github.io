@@ -71,6 +71,7 @@ We can see the table holds a total of 124 distinct countries. As we saw earlier,
 SELECT DISTINCT indicator_code AS distinct_debt_indicators
 FROM international_debt
 ORDER BY distinct_debt_indicators
+LIMIT 10;
 ```
 
 | distinct_debt_indicators |
@@ -85,21 +86,6 @@ ORDER BY distinct_debt_indicators
 | DT.AMT.PROP.CD |
 | DT.AMT.PRVT.CD |
 | DT.DIS.BLAT.CD |
-| DT.DIS.DLXF.CD |
-| DT.DIS.MLAT.CD |
-| DT.DIS.OFFT.CD |
-| DT.DIS.PCBK.CD |
-| DT.DIS.PROP.CD |
-| DT.DIS.PRVT.CD |
-| DT.INT.BLAT.CD |
-| DT.INT.DLXF.CD |
-| DT.INT.DPNG.CD |
-| DT.INT.MLAT.CD |
-| DT.INT.OFFT.CD |
-| DT.INT.PBND.CD |
-| DT.INT.PCBK.CD |
-| DT.INT.PROP.CD |
-| DT.INT.PRVT.CD |
 
 ### Debt Analysis
 
@@ -265,7 +251,7 @@ Limit 10;
 | Lesotho	| 157326.4 |
 | Albania	| 170018.4 |
 
-Although the first method may seem redundant, it is neat to see there are are more ways than one to obtain a SQL query.
+Although the first method may seem redundant, it is neat to observe that there are are more ways than one to obtain this query using SQL.
 
 Now that we have a nice overview of the international_debt table, it is time to discover the average amount of debt owed for each debt indicator. This will provide a better sense of the distribution amongst all debt indicators.
 
@@ -287,7 +273,7 @@ LIMIT 10;
 | DT.DIS.OFFT.CD	| PPG, official creditors (DIS, current US$)	| 1958983452.859836046 |
 | DT.AMT.PRVT.CD	| PPG, private creditors (AMT, current US$)	| 1803694101.963265321 |
 | DT.INT.DLXF.CD	| Interest payments on external debt, long-term (INT, current US$)	| 1644024067.650806481 |
-| DT.DIS.BLAT.CD	| PPG, bilateral (DIS, current US$)	1223139290.398230108 |
+| DT.DIS.BLAT.CD	| PPG, bilateral (DIS, current US$)	| 1223139290.398230108 |
 | DT.INT.DPNG.CD	| Interest payments on external debt, private nonguaranteed (PNG) (INT, current US$) |	1220410844.421518983 |
 | DT.AMT.OFFT.CD	| PPG, official creditors (AMT, current US$)	| 1191187963.083064523 |
 | DT.AMT.PBND.CD	| PPG, bonds (AMT, current US$) |	1082623947.653623188 |
