@@ -338,7 +338,7 @@ LIMIT 10;
 | DT.DIS.OFFT.CD |	122 |
 | DT.AMT.BLAT.CD |	122 |
 
-Provided that there are 124 countries in the table, we clearly see that long-term debt is indeed the most severe debt category amongst all countries. 
+Provided that there are 124 countries in the table, we clearly see that long-term debt (DT.AMT.DLXF.CD) is indeed the most severe debt category amongst all countries. 
 
 
 
