@@ -292,11 +292,11 @@ LIMIT 10;
 | DT.AMT.OFFT.CD	| PPG, official creditors (AMT, current US$)	| 1191187963.083064523 |
 | DT.AMT.PBND.CD	| PPG, bonds (AMT, current US$) |	1082623947.653623188 |
 
-The indicator `DT.AMT.DLXF.CD` holds the greatest average debt. This category is representative of debts requiring long-term repayments. This makes sense as long-term debts often acquire immediate capital.
+The indicator `DT.AMT.DLXF.CD` is the greatest debt on average. This category is representative of debts requiring long-term repayments. This makes sense since long-term debt often acquires the most capital over time.
 
-An interesting observation in the above finding is that there is a significant difference in the average debts following the second highest indicator. This implies that the first two indicators might not be the most severe debt categories amongst **all** countries. 
+We can observe from the above finding that there is a significant difference in average debts following the second highest indicator. This implies that the first two indicators might be the most severe debt categories amongst all countries. 
 
-We can investigate this further to discover which country owes the highest debt in the long-term debts (DT.AMT.DLXF.CD) category. This will allow us to observe whether this particular country has an inflated long-term debt category.
+We can investigate this further to discover which country owes the highest debt in the long-term debt (DT.AMT.DLXF.CD) category.
 
 ``` sql
 %%sql
@@ -313,6 +313,32 @@ WHERE debt = (SELECT
 | country_name |	indicator_name |
 | :-- | --: |
 | China	| Principal repayments on external debt, long-term (AMT, current US$) |
+
+China has the largest amount of debt owed in the long-term debt (DT.AMT.DLXF.CD) category. Again, we observed that long-term debt is the greatest debt on average, but we still do not know if **every** country owes a long-term debt. To see if China is inflating this value, we can check whether all remaining countries are also contributing to this average. We will proceed by identifying the top 10 most common debt indicators amongst all countries. If long-term debt (DT.AMT.DLXF.CD) is owed by every country, we can confirm that long-term debt is the most severe debt category amongst all countries. 
+
+``` sql
+%%sql
+SELECT indicator_code, count(*) AS indicator_count
+FROM international_debt
+GROUP BY indicator_code
+ORDER BY indicator_count DESC, indicator_code DESC
+LIMIT 10;
+```
+
+| indicator_code	| indicator_count |
+| :-- | --:|
+| DT.INT.OFFT.CD |	124 |
+| DT.INT.MLAT.CD | 124 |
+| DT.INT.DLXF.CD | 124 |
+| DT.AMT.OFFT.CD |	124 |
+| DT.AMT.MLAT.CD |	124 |
+| DT.AMT.DLXF.CD |	124 |
+| DT.DIS.DLXF.CD |	123 |
+| DT.INT.BLAT.CD |	122 |
+| DT.DIS.OFFT.CD |	122 |
+| DT.AMT.BLAT.CD |	122 |
+
+Provided that there are 124 countries in the table, we clearly see that long-term debt is indeed the most severe debt category amongst all countries. 
 
 
 
