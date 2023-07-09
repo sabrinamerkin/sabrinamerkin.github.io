@@ -2,7 +2,7 @@
 title: "R: Differential Expression of Genes in PDAC Tumor Samples"
 date: 2022-04-14
 tags: [R, Rstudio, ggplot2, tweedie, Regression Analysis]
-excerpt: "Identify DE genes using statistical modeling in R"
+excerpt: "Identify differentially expressed genes using statistical modeling in R"
 ---
 
 ## Background
