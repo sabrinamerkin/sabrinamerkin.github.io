@@ -1,5 +1,5 @@
 ---
-title: "PostgreSQL International Debt Analysis"
+title: "PostgreSQL: International Debt Analysis"
 date: 2023-06-15
 tags: [SQL, Data Analysis, Query Writing]
 excerpt: "Analyze international debt data collected by The World Bank using PostgreSQL querying"
