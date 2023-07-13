@@ -5,7 +5,7 @@ header:
   image: "/images/bean.jpg"
 ---
 
-I have a passion for utilizing statistical models and optimization techniques in data analysis to draw meaningful conclusions. My background in statistics and computer programming has enabled me to derive predictive inferences from data and effectively approach associated problems. I am familiar with statisticsl modeling techniques such as Regression Analysis, Time Series Analysis, Experimental Design, and Statistical Testing. I also have a strong understanding of concepts in Operations Research and Linear Programming.
+I have a passion for utilizing statistical models and optimization techniques in data analysis to draw meaningful conclusions. My background in statistics and computer programming has enabled me to derive predictive inferences from data and effectively approach associated problems. I am familiar with statistical modeling techniques such as Regression Analysis, Time Series Analysis, Experimental Design, and Statistical Testing. I also have a strong understanding of concepts in Operations Research and Linear Programming.
 
 I have the most experience using SQL, Tableau, R programming, and Python. I am currently taking courses on DataCamp to master these tools and further develop my skills as a Data Scientist.
 
