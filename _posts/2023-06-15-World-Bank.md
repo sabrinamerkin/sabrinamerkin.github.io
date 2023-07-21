@@ -29,7 +29,7 @@ Key questions to answer:
 
 ### Data Exploration
 
-We first begin by selecting all of the columns from the international_debt table and outputting the first 10 rows. 
+We first begin by selecting all of the columns from the `international_debt` table and outputting the first 10 rows. 
 
 ``` sql
 %%sql
