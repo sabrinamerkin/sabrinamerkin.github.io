@@ -64,7 +64,7 @@ FROM international_debt;
 | --- |
 | 124 |
 
-We can see the table holds a total of 124 distinct countries. As we saw earlier, there is a column called indicator_name that describes the purpose of taking the debt. Just beside that column, there is another column called indicator_code which symbolizes the category of these debts. Knowing about these various debt indicators will help us to understand the areas in which a country can possibly be indebted to.
+We can see the table holds a total of 124 distinct countries. As we saw earlier, there is a column called `indicator_name` that describes the purpose of taking the debt. Just beside that column, there is another column called `indicator_code` which symbolizes the category of these debts. Knowing about these various debt indicators will help us to understand the areas in which a country can possibly be indebted to.
 
 ``` sql
 %%sql
@@ -121,7 +121,7 @@ LIMIT 1;
 
 We now see that china owns the highest amount of debt amongst all countries.
 
-Window functions can be used to pass running aggregate values along rows. We can use a window functuion to create a running_debt field that tracks the contribution of each debt owed by China. 
+Window functions can be used to pass running aggregate values along rows. We can use a window functuion to create a `running_debt` field that tracks the contribution of each debt owed by China. 
 
 ``` sql
 %%sql
@@ -159,7 +159,7 @@ FROM china_table;
 | Principal repayments on external debt, private nonguaranteed (PNG) (AMT, current US$) |	285793494734.200001568 |
 
 
-This running_debt field provides an interesting insight on how each debt indicator contributes to the growth of China's total debt.
+This `running_debt` field provides an interesting insight on how each debt indicator contributes to the growth of China's total debt.
 
 Next, we use case-statements and a common table expression to label the debt severity of each country. Countries with total debt less than $95 billion are labeled as having `low` debt severity. Countries with total debt above $95 billion and less than $190 billion are labeled as having `medium` debt severity. Countries with total debt exceeding $95 billion are have `high` debt severity. The results are sorted by debt severity in decending order and limited to 10 rows.
 
@@ -253,7 +253,7 @@ Limit 10;
 
 Although the first method may seem redundant, it is neat to observe that there are are more ways than one to obtain this query using SQL.
 
-Now that we have a nice overview of the international_debt table, it is time to discover the average amount of debt owed for each debt indicator. This will provide a better sense of the distribution amongst all debt indicators.
+Now that we have a nice overview of the `international_debt` table, it is time to discover the average amount of debt owed for each debt indicator. This will provide a better sense of the distribution amongst all debt indicators.
 
 ``` sql
 %%sql
