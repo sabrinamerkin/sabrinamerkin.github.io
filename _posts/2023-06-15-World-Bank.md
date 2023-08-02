@@ -207,7 +207,7 @@ INTERSECT
 SELECT * FROM smaller_debt
 
 ORDER BY debt
-LIMIT 10;
+LIMIT 9;
 ```
 
 | country_name	| debt |
@@ -221,7 +221,6 @@ LIMIT 10;
 | Dominica |	137037.1 |
 | Comoros	| 154358.4 |
 | Lesotho	| 157326.4 |
-| Albania	| 170018.4 |
 
 
 
@@ -235,7 +234,7 @@ Select distinct country_name, debt
 From international_debt
 WHERE debt > 1.0E+5 AND debt < 1.0E+7
 ORDER BY debt
-Limit 10;
+Limit 9;
 ```
 
 | country_name	| debt |
@@ -249,7 +248,7 @@ Limit 10;
 | Dominica |	137037.1 |
 | Comoros	| 154358.4 |
 | Lesotho	| 157326.4 |
-| Albania	| 170018.4 |
+
 
 Although the first method may seem redundant, it is neat to observe that there are are more ways than one to obtain this query using SQL.
 
