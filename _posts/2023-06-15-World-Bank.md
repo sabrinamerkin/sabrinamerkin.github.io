@@ -52,7 +52,7 @@ SELECT * FROM international_debt LIMIT 10;
 | Afghanistan	| AFG	| PPG, official creditors (DIS, current US$)	| DT.DIS.OFFT.CD	| 72894453.700000003
 
 
-This reveals the amount of debt owed by Afghanistan in 10 different debt indicators. However, the amount of distinct countries in the table remains unknown.
+This reveals the amount of debt owed by Afghanistan in 10 different debt indicators. However, the number of distinct countries in the table remains unknown.
 
 ``` sql
 %%sql
