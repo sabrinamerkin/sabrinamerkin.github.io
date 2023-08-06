@@ -119,9 +119,9 @@ LIMIT 1;
 | :-- | :-- |
 | China | 285793494734.20 |
 
-We now see that china owns the highest amount of debt amongst all countries.
+We now see that China owns the highest amount of debt amongst all countries.
 
-Window functions can be used to pass running aggregate values along rows. We can use a window functuion to create a `running_debt` field that tracks the contribution of each debt owed by China. 
+Window functions can be used to pass running aggregate values along rows. We can use a window function to create a `running_debt` field that tracks the contribution of each debt owed by China. 
 
 ``` sql
 %%sql
@@ -161,7 +161,7 @@ FROM china_table;
 
 This `running_debt` field provides an interesting insight on how each debt indicator contributes to the growth of China's total debt.
 
-Next, we use case-statements and a common table expression to label the debt severity of each country. Countries with total debt less than $95 billion are labeled as having `low` debt severity. Countries with total debt above $95 billion and less than $190 billion are labeled as having `medium` debt severity. Countries with total debt exceeding $95 billion are have `high` debt severity. The results are sorted by debt severity in decending order and limited to 10 rows.
+Next, we use case-statements and a common table expression to label the debt severity of each country. Countries with total debt less than $95 billion are labeled as having `low` debt severity. Countries with total debt above $95 billion and less than $190 billion are labeled as having `medium` debt severity. Countries with total debt exceeding $95 billion have `high` debt severity. The results are sorted by debt severity in decending order and limited to 10 rows.
 
 
 ``` sql
