@@ -161,7 +161,7 @@ FROM china_table;
 
 This `running_debt` field provides an interesting insight on how each debt indicator contributes to the growth of China's total debt.
 
-Next, we use case-statements and a common table expression to label the debt severity of each country. Countries with total debt less than $95 billion are labeled as having `low` debt severity. Countries with total debt above $95 billion and less than $190 billion are labeled as having `medium` debt severity. Countries with total debt exceeding $95 billion have `high` debt severity. The results are sorted by debt severity in decending order and limited to 10 rows.
+Next, we use case-statements and a common table expression to label the debt severity of each country. Countries with total debt less than $95 billion are labeled as having `low` debt severity. Countries with total debt above $95 billion and less than $190 billion are labeled as having `medium` debt severity. Countries with total debt exceeding $95 billion have `high` debt severity. The results are sorted by debt severity in descending order and limited to 10 rows.
 
 
 ``` sql
@@ -250,9 +250,9 @@ Limit 9;
 | Lesotho	| 157326.4 |
 
 
-Although the first method may seem redundant, it is neat to observe that there are are more ways than one to obtain this query using SQL.
+Although the first method may seem redundant, it is neat to observe that there are more ways than one to obtain this query using SQL.
 
-Now that we have a nice overview of the `international_debt` table, it is time to discover the average amount of debt owed for each debt indicator. This will provide a better sense of the distribution amongst all debt indicators.
+Now that we have a nice overview of the `international_debt` table, it is time to discover the average amount of debt owed for each debt indicator. This will provide a better sense of distribution amongst all debt indicators.
 
 ``` sql
 %%sql
