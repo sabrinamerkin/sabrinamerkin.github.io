@@ -14,7 +14,7 @@ In this project, I analyzed international debt data collected by The World Bank 
 
   - The Big 5: `SELECT`–\>`FROM`–\>`WHERE`–\>`GROUP
     BY`–\>`ORDER BY`
-  - Aggregation (`COUNT`, `SUM`, `AVG`, ect.)
+  - Aggregation (`COUNT`, `SUM`, `AVG`, etc.)
   - Table Joins
   - Common Table Expressions and Subqueries
   - Window Functions
