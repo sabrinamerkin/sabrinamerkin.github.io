@@ -79,7 +79,7 @@ hist(a.res)
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_plots_1.png)<!-- -->
 
 
-We see that the estimated shape parameters in each histogram are normally disrtibuted with a mean value close to the true parameter value of these simulated Poisson-Tweedie distributions. It is worth noting the cluster of outliers in the alpha parameter histogram. By repeating similar simulations that meet the sample size requirements for each scenario, we obtain the following visual:
+We see that the estimated shape parameters in each histogram are normally distributed with a mean value close to the true parameter value of these simulated Poisson-Tweedie distributions. It is worth noting the cluster of outliers in the alpha parameter histogram. By repeating similar simulations that meet the sample size requirements for each scenario, we obtain the following visual:
 
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/sim_tables_1.png)<!-- -->
@@ -290,4 +290,4 @@ Gene clusters from analysis (II) provided insight into the genetic category that
 
 ## Conclusion
 
-This probability model study required the conduction of various simulation studies to test Poisson-Tweedie model performance. By applying the Poisson-Tweedie model to analyze a TCGA data set, I successfully detected 1403 promising differentially expressed genes associated with PDAC. I explored the functionals of both concensus and non-consensus DE genes. It is important to note that some of the non-consensus DE genes may be true marker genes of healthy cells. Further research could integrate this analysis with other genomic analyses for more insight in biological mechanisms underlying PDAC. The combination of neoplastic cellularity information and DE gene identification could possibly be considered under one unified mathematical model as well.
+This probability model study required the conduction of various simulation studies to test Poisson-Tweedie model performance. By applying the Poisson-Tweedie model to analyze a TCGA data set, I successfully detected 1403 promising differentially expressed genes associated with PDAC. I explored the functionals of both consensus and non-consensus DE genes. It is important to note that some of the non-consensus DE genes may be true marker genes of healthy cells. Further research could integrate this analysis with other genomic analyses for more insight into biological mechanisms underlying PDAC. The combination of neoplastic cellularity information and DE gene identification could possibly be considered under one unified mathematical model as well.
