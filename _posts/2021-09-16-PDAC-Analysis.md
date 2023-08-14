@@ -217,7 +217,7 @@ hist(DE.res$log2fc, main="Histogram of log2 Fold-Change", xlab="log2 Fold-Change
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/analysis_1.png)<!-- -->
 
-From the first analysis, a histogram of the adjusted P-values from the DE test depicts a spike of significant P-values (less than 0.05) indicating a surplus of DE genes that were detected between both groups. A histogram of the log2 fold-change from the DE test shows several genes fall beyond a cutoff point of 1.5. This indicates the presence of over-dispersed genes in the data set. These over-dispersed genes have a significant difference in quantity between both groups
+From the first analysis, a histogram of the adjusted P-values from the DE test depicts a spike of significant P-values (less than 0.05) indicating a surplus of DE genes that were detected between both groups. A histogram of the log2 fold-change from the DE test shows several genes fall beyond a cutoff point of 1.5. This indicates the presence of over-dispersed genes in the data set. These over-dispersed genes have a significant difference in quantity between both groups.
 
 In this analysis, an overrepresented gene is said to have passed the DE-test with a p-value less than 0.05 and exceeds a log2 fold-change of 1.5 between the low and high neoplastic cellularity groups. Note that by increasing the log2 fold-change cutoff value, the number of overrepresented genes decreases. The following volcano plots depict these overrepresented genes using two different log2 fold-change cutoff values. Fisher’s exact test was performed on both contingency tables and returned significant P-values. This confirmed the presence of overrepresented genes in the data set. 
 
@@ -270,7 +270,7 @@ length(intersect(overdispersed, allGenes[smallFoldB])) # DE and Fold <= 2.0, ove
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/a1_res.png)<!-- -->
 
 
-Consensus DE genes were discovered by identifying which genes were detected in both sets of analyses. These 1403 consensus genes are the most likely to express true differential expression. Identified genes that were not consensus DE genes may suggest true DE genes OR other marker genes due to neoplastic cellularity
+Consensus DE genes were discovered by identifying which genes were detected in both sets of analyses. These 1403 consensus genes are the most likely to express true differential expression. Identified genes that were not consensus DE genes may suggest true DE genes OR other marker genes due to neoplastic cellularity.
 
 
 ![]({{ site.url }}{{ site.baseurl }}/images/PDAC Images/cluster.png)<!-- -->
