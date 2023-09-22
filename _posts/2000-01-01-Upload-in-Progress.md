@@ -27,7 +27,7 @@ df.shape
 ```
 
 ```python
-## (200, 11)
+(200, 11)
 ```
 The dataset contains 200 employee records with 11 informative variables.
 
@@ -51,21 +51,21 @@ df.isnull().sum()
 ```
 
 ```python
-## Name                     0
-## Age                      0
-## Gender                   0
-## Projects Completed       0
-## Productivity (%)         0
-## Satisfaction Rate (%)    0
-## Feedback Score           0
-## Department               0
-## Position                 0
-## Joining Date             0
-## Salary                   0
-## dtype: int64
+Name                     0
+Age                      0
+Gender                   0
+Projects Completed       0
+Productivity (%)         0
+Satisfaction Rate (%)    0
+Feedback Score           0
+Department               0
+Position                 0
+Joining Date             0
+Salary                   0
+dtype: int64
 ```
 
-There are no missing values in the dataset.
+There are no missing values. Next, we will look into summary statistics of the dataset.
 
 ```python
 df.info()
@@ -91,3 +91,22 @@ Data columns (total 11 columns):
 dtypes: float64(1), int64(5), object(5)
 memory usage: 17.3+ KB
 ```
+
+```python
+df.describe()
+```
+
+| Age	| Projects Completed	| Productivity (%)	| Satisfaction Rate (%)	| Feedback Score	| Salary |
+| --- | --- | --- | --- | --- | --- | --- |
+| count	| 200.000000	| 200.000000	| 200.000000	| 200.000000	| 200.000000	| 200.000000 |
+| mean	| 34.650000	| 11.455000	| 46.755000	| 49.935000	| 2.883000	| 76619.245000 |
+| std	| 9.797318	| 6.408849	| 28.530068	| 28.934353	| 1.123263	| 27082.299202 |
+| min	| 22.000000	| 0.000000	| 0.000000 |	0.000000	| 1.000000	| 30231.000000 | 
+| 25%	| 26.000000	| 6.000000	| 23.000000	| 25.750000	| 1.900000	| 53080.500000 |
+| 50%	| 32.000000	| 11.000000	| 45.000000	| 50.500000	| 2.800000	| 80540.000000 |
+| 75%	| 41.000000	| 17.000000	| 70.000000	| 75.250000	| 3.900000	| 101108.250000 |
+| max	| 60.000000	| 25.000000	| 98.000000	| 100.000000	| 4.900000	| 119895.000000 |
+
+
+
+
