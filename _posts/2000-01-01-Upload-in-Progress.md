@@ -91,6 +91,7 @@ Data columns (total 11 columns):
 dtypes: float64(1), int64(5), object(5)
 memory usage: 17.3+ KB
 ```
+Here, we can see the type of each variable in the dataset.
 
 ```python
 df.describe()
@@ -107,6 +108,15 @@ df.describe()
 | 75%	| 41.000000	| 17.000000	| 70.000000	| 75.250000	| 3.900000	| 101108.250000 |
 | max	| 60.000000	| 25.000000	| 98.000000	| 100.000000	| 4.900000	| 119895.000000 |
 
+```python
+df.describe(include='object')
+```
 
+|  | Name	| Gender |	Department	| Position |	Joining Date |
+| --- | --: | --: | --: | --: | --: |
+| count	| 200	| 200	| 200	| 200	| 200 |
+| unique	| 200	| 2 |	5	| 6	| 25 |
+| top	| Douglas Lindsey	| Male |	Sales |	Manager	| Jan-18 |
+| freq	| 1	| 100 |	47 |	40 |	23 |
 
 
