@@ -161,5 +161,7 @@ plt.subplot(1,1,1)
 den_plot('Salary')
 ```
 
-
-
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_1)
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_2)
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_3)
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_4)
