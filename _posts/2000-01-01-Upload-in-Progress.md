@@ -24,7 +24,9 @@ import plotly.express as px
 # Load dataset
 df = pd.read_csv("C:/Users/ethan/OneDrive/Documents/Data Glacier/datasets/hr_data.csv")
 df.shape
+```
 
+```python
 (200, 11)
 ```
 
