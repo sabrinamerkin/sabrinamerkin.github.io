@@ -119,4 +119,18 @@ df.describe(include='object')
 | top	| Douglas Lindsey	| Male |	Sales |	Manager	| Jan-18 |
 | freq	| 1	| 100 |	47 |	40 |	23 |
 
+*Name* is not an important variable to this analysis, so we can remove it from the data frame.
+
+```python
+df=df.drop(['Name'],axis=1)
+df.shape
+```
+
+```python
+(200, 10)
+```
+We now have 200 employee records with 10 informative variables.
+
+
+
 
