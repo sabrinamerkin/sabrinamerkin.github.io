@@ -44,7 +44,7 @@ df.head(6)
 | 4	| Stephanie Bailey |	43 |	Male	| 14 |	3 |	9 |	4.5 |	IT	| Team Lead |	Jan-05	| 101133 |
 | 5	| Jonathan King	| 24 |	Male	| 5	| 63 |	33 |	4.2 |	Sales |	Junior Developer |	Jan-21 |	48740 |
 
-Next, we check to see if there are any missing values for any variables.
+Next, we check to see if there are any missing values in the dataset.
 
 ```python
 df.isnull().sum()
