@@ -9,7 +9,7 @@ mathjax: true
 ## Background
 The dataset used in this analysis was imported from Kaggle. It was created to explore typical elements that influence employee performance and satisfaction in the workplace. This dataset contains information for 200 unique employees working at an organization.
 
-## Analysis
+## Exploratory Analysis
 We begin the exploration of this dataset by importing the required libraries and CSV file for analysis.
 
 ```python
@@ -131,6 +131,35 @@ df.shape
 ```
 We now have 200 employee records with 10 informative variables.
 
+## Visualizing Variable Distributions
+
+We can define a density plot function that will visualize the distributions of quantitative variables in the dataset.
+
+```python
+# Define a density plot function
+def den_plot(data):
+    sns.kdeplot(x=df[data], fill=True)
+    plt.gcf().set_size_inches(10,4)
+```
+
+```python
+plt.subplots(1,2,sharey=True)
+plt.subplot(1,2,1)
+den_plot('Age')
+plt.subplot(1,2,2)
+den_plot('Projects Completed')
+plt.subplots(1,2, sharey=True)
+plt.subplot(1,2,1)
+den_plot('Productivity (%)')
+plt.subplot(1,2,2)
+den_plot('Satisfaction Rate (%)')
+plt.subplots(1,1)
+plt.subplot(1,1,1)
+den_plot('Feedback Score')
+plt.subplots(1,1)
+plt.subplot(1,1,1)
+den_plot('Salary')
+```
 
 
 
