@@ -65,7 +65,7 @@ Salary                   0
 dtype: int64
 ```
 
-There are no missing values. Next, we will look into summary statistics of the dataset.
+There are no missing values. Next, we can see the type of each variable in the dataset.
 
 ```python
 df.info()
@@ -91,7 +91,7 @@ Data columns (total 11 columns):
 dtypes: float64(1), int64(5), object(5)
 memory usage: 17.3+ KB
 ```
-Here, we can see the type of each variable in the dataset.
+We can see summary statistics of the data with the following commands.
 
 ```python
 df.describe()
