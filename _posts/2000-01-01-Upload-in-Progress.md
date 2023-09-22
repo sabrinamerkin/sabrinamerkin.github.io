@@ -67,3 +67,27 @@ df.isnull().sum()
 
 There are no missing values in the dataset.
 
+```python
+df.info()
+```
+
+```python
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 200 entries, 0 to 199
+Data columns (total 11 columns):
+ #   Column                 Non-Null Count  Dtype  
+---  ------                 --------------  -----  
+ 0   Name                   200 non-null    object 
+ 1   Age                    200 non-null    int64  
+ 2   Gender                 200 non-null    object 
+ 3   Projects Completed     200 non-null    int64  
+ 4   Productivity (%)       200 non-null    int64  
+ 5   Satisfaction Rate (%)  200 non-null    int64  
+ 6   Feedback Score         200 non-null    float64
+ 7   Department             200 non-null    object 
+ 8   Position               200 non-null    object 
+ 9   Joining Date           200 non-null    object 
+ 10  Salary                 200 non-null    int64  
+dtypes: float64(1), int64(5), object(5)
+memory usage: 17.3+ KB
+```
