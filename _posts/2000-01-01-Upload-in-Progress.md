@@ -27,7 +27,7 @@ df.shape
 ```
 
 ```python
-(200, 11)
+## (200, 11)
 ```
 The dataset contains 200 employee records with 11 informative variables.
 
@@ -51,18 +51,18 @@ df.isnull().sum()
 ```
 
 ```python
-Name                     0
-Age                      0
-Gender                   0
-Projects Completed       0
-Productivity (%)         0
-Satisfaction Rate (%)    0
-Feedback Score           0
-Department               0
-Position                 0
-Joining Date             0
-Salary                   0
-dtype: int64
+## Name                     0
+## Age                      0
+## Gender                   0
+## Projects Completed       0
+## Productivity (%)         0
+## Satisfaction Rate (%)    0
+## Feedback Score           0
+## Department               0
+## Position                 0
+## Joining Date             0
+## Salary                   0
+## dtype: int64
 ```
 
 There are no missing values in the dataset.
