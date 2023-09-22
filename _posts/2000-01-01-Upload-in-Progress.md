@@ -29,7 +29,7 @@ df.shape
 ```python
 (200, 11)
 ```
-The dataset contains information on 11 variables for 200 unique employees.
+The dataset contains 200 employee records and 11 informative variables.
 
 ```python
 df.head(6)
