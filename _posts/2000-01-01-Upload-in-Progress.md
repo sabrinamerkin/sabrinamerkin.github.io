@@ -44,3 +44,26 @@ df.head(6)
 | 4	| Stephanie Bailey |	43 |	Male	| 14 |	3 |	9 |	4.5 |	IT	| Team Lead |	Jan-05	| 101133 |
 | 5	| Jonathan King	| 24 |	Male	| 5	| 63 |	33 |	4.2 |	Sales |	Junior Developer |	Jan-21 |	48740 |
 
+Next, we check to see if there are any missing values for any variables.
+
+```python
+df.isnull().sum()
+```
+
+```python
+Name                     0
+Age                      0
+Gender                   0
+Projects Completed       0
+Productivity (%)         0
+Satisfaction Rate (%)    0
+Feedback Score           0
+Department               0
+Position                 0
+Joining Date             0
+Salary                   0
+dtype: int64
+```
+
+There are no missing values in the dataset.
+
