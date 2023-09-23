@@ -164,3 +164,13 @@ den_plot('Salary')
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_2.png)<!-- -->
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_3.png)<!-- -->
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_4.png)<!-- -->
+
+## Outlier Detection
+
+Outliers can only exist in Salary as other numeric variables are limited to strict ranges.
+
+```python
+fig = px.box(df, y = 'Salary', points = 'outliers', title='Outliers in Salary')
+```
+
+
