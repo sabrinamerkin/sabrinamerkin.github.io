@@ -2,15 +2,15 @@
 title: "Upload in progress..."
 date: "2000-01-01"
 tags: [Python, Machine Learning, Matplotlib, Data Visualization]
-excerpt: "Utilize machine learning models to estimate employee salary from performance metrics"
+excerpt: "Utilize machine learning models to estimate salary from employee metrics"
 mathjax: true
 ---
 
 ## Background
-The dataset used in this analysis was imported from Kaggle. It was created to explore typical elements that influence employee performance and satisfaction in the workplace. This dataset contains information for 200 unique employees working at an organization.
+The dataset in this analysis was created to explore factors that influence employee performance and satisfaction in a typical organization. These variables include personal traits, perfromance metrics, and job details of employees. In this project, I explore variable relativity and deploy machine learning models to predict employee salary from training data. The Employee Productivity and Satisfaction HR Data was imported from Kaggle. 
 
 ## Exploratory Analysis
-We begin the exploration of this dataset by importing the required libraries and CSV file for analysis.
+We begin this analysis by importing the required libraries and dataset.
 
 ```python
 # Import required libraries
