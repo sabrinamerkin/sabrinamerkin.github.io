@@ -165,7 +165,7 @@ den_plot('Salary')
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_3.png)<!-- -->
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_4.png)<!-- -->
 
-All variable distributions look approximately normal. `Age` is slightly skewed left. We can use a boxplot to detect potential outliers in `Age`.
+All variable distributions look approximately normal. `Age` is slightly skewed right. We can use a boxplot to detect potential outliers in `Age`.
 
 ```python
 fig = px.box(df, y = 'Age', points = 'outliers')
@@ -178,7 +178,7 @@ There are no outliers in `Age`.
 
 ## Investigating Gender
 
-First, we will look at the distribution of gender in the dataset.
+First, we will look at gender distribution in the dataset.
 
 ```python
 sex = df['Gender'].value_counts().reset_index()
@@ -189,3 +189,15 @@ px.bar(sex, x='Gender', y='Count', color=sex['Gender'],  color_discrete_sequence
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_dist.png)<!-- -->
 
 There are exactly 100 male and 100 female employees in the dataset.
+
+```python
+avg_salary = df.groupby('Gender').mean(numeric_only=True)['Salary'].reset_index()
+px.bar(avg_salary, x='Gender', y='Salary', color='Gender',  color_discrete_sequence=['pink', 'blue'])
+```
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_salary.png)<!-- -->
+
+The average salary for males and females is equivalent.
+
+
+
+
