@@ -165,12 +165,13 @@ den_plot('Salary')
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_3.png)<!-- -->
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_4.png)<!-- -->
 
-## Outlier Detection
-
-Outliers can only exist in Salary as other numeric variables are limited to strict ranges.
+All variable distributions look approximately normal. `Age` is slightly skewed left. We can use a boxplot to detect potential outliers in `Age`.
 
 ```python
-fig = px.box(df, y = 'Salary', points = 'outliers', title='Outliers in Salary')
+fig = px.box(df, y = 'Age', points = 'outliers')
+fig.update_layout(hovermode='x')
 ```
 
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/age_box.png)<!-- -->
 
+There are no outliers in `Age`.
