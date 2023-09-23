@@ -44,7 +44,7 @@ df.head(6)
 | Stephanie Bailey |	43 |	Male	| 14 |	3 |	9 |	4.5 |	IT	| Team Lead |	Jan-05	| 101133 |
 | Jonathan King	| 24 |	Male	| 5	| 63 |	33 |	4.2 |	Sales |	Junior Developer |	Jan-21 |	48740 |
 
-Next, we check to see if there are any missing values in the dataset.
+We can check to see if there are any missing values in the dataset.
 
 ```python
 df.isnull().sum()
@@ -91,7 +91,7 @@ Data columns (total 11 columns):
 dtypes: float64(1), int64(5), object(5)
 memory usage: 17.3+ KB
 ```
-We can see summary statistics of the data with the following commands.
+We can also see summary statistics of the data with the following commands.
 
 ```python
 df.describe()
