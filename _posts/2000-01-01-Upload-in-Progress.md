@@ -175,3 +175,17 @@ fig.update_layout(hovermode='x')
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/age_box.png)<!-- -->
 
 There are no outliers in `Age`.
+
+## Investigating Gender
+
+First, we will look at the distribution of gender in the dataset.
+
+```python
+sex = df['Gender'].value_counts().reset_index()
+sex.columns = ['Gender', 'Count']
+px.bar(sex, x='Gender', y='Count', color=sex['Gender'],  color_discrete_sequence=['blue', 'pink'])
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_dist.png)<!-- -->
+
+There are exactly 100 male and 100 female employees in the dataset.
