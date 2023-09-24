@@ -191,8 +191,8 @@ px.bar(sex, x='Gender', y='Count', color=sex['Gender'],  color_discrete_sequence
 There are exactly 100 male and 100 female employees in the dataset.
 
 ```python
-avg_salary = df.groupby('Gender').mean(numeric_only=True)['Salary'].reset_index()
-px.bar(avg_salary, x='Gender', y='Salary', color='Gender',  color_discrete_sequence=['pink', 'blue'])
+fig = px.box(df, y = 'Age', points = 'outliers')
+fig.update_layout(hovermode='x')
 ```
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_salary.png)<!-- -->
 
