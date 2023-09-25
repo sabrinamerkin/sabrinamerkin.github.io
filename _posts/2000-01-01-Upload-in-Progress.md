@@ -216,10 +216,6 @@ df['Joining Date'] = pd.Series(join_year)
 avg_annual_sal = df.groupby('Joining Date').mean(numeric_only=True)['Salary'].reset_index()
 avg_annual_sal.columns = ['Year', 'Average Salary']
 
-# Calculate average salary for each join year
-avg_annual_sal = df.groupby(['Joining Date', 'Gender']).mean(numeric_only=True)['Salary'].reset_index()
-avg_annual_sal.columns = ['Year', 'Gender', 'Average Salary']
-
 # Split average annual salary by gender
 female_aas = avg_annual_sal[avg_annual_sal['Gender']=='Female']
 female_aas = female_aas.drop(['Gender'], axis=1)
