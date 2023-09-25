@@ -21,6 +21,10 @@ import seaborn as sns
 import missingno as msno
 import plotly.express as px
 from sklearn import preprocessing
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
 
 # Load dataset
 df = pd.read_csv("C:/Users/ethan/OneDrive/Documents/Data Glacier/datasets/hr_data.csv")
@@ -308,8 +312,25 @@ px.box(df,x='Position',y='Salary',color='Department')
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/department_salary_position.png)<!-- -->
 
+## Machine Learning
 
+We will first train a Linear Regression model to predict employee salary.
 
+```python
+# Create scaling object from sklearn.preprocessing
+scaler = StandardScaler()
+
+# Standardize Salary values
+scaled_salary = scaler.fit_transform(df[['Salary']])
+df[['Salary']] = scaled_salary
+
+# Show first row of updated dataframe
+df.head(1)
+```
+
+| Age |	Gender | Projects Completed |	Productivity (%) |	Satisfaction Rate (%) |	Feedback Score |	Department |	Position |	Joining Date |	Salary |
+| --- | --: | --: | --: | --: | --: | --: | --: | --: | --: |
+| 0 |	25 |	1 |	11 |	57 |	25 |	4.7	| 3	| 0	| 2020 |	-0.482083 |
 
 
 
