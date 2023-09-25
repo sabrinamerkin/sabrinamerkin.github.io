@@ -276,6 +276,24 @@ px.scatter(df, x='Projects Completed', y='Salary', trendline='ols', color_discre
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/scatter_projects_salary.png)<!-- -->
 
-```python
+We can see how average salary fluxuates by position and department.
 
+```python
+pos = df.groupby('Position').mean(numeric_only=True)['Salary'].reset_index()
+fig = px.bar(pos, x='Position', y='Salary', color='Position', color_discrete_sequence=px.colors.sequential.Rainbow)
+fig.update_layout(title_text='Average Salary by Position', xaxis_title='Position', yaxis_title='Salary')
+fig.show()
 ```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/salary_by_position.png)<!-- -->
+
+```python
+dept = df.groupby('Department').mean(numeric_only=True)['Salary'].reset_index()
+fig = px.bar(dept, x='Department', y='Salary', color='Department', color_discrete_sequence=px.colors.sequential.Rainbow)
+fig.update_layout(title_text='Average Salary by Department', xaxis_title='Department', yaxis_title='Salary')
+fig.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/salary_by_department.png)<!-- -->
+
+
