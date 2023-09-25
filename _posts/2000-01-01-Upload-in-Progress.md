@@ -190,11 +190,11 @@ fig.show()
 There are exactly 100 male and 100 female employees in the dataset.
 
 ```python
-sex = df['Gender'].value_counts().reset_index()
-sex.columns = ['Gender', 'Count']
-px.bar(sex, x='Gender', y='Count', color=sex['Gender'],  color_discrete_sequence=['blue', 'pink'])
+mean_salary = df.groupby('Gender').mean(numeric_only=True)['Salary'].reset_index()
+mean_salary.columns = ['Gender', 'Average Salary']
+px.bar(mean_salary, x = 'Gender', y = 'Average Salary', color='Gender', color_discrete_sequence=['pink', 'blue'])
 ```
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_salary.png)<!-- -->
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_avg_salary.png)<!-- -->
 
 The average salary for males and females is equivalent.
 
