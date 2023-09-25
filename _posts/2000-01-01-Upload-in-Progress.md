@@ -237,6 +237,12 @@ fig.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/avg_annual_salary.png)<!-- -->
 
+```python
+px.box(df,x='Position',y='Salary',color='Gender')
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_salary_position.png)<!-- -->
+
 ## Correlation
 
 We can create a correlation heatmap for numeric variables in the dataset.
@@ -295,5 +301,18 @@ fig.show()
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/salary_by_department.png)<!-- -->
+
+```python
+px.box(df,x='Position',y='Salary',color='Department')
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/department_salary_position.png)<!-- -->
+
+
+
+
+
+
+
 
 
