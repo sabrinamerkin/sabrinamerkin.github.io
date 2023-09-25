@@ -198,6 +198,46 @@ px.bar(mean_salary, x = 'Gender', y = 'Average Salary', color='Gender', color_di
 
 The average salary for males and females is equivalent.
 
+We will now identify the average annual salary for both genders.
 
+```python
+# Create a new list to extract the join year
+join_year = []
+for i in df['Joining Date'].str.split('-'):
+    if int(i[1]) < 23:
+        join_year.append('20'+str(i[1]))
+    else:
+        join_year.append('19'+str(i[1]))
+        
+# Reassign this list to df['Joining Date']
+df['Joining Date'] = pd.Series(join_year)
+
+# Calculate average salary for each join year
+avg_annual_sal = df.groupby('Joining Date').mean(numeric_only=True)['Salary'].reset_index()
+avg_annual_sal.columns = ['Year', 'Average Salary']
+
+# Calculate average salary for each join year
+avg_annual_sal = df.groupby(['Joining Date', 'Gender']).mean(numeric_only=True)['Salary'].reset_index()
+avg_annual_sal.columns = ['Year', 'Gender', 'Average Salary']
+
+# Split average annual salary by gender
+female_aas = avg_annual_sal[avg_annual_sal['Gender']=='Female']
+female_aas = female_aas.drop(['Gender'], axis=1)
+female_aas.columns = ['Year', 'Female']
+
+male_aas = avg_annual_sal[avg_annual_sal['Gender']=='Male']
+male_aas = male_aas.drop(['Gender'], axis=1)
+male_aas.columns = ['Year', 'Male']
+
+# Combine gendered salaries into a shared dataframe
+gendered_aas = pd.merge(male_aas,female_aas,on='Year')
+
+# Plot average annual salaries
+fig = px.line(gendered_aas, x='Year', y=['Male', 'Female'], title='Average Salary by Year', labels={'value':'Average Salary'})
+fig.update_xaxes(tickangle=45)
+fig.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/avg_annual_salary.png)<!-- -->
 
 
