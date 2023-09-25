@@ -262,7 +262,7 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/correlation_heatmap.png)<!-- -->
 
-Age, Projects Completed, and Position are highly correlated with salary. This can be further illustrated by the following scatter plots.
+Age and Projects Completed are highly correlated with salary ( > 0.8). This can be further illustrated by scatter plots.
 
 ```python
 px.scatter(df, x='Age', y='Salary', trendline='ols')
@@ -277,7 +277,5 @@ px.scatter(df, x='Projects Completed', y='Salary', trendline='ols', color_discre
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/scatter_projects_salary.png)<!-- -->
 
 ```python
-px.scatter(df, x='Position', y='Salary', trendline='ols', color_discrete_sequence=['Green'])
-```
 
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/scatter_position_salary.png)<!-- -->
+```
