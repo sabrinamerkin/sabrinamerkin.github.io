@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import missingno as msno
 import plotly.express as px
+from sklearn import preprocessing
 
 # Load dataset
 df = pd.read_csv("C:/Users/ethan/OneDrive/Documents/Data Glacier/datasets/hr_data.csv")
@@ -236,4 +237,28 @@ fig.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/avg_annual_salary.png)<!-- -->
 
+## Correlation
+
+We can create a correlation heatmap for numeric variables in the dataset.
+
+```python
+LE = preprocessing.LabelEncoder()
+
+# Assign a binary value for Gender
+df['Gender'] = LE.fit_transform(df['Gender'])
+
+# Assign unique numeric values for each Department
+df['Department'] = LE.fit_transform(df['Department'])
+
+# Assign unique numeric values for each Position
+df['Position'] = LE.fit_transform(df['Position'])
+
+# Plot the correlation heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(df.corr(numeric_only=True), annot=True)
+plt.title("Variable Correlation")
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/correlation_heatmap.png)<!-- -->
 
