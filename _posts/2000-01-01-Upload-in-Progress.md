@@ -271,13 +271,13 @@ px.scatter(df, x='Age', y='Salary', trendline='ols')
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/scatter_age_salary.png)<!-- -->
 
 ```python
-px.scatter(df, x='Projects Completed', y='Salary', trendline='ols')
+px.scatter(df, x='Projects Completed', y='Salary', trendline='ols', color_discrete_sequence=['Orange'])
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/scatter_projects_salary.png)<!-- -->
 
 ```python
-px.scatter(df, x='Position', y='Salary', trendline='ols')
+px.scatter(df, x='Position', y='Salary', trendline='ols', color_discrete_sequence=['Green'])
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/scatter_position_salary.png)<!-- -->
