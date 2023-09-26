@@ -419,7 +419,7 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
         plt.title(name[i], fontsize=16)
 ```
 
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png) center 0<!-- -->
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png)<!-- -->
 
  And
 
