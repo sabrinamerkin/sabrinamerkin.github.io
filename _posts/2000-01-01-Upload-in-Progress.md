@@ -311,7 +311,18 @@ px.box(df,x='Position',y='Salary',color='Department')
 
 ## Predicting Salary
 
-We will use four machine learning models to predict employee salary using information contained in this dataset. Prior to data modeling, it will be helpful to rescale salary values in the dataset. Standardizing this data will aid in the interpretability of the following models.
+We will use four machine learning models to predict employee salary using information contained in this dataset. We will begin by importing the following libraries.
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeRegressor
+from xgboost import XGBRegressor
+from sklearn import metrics
+```
+
+Prior to data modeling, it will be helpful to rescale salary values in the dataset. Standardizing this data will aid in the interpretability of the following models.
 
 ```python
 # Create scaling object from sklearn.preprocessing
@@ -339,127 +350,84 @@ print(df['Salary'])
 Name: Salary, Length: 200, dtype: float64
 ```
 
-We can clearly see that salary values have been rescaled to fit a standard normal distribution. This will be greatly beneficial when assessing model performance metrics. Next, we will allocate training data for the machine learning models to use.
+We can clearly see that salary values have been rescaled to fit a standard normal distribution. This will be greatly beneficial when assessing model performance metrics. Next, we will assign test and training data for the machine learning models to use.
 
 ```python
+# Initialize independent and dependent variables
 X = df.drop(['Salary'], axis=1)
 y = df['Salary']
+
+# Allocate test and training data
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size = 0.8, random_state = 123)
 ```
 
-First, we will import the following libraries from scikit-learn and xgboost in Python.
+We will start by creating a linear regression model from our training data. Linear regression provides coefficient values that can be used to understand the impact of each feature on the target variable `Salary`. It is important to note that this model will assume a linear relationship between the predictor variables and `Salary`.
 
 ```python
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.tree import DecisionTreeRegressor
-from xgboost import XGBRegressor
-from sklearn import metrics
-```
-
-```python
+# Fit a linear regression model
 LR = LinearRegression()
 LR.fit(X_train, y_train)
+
+# Predict salary from test data
 y_pred_lr = LR.predict(X_test)
 ```
 
-We can extract model information to assess accuracy.
-
-```python
-# Calculate the mean squared error and correlation coefficient of the model.
-mse_lr = mean_squared_error(y_test, y_pred_lr)
-R2_lr = r2_score(y_test, y_pred_lr)
-
-# Display results
-print('Mean squared error (mse): ' + str(mse_lr))
-print('Correlation coefficient (R2): ' + str(R2_lr))
-```
-
-```python
-Mean squared error (mse): 0.12785062716537657
-Correlation coefficient (R2): 0.8785205985605405
-```
-
-Plot the training data against the testing data.
-
-```python
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x=y_test, y=y_pred_lr)
-sns.regplot(x=y_test, y=y_pred_lr, scatter=True, scatter_kws = {"color": "g"}, line_kws = {"color": "orange", "alpha":0.5})
-plt.xlabel('Actual Salary')
-plt.ylabel('Predicted Salary')
-plt.title('Actual vs Predicted Salary (Linear Regression')
-plt.show()
-```
-
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/LR_actual_vs_predicted_salary.png)<!-- -->
-
-Create a density plot to show Actual vs. Fitted Values for Salary.
-
-```python
-ax = sns.kdeplot(y_test, color="g", label="Actual Salary")
-sns.kdeplot(y_pred_lr, color="orange", label="Fitted Values", ax=ax)
-
-plt.title('Actual vs Fitted Values for Salary')
-plt.legend()
-plt.show()
-```
-
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/LR_actual_vs_fitted_salary.png)<!-- -->
-
-Fit a Random Forest Regression Model.
+A random forest regression model will be able to handle non-linearity between predictor variables and `Salary`. It is a generally robust model and is less prone to overfit the data.
 
 ```python
 # Fit a random forest model
-rf = RandomForestRegressor(n_estimators=500, random_state=123)
-rf.fit(X_train, y_train)
+RF = RandomForestRegressor(n_estimators=500, random_state=123)
+RF.fit(X_train, y_train)
+
+# Predict salary from test data
+y_pred_rf = RF.predict(X_test)
+```
+
+A decision tree regression model can handle non-linearity and interactions between features. A single decision tree might not generalize well to unseen data, but default parameters will prevent this issue.
+
+```python
+# Fit a decision tree regression model
+DT = DecisionTreeRegressor(random_state=123)
+DT.fit(X_train, y_train)
 
 # Predict salary from testing data
-y_pred_rf = rf.predict(X_test)
-
-# Calculate mean squared error and correlation coefficient for the model
-mse_rf = mean_squared_error(y_test, y_pred_rf)
-R2_rf = r2_score(y_test, y_pred_rf)
-
-# Display results
-print('Mean squared error (mse): ' + str(mse_rf))
-print('Correlation coefficient (R2): ' + str(R2_rf))
+y_pred_dt = DT.predict(X_test)
 ```
+
+Lastly, we will deploy an XGBoost regression model that utilizes gradient boosting. XGBoost provies a powerful model that works well with a variety of data types. This model may require hyperparameter tuning for improvement. We will set the number of gradient boosted trees to 500.
 
 ```python
-Mean squared error (mse): 0.03391625219888032
-Correlation coefficient (R2): 0.9677739084466102
+# Fit an XGBoost Regression Model
+XGB = XGBRegressor(n_estimators=500, random_state=22)
+XGB.fit(X_train, y_train)
+
+# Predict salary from testing data
+y_pred_xgb = XGB.predict(X_test)
 ```
 
-We can see an improvement from the linear regression model based on the mean squared error and correlation coefficient for the random forest model. Again, we will plot the training data against the testing data.
+It is time to take a look at the accuracy of these models by comparing predicted salaries and model test data. 
 
 ```python
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x=y_test, y=y_pred_rf)
-sns.regplot(x=y_test, y=y_pred_rf, scatter=True, scatter_kws = {"color": "g"}, line_kws = {"color": "orange", "alpha":0.5})
-plt.xlabel('Actual Salary')
-plt.ylabel('Predicted Salary')
-plt.title('Actual vs Predicted Salary')
-plt.show()
+# Define dictionaries to identify models
+key = {0:'lr', 1:'rf', 2:'dt', 3:'xgb'}
+name = {0:'Linear Regression', 1:'Random Forest', 2:'Decision Tree', 3:'XGBoost'}
+
+# Format plot
+plt.figure(figsize=(10, 10))
+plt.subplots_adjust(hspace=0.4, wspace=0.4)
+
+# Plot predicted salary vs actual salary
+with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
+    for i in range(4):
+        plt.subplot(2,2,(i+1))
+        sns.scatterplot(x=y_test, y=globals().get('y_pred_' + key[i]))
+        sns.regplot(x=y_test, y=globals().get('y_pred_' + key[i]), scatter=True, scatter_kws = {"color": "g"}, line_kws = {"color": "orange", "alpha":0.5})
+        plt.xlabel('Actual Salary')
+        plt.ylabel('Predicted Salary')
+        plt.title(name[i], fontsize=16)
 ```
 
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/RF_actual_vs_predicted_salary.png)<!-- -->
-
-Create a density plot to show Actual vs. Fitted Values for Salary.
-
-```python
-ax = sns.kdeplot(y_test, color="g", label="Actual Salary")
-sns.kdeplot(y_pred_rf, color="orange", label="Fitted Values", ax=ax)
-
-plt.title('Actual vs Fitted Values for Salary')
-plt.legend()
-plt.show()
-```
-
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/RF_actual_vs_fitted_salary.png)<!-- -->
-
-Fit a Decision Tree Regression Model.
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png)<!-- -->
 
 
 
