@@ -479,7 +479,15 @@ table = pd.DataFrame(results)
 | Decision Tree	| 0.054168	| 0.172992	| 0.948531	| 0.945443 |
 | XGBoost	| 0.056552	| 0.186158	| 0.946266 |	0.943042 |
 
+The **Mean Squared Error** measures an average of the squared differences between the estimated values and actual values of `Salary`. A lower mean squared error indicates that model predictions are closer to the actual values on average, which is a measure of accuracy.
 
+The **Mean Absolute Error** is another measure of model error between these paired observations. As it follows, a lower mean absolute error indicates better accuracy in predicting `Salary`.
+
+The **Coefficient of Determination (R-squared)** measures the proportion of variance in `Salary` that is explained by the model. These values usually range from 0 to 1. A model with a higher coefficient of determination provides a better fit to the data.
+
+The **Adjusted Coefficient of Determination (Adjusted R-squared)** accounts for overfitting by penalizing the addition of independent variables to a model. Similar to R-squared, an adjusted R-squared value close to 1 indicates a good model fit.
+
+The random forest model is the best of the four models. It has the lowest mean squared error and lowest mean absolute error of the models. The random forest model also has the greatest standard and adjusted coefficients of determination (R-squared and Adjusted R-squared). 
 
 
 
