@@ -155,17 +155,9 @@ plt.subplot(1,2,1)
 den_plot('Productivity (%)')
 plt.subplot(1,2,2)
 den_plot('Satisfaction Rate (%)')
-plt.subplots(1,1)
-plt.subplot(1,1,1)
-den_plot('Feedback Score')
-plt.subplots(1,1)
-plt.subplot(1,1,1)
-den_plot('Salary')
 ```
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_1.png)<!-- -->
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_2.png)<!-- -->
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_3.png)<!-- -->
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_4.png)<!-- -->
 
 All variable distributions look approximately normal. `Age` is slightly skewed right. We can use a boxplot to detect potential outliers in `Age`.
 
