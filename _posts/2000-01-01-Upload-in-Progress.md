@@ -418,9 +418,8 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
         plt.ylabel('Predicted Salary')
         plt.title(name[i], fontsize=16)
 ```
-<p align="center">
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png)<!-- -->
-</p>
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png) center 0<!-- -->
 
  And
 
