@@ -345,19 +345,19 @@ Fit a linear regression model.
 ```python
 LR = LinearRegression()
 LR.fit(X_train, y_train)
-y_pred = LR.predict(X_test)
+y_pred_lr = LR.predict(X_test)
 ```
 
 We can extract model information to assess accuracy.
 
 ```python
 # Calculate the mean squared error and correlation coefficient of the model.
-mse = mean_squared_error(y_test, y_pred)
-R2 = r2_score(y_test, y_pred)
+mse_lr = mean_squared_error(y_test, y_pred_lr)
+R2_lr = r2_score(y_test, y_pred_lr)
 
 # Display results
-print('Mean squared error (mse): ' + str(mse))
-print('Correlation coefficient (R2): ' + str(R2))
+print('Mean squared error (mse): ' + str(mse_lr))
+print('Correlation coefficient (R2): ' + str(R2_lr))
 ```
 
 ```python
@@ -369,8 +369,8 @@ Plot the training data against the testing data.
 
 ```python
 plt.figure(figsize=(10, 6))
-sns.scatterplot(x=y_test, y=y_pred)
-sns.regplot(x=y_test, y=y_pred, scatter=True, scatter_kws = {"color": "g"}, line_kws = {"color": "orange", "alpha":0.5})
+sns.scatterplot(x=y_test, y=y_pred_lr)
+sns.regplot(x=y_test, y=y_pred_lr, scatter=True, scatter_kws = {"color": "g"}, line_kws = {"color": "orange", "alpha":0.5})
 plt.xlabel('Actual Salary')
 plt.ylabel('Predicted Salary')
 plt.title('Actual vs Predicted Salary (Linear Regression')
@@ -383,7 +383,7 @@ Create a density plot to show Actual vs. Fitted Values for Salary.
 
 ```python
 ax = sns.kdeplot(y_test, color="g", label="Actual Salary")
-sns.kdeplot(y_pred, color="orange", label="Fitted Values", ax=ax)
+sns.kdeplot(y_pred_lr, color="orange", label="Fitted Values", ax=ax)
 
 plt.title('Actual vs Fitted Values for Salary')
 plt.legend()
