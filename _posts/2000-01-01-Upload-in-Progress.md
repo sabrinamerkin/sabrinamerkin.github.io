@@ -474,10 +474,10 @@ table = pd.DataFrame(results)
 
 | Model	| Mean Squared Error	| Mean Absolute Error |	R-squared |	Adjusted R-squared |
 | :-- | --- | --- | --- | --- |
-| 0 |	Linear Regression |	0.127851	| 0.279753	| 0.878521 |	0.871232 |
-| 1	| Random Forest	| 0.033916	| 0.144999	| 0.967774	| 0.965840 |
-| 2	| Decision Tree	| 0.054168	| 0.172992	| 0.948531	| 0.945443 |
-| 3	| XGBoost	| 0.056552	| 0.186158	| 0.946266 |	0.943042 |
+| Linear Regression |	0.127851	| 0.279753	| 0.878521 |	0.871232 |
+| Random Forest	| 0.033916	| 0.144999	| 0.967774	| 0.965840 |
+| Decision Tree	| 0.054168	| 0.172992	| 0.948531	| 0.945443 |
+| XGBoost	| 0.056552	| 0.186158	| 0.946266 |	0.943042 |
 
 
 
