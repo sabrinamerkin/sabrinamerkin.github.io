@@ -439,9 +439,45 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/model_fit_plots.png)<!-- -->
 
+Finally, we will construct a table that allows us to compare performance metrics for each model.
 
+```python
+# Initialize Table Columns
+results = {'Model':[], 'Mean Squared Error':[], 'Mean Absolute Error':[], 'R-squared':[], 'Adjusted R-squared':[]}
 
+# Store models in a list
+models = [LR, RF, DT, XGB]
 
+# Fill in table values
+for i in range(4):
+    results['Model'].append(name[i])
+
+for mod in models:
+    # Fit model
+    mod.fit(X_train, y_train)
+    y_pred = mod.predict(X_test)
+    
+    # Metric calculations
+    mse = metrics.mean_squared_error(y_test, y_pred)
+    mae = metrics.mean_absolute_error(y_test, y_pred)
+    r2 = metrics.r2_score(y_test, y_pred)
+    adj_r2 = 1-(1-r2)*(len(y_train)-1)/(len(y_train)-X_train.shape[1]-1)
+    
+    results['Mean Squared Error'].append(mse)
+    results['Mean Absolute Error'].append(mae)
+    results['R-squared'].append(r2)
+    results['Adjusted R-squared'].append(adj_r2)
+    
+    
+table = pd.DataFrame(results)   
+```
+
+| Model	| Mean Squared Error	| Mean Absolute Error |	R-squared |	Adjusted R-squared |
+| :-- | --- | --- | --- | --- |
+| 0 |	Linear Regression |	0.127851	| 0.279753	| 0.878521 |	0.871232 |
+| 1	| Random Forest	| 0.033916	| 0.144999	| 0.967774	| 0.965840 |
+| 2	| Decision Tree	| 0.054168	| 0.172992	| 0.948531	| 0.945443 |
+| 3	| XGBoost	| 0.056552	| 0.186158	| 0.946266 |	0.943042 |
 
 
 
