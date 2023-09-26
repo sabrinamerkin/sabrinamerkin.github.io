@@ -332,8 +332,48 @@ df.head(1)
 | --- | --: | --: | --: | --: | --: | --: | --: | --: | --: |
 | 25 |	1 |	11 |	57 |	25 |	4.7	| 3	| 0	| 2020 |	-0.482083 |
 
+Create training data.
 
+```python
+X = df.drop(['Salary'], axis=1)
+y = df['Salary']
+X_train, X_test, y_train, y_test = train_test_split(X, y, train_size = 0.8, random_state = 123)
+```
 
+Fit a linear regression model.
 
+```python
+LR = LinearRegression()
+LR.fit(X_train, y_train)
+y_pred = LR.predict(X_test)
+```
+
+Calculate the mean squared error and correlation coefficient of the model.
+
+```python
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print('Mean squared error (mse): ' + str(mse))
+print('Correlation coefficient (R2): ' + str(r2))
+```
+
+```python
+Mean squared error (mse): 0.12785062716537657
+Correlation coefficient (R2): 0.8785205985605405
+```
+
+Plot the training data against the testing data.
+
+```python
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=y_test, y=y_pred)
+sns.regplot(x=y_test, y=y_pred, scatter=True, scatter_kws = {"color": "g"}, line_kws = {"color": "orange", "alpha":0.5})
+plt.xlabel('Actual Salary')
+plt.ylabel('Predicted Salary')
+plt.title('Actual vs Predicted Salary')
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/LR_actual_vs_predicted_salary.png)<!-- -->
 
 
