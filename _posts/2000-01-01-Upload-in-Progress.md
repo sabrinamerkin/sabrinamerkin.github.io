@@ -397,7 +397,7 @@ XGB.fit(X_train, y_train)
 y_pred_xgb = XGB.predict(X_test)
 ```
 
-It is time to take a look at the accuracy of these models by comparing predicted salaries and model test data. 
+It is time to take a look at the accuracy of these models by comparing predicted salaries with the test data. 
 
 ```python
 # Define dictionaries to identify models
@@ -421,15 +421,24 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png)<!-- -->
 
- And
+All four models have a clear positive correlation between the predicted and actual values for `Salary`. A simple regression line is included in each scatter plot to highlight this trend. The random forest model appears to have the best prediction values for salary. Additionally, we can create density plots to visualize the fit of model values for `Salary`. 
 
  ```python
+plt.figure(figsize=(10, 10))
 
+plt.subplots_adjust(hspace=0.4, wspace=0.4)
+
+with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
+    for i in range(4):
+        plt.subplot(2,2,(i+1))
+        ax = sns.kdeplot(y_test, color="g", label="Actual Salary")
+        sns.kdeplot(globals().get('y_pred_' + key[i]), color="orange", label="Fitted Values", ax=ax)
+        plt.legend()
+        plt.title(name[i], fontsize=16)
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/model_fit_plots.png)<!-- -->
 
-!
 
 
 
