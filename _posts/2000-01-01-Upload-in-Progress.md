@@ -348,13 +348,16 @@ LR.fit(X_train, y_train)
 y_pred = LR.predict(X_test)
 ```
 
-Calculate the mean squared error and correlation coefficient of the model.
+We can extract model information to assess accuracy.
 
 ```python
+# Calculate the mean squared error and correlation coefficient of the model.
 mse = mean_squared_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
+R2 = r2_score(y_test, y_pred)
+
+# Display results
 print('Mean squared error (mse): ' + str(mse))
-print('Correlation coefficient (R2): ' + str(r2))
+print('Correlation coefficient (R2): ' + str(R2))
 ```
 
 ```python
@@ -370,7 +373,7 @@ sns.scatterplot(x=y_test, y=y_pred)
 sns.regplot(x=y_test, y=y_pred, scatter=True, scatter_kws = {"color": "g"}, line_kws = {"color": "orange", "alpha":0.5})
 plt.xlabel('Actual Salary')
 plt.ylabel('Predicted Salary')
-plt.title('Actual vs Predicted Salary')
+plt.title('Actual vs Predicted Salary (Linear Regression')
 plt.show()
 ```
 
@@ -388,6 +391,68 @@ plt.show()
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/LR_actual_vs_fitted_salary.png)<!-- -->
+
+Fit a Random Forest Regression Model.
+
+```python
+# Fit a random forest model
+rf = RandomForestRegressor(n_estimators=500, random_state=123)
+rf.fit(X_train, y_train)
+
+# Predict salary from testing data
+y_pred_rf = rf.predict(X_test)
+
+# Calculate mean squared error and correlation coefficient for the model
+mse_rf = mean_squared_error(y_test, y_pred_rf)
+R2_rf = r2_score(y_test, y_pred_rf)
+
+# Display results
+print('Mean squared error (mse): ' + str(mse_rf))
+print('Correlation coefficient (R2): ' + str(R2_rf))
+```
+
+```python
+Mean squared error (mse): 0.03391625219888032
+Correlation coefficient (R2): 0.9677739084466102
+```
+
+We can see an improvement from the linear regression model based on the mean squared error and correlation coefficient for the random forest model. Again, we will plot the training data against the testing data.
+
+```python
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=y_test, y=y_pred_rf)
+sns.regplot(x=y_test, y=y_pred_rf, scatter=True, scatter_kws = {"color": "g"}, line_kws = {"color": "orange", "alpha":0.5})
+plt.xlabel('Actual Salary')
+plt.ylabel('Predicted Salary')
+plt.title('Actual vs Predicted Salary')
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/RF_actual_vs_predicted_salary.png)<!-- -->
+
+Create a density plot to show Actual vs. Fitted Values for Salary.
+
+```python
+ax = sns.kdeplot(y_test, color="g", label="Actual Salary")
+sns.kdeplot(y_pred_rf, color="orange", label="Fitted Values", ax=ax)
+
+plt.title('Actual vs Fitted Values for Salary')
+plt.legend()
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/RF_actual_vs_fitted_salary.png)<!-- -->
+
+Fit a Decision Tree Regression Model.
+
+
+
+
+
+
+
+
+
 
 
 
