@@ -429,6 +429,13 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png)<!-- -->
 
+ And
+
+ ```python
+
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/model_fit_plots.png)<!-- -->
 
 
 
