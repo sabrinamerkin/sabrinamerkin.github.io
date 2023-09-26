@@ -376,4 +376,22 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/LR_actual_vs_predicted_salary.png)<!-- -->
 
+Create a density plot to show Actual vs. Fitted Values for Salary.
+
+```python
+ax = sns.kdeplot(y_test, color="g", label="Actual Salary")
+sns.kdeplot(y_pred, color="orange", label="Fitted Values", ax=ax)
+
+plt.title('Actual vs Fitted Values for Salary')
+plt.legend()
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Salary/LR_actual_vs_fitted_salary.png)<!-- -->
+
+
+
+
+
+
 
