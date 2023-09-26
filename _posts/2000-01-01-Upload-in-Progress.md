@@ -418,8 +418,9 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
         plt.ylabel('Predicted Salary')
         plt.title(name[i], fontsize=16)
 ```
-
+<p align="center">
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png)<!-- -->
+</p>
 
  And
 
@@ -429,7 +430,7 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/model_fit_plots.png)<!-- -->
 
-
+!
 
 
 
