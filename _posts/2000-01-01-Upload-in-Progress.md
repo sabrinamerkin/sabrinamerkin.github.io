@@ -330,7 +330,7 @@ df.head(1)
 
 | Age |	Gender | Projects Completed |	Productivity (%) |	Satisfaction Rate (%) |	Feedback Score |	Department |	Position |	Joining Date |	Salary |
 | --- | --: | --: | --: | --: | --: | --: | --: | --: | --: |
-| 0 |	25 |	1 |	11 |	57 |	25 |	4.7	| 3	| 0	| 2020 |	-0.482083 |
+| 25 |	1 |	11 |	57 |	25 |	4.7	| 3	| 0	| 2020 |	-0.482083 |
 
 
 
