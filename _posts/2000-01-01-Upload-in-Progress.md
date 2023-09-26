@@ -10,7 +10,7 @@ mathjax: true
 The dataset in this analysis was created to explore factors that influence employee performance and satisfaction in a typical organization. These variables include personal traits, perfromance metrics, and job details of employees. In this project, I explore variable relativity and deploy machine learning models to predict employee salary from training data. The Employee Productivity and Satisfaction HR Data was imported from Kaggle. 
 
 ## Exploratory Analysis
-We begin this analysis by importing the required libraries and dataset.
+We begin this analysis by importing required libraries and the dataset.
 
 ```python
 # Import required libraries
@@ -22,9 +22,6 @@ import missingno as msno
 import plotly.express as px
 from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
 
 # Load dataset
 df = pd.read_csv("C:/Users/ethan/OneDrive/Documents/Data Glacier/datasets/hr_data.csv")
@@ -215,7 +212,7 @@ for i in df['Joining Date'].str.split('-'):
         join_year.append('19'+str(i[1]))
         
 # Reassign this list to df['Joining Date']
-df['Joining Date'] = pd.Series(join_year)
+df['Joining Date'] = pd.Series(join_year).astype(int)
 
 # Calculate average salary for each join year
 avg_annual_sal = df.groupby('Joining Date').mean(numeric_only=True)['Salary'].reset_index()
@@ -272,7 +269,7 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/correlation_heatmap.png)<!-- -->
 
-Age and Projects Completed are highly correlated with salary ( > 0.8). This can be further illustrated by scatter plots.
+Age and Projects Completed are highly correlated with salary (> 0.8). This can be further illustrated by scatter plots.
 
 ```python
 px.scatter(df, x='Age', y='Salary', trendline='ols')
@@ -312,27 +309,37 @@ px.box(df,x='Position',y='Salary',color='Department')
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/department_salary_position.png)<!-- -->
 
-## Machine Learning
+## Predicting Salary
 
-We will first train a Linear Regression model to predict employee salary.
+We will use four machine learning models to predict employee salary using information contained in this dataset. Prior to data modeling, it will be helpful to rescale salary values in the dataset. Standardizing this data will aid in the interpretability of the following models.
 
 ```python
 # Create scaling object from sklearn.preprocessing
 scaler = StandardScaler()
 
 # Standardize Salary values
-scaled_salary = scaler.fit_transform(df[['Salary']])
-df[['Salary']] = scaled_salary
+df[['Salary']] = scaler.fit_transform(df[['Salary']])
 
-# Show first row of updated dataframe
-df.head(1)
+# Show updated salary column
+print(df['Salary'])
 ```
 
-| Age |	Gender | Projects Completed |	Productivity (%) |	Satisfaction Rate (%) |	Feedback Score |	Department |	Position |	Joining Date |	Salary |
-| --- | --: | --: | --: | --: | --: | --: | --: | --: | --: |
-| 25 |	1 |	11 |	57 |	25 |	4.7	| 3	| 0	| 2020 |	-0.482083 |
+```python
+0     -0.482083
+1      1.329684
+2     -0.382285
+3     -1.418358
+4      0.907429
+         ...   
+195   -0.983481
+196   -1.110783
+197   -1.614956
+198    1.021553
+199    1.026180
+Name: Salary, Length: 200, dtype: float64
+```
 
-Create training data.
+We can clearly see that salary values have been rescaled to fit a standard normal distribution. This will be greatly beneficial when assessing model performance metrics. Next, we will allocate training data for the machine learning models to use.
 
 ```python
 X = df.drop(['Salary'], axis=1)
@@ -340,7 +347,16 @@ y = df['Salary']
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size = 0.8, random_state = 123)
 ```
 
-Fit a linear regression model.
+First, we will import the following libraries from scikit-learn and xgboost in Python.
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeRegressor
+from xgboost import XGBRegressor
+from sklearn import metrics
+```
 
 ```python
 LR = LinearRegression()
