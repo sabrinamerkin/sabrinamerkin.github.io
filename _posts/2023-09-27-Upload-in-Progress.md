@@ -1,5 +1,5 @@
 ---
-title: "Python: Predicting Salary with Machine Learning"
+title: "Python: Estimating Salary with Machine Learning"
 date: "2023-09-27"
 tags: [Python, Machine Learning, Sklearn, Data Visualization]
 excerpt: "Deploy machine learning models to estimate employee salary from metric data"
