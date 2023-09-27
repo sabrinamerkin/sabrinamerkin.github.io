@@ -46,7 +46,7 @@ df.head(6)
 | Stephanie Bailey |	43 |	Male	| 14 |	3 |	9 |	4.5 |	IT	| Team Lead |	Jan-05	| 101133 |
 | Jonathan King	| 24 |	Male	| 5	| 63 |	33 |	4.2 |	Sales |	Junior Developer |	Jan-21 |	48740 |
 
-All variables are relatively intuitive to understand. It is important to note that `Projects Completed` represents the total number of projects completed out of 25. We are left to assume that all projects hold the same amount of difficulty, regardless of employee position. Next, we will check to see if there are any missing values in the dataset.
+All variables are relatively intuitive to comprehend. It is important to note that `Projects Completed` represents the total number of projects completed out of 25. We are left to assume that all projects hold the same amount of difficulty, regardless of employee position. Next, we will check to see if there are any missing values in the dataset.
 
 ```python
 df.isnull().sum()
