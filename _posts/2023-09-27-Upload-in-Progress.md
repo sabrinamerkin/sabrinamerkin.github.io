@@ -31,7 +31,7 @@ df.shape
 ```python
 (200, 11)
 ```
-The dataset contains 200 employee records with 11 informative variables. We can print the first 6 rows of the dataset to get a better sense of these variables.
+This dataset contains 200 employee records with 11 informative variables. We can print the first 6 rows of the dataset to get a better sense of these variables.
 
 ```python
 df.head(6)
