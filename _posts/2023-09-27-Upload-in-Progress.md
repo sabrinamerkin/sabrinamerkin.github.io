@@ -286,7 +286,7 @@ fig.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/salary_by_department.png)<!-- -->
 
-We find that employees with the highest salaries on average tend to work in the Finance and IT departments. Employees with the lowest salaries on average work in the HR department. While there are some minor discrepancies, the disribution of average employee salary across all departments is fairly uniform.
+We find that employees with the highest average salaries tend to work in the Finance and IT departments. Employees with the lowest average salaries work in the HR department. While there are some minor discrepancies, the distribution of average employee salary across all departments is fairly uniform.
 
 ```python
 px.box(df,x='Position',y='Salary',color='Department')
