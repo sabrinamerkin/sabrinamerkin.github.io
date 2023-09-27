@@ -238,7 +238,7 @@ Results from this boxplot can be easily understood. For either gender, managers 
 
 ## Variable Correlation
 
-We can create a correlation heatmap for numeric variables in the dataset.
+We will now create a correlation heatmap for variables in the dataset. Categorical variables must be assigned numeric values, which can be achieved by using a label encoder. 
 
 ```python
 LE = preprocessing.LabelEncoder()
@@ -261,7 +261,7 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/correlation_heatmap.png)<!-- -->
 
-Age and Projects Completed are highly correlated with salary (> 0.8). This can be further illustrated by scatter plots.
+`Age` and `Projects Completed` are highly correlated with `Salary`. This can be further illustrated using scatter plots. We will add an ordinarly least squares regression line to each plot to highlight positive correlation between variables.
 
 ```python
 px.scatter(df, x='Age', y='Salary', trendline='ols')
@@ -275,16 +275,7 @@ px.scatter(df, x='Projects Completed', y='Salary', trendline='ols', color_discre
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/scatter_projects_salary.png)<!-- -->
 
-We can see how average salary fluxuates by position and department.
-
-```python
-pos = df.groupby('Position').mean(numeric_only=True)['Salary'].reset_index()
-fig = px.bar(pos, x='Position', y='Salary', color='Position', color_discrete_sequence=px.colors.sequential.Rainbow)
-fig.update_layout(title_text='Average Salary by Position', xaxis_title='Position', yaxis_title='Salary')
-fig.show()
-```
-
-![]({{ site.url }}{{ site.baseurl }}/images/Salary/salary_by_position.png)<!-- -->
+It is time to take a closer look at `Position` and `Department`. We will investigate how these variables influence average employee salary. To begin, we will use a simple bar chart to visualize average employee salary by `Department`.
 
 ```python
 dept = df.groupby('Department').mean(numeric_only=True)['Salary'].reset_index()
@@ -295,13 +286,17 @@ fig.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/salary_by_department.png)<!-- -->
 
+We find that employees with the highest salaries on average tend to work in the Finance and IT departments. Employees with the lowest salaries on average work in the HR department. While there are some minor discrepancies, the disribution of average employee salary across all departments is fairly uniform.
+
 ```python
 px.box(df,x='Position',y='Salary',color='Department')
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/department_salary_position.png)<!-- -->
 
-## Predicting Salary
+This last boxplot depicts interactions between `Department`, `Position`, and `Salary`. We find that, depending on the department, positional salaries can be quite different. For instance, the median salary for a Team Lead in Finance is much higher than that of the same position in Marketing. 
+
+## Machine Learning: Predicting Employee Salary
 
 We will use four machine learning models to predict employee salary using information contained in this dataset. We will begin by importing the following libraries.
 
