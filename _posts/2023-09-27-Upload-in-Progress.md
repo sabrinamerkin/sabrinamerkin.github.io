@@ -416,7 +416,7 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/prediction_accuracy_plots.png)<!-- -->
 
-All four models have a clear positive correlation between the predicted and actual values for `Salary`. A simple regression line is included in each scatter plot to highlight this trend. The random forest model appears to have the best prediction values for salary. Additionally, we can create density plots to visualize the fit of model values for `Salary`. 
+All four models have a clear positive correlation between the predicted and actual values of `Salary`. An ordinary least squares regression line is included in each scatter plot to emphasize this trend. The random forest model appears to have the best prediction values for salary. Additionally, we can create density plots to visualize the fit of model values on `Salary`. 
 
  ```python
 plt.figure(figsize=(10, 10))
