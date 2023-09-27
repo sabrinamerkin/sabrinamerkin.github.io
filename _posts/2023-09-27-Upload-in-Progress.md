@@ -122,7 +122,7 @@ df.describe(include='object')
 | top	| Douglas Lindsey	| Male |	Sales |	Manager	| Jan-18 |
 | freq	| 1	| 100 |	47 |	40 |	23 |
 
-`Name` is not an important variable for this analysis, so we can remove it from the data frame.
+`Name` is not an important variable for this analysis, so we can remove it from the dataframe.
 
 ```python
 df=df.drop(['Name'],axis=1)
