@@ -261,7 +261,7 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/correlation_heatmap.png)<!-- -->
 
-`Age` and `Projects Completed` are highly correlated with `Salary`. This can be further illustrated using scatter plots. We will add an ordinarly least squares regression line to each plot to highlight positive correlation between variables.
+`Age` and `Projects Completed` are highly correlated with `Salary`. This can be further illustrated using scatter plots. We will add an ordinary least squares regression line in each plot to highlight positive correlation between variables.
 
 ```python
 px.scatter(df, x='Age', y='Salary', trendline='ols')
