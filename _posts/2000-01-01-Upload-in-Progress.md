@@ -298,7 +298,7 @@ This last boxplot depicts interactions between `Department`, `Position`, and `Sa
 
 ## Machine Learning: Predicting Employee Salary
 
-We will use four machine learning models to predict employee salary using information contained in this dataset. We will begin by importing the following libraries.
+In this section, we deploy four machine learning models to predict employee salary using information from the dataset. We will then test and compare performance metrics to select the best model. To begin, we will import the following libraries.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -309,7 +309,7 @@ from xgboost import XGBRegressor
 from sklearn import metrics
 ```
 
-Prior to data modeling, it will be helpful to rescale salary values in the dataset. Standardizing this data will aid in the interpretability of the following models.
+Before fitting any models on the data, it will be helpful to rescale the values of `Salary` in the dataset. Standardizing these values will help us better understand the accuracy of the machine learning models.
 
 ```python
 # Create scaling object from sklearn.preprocessing
@@ -337,18 +337,18 @@ print(df['Salary'])
 Name: Salary, Length: 200, dtype: float64
 ```
 
-We can clearly see that salary values have been rescaled to fit a standard normal distribution. This will be greatly beneficial when assessing model performance metrics. Next, we will assign test and training data for the machine learning models to use.
+We can observe the values of `Salary` have been rescaled to fit a standard normal distribution. Again, this will be helpful when assessing model performance metrics. We will now sort this dataset into training and testing data for machine learning. 80% of the data will be labeled as training data and the remaining 20% will be labeled as testing data.
 
 ```python
 # Initialize independent and dependent variables
 X = df.drop(['Salary'], axis=1)
 y = df['Salary']
 
-# Allocate test and training data
+# Assign test and training data
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size = 0.8, random_state = 123)
 ```
 
-We will start by creating a linear regression model from our training data. Linear regression provides coefficient values that can be used to understand the impact of each feature on the target variable `Salary`. It is important to note that this model will assume a linear relationship between the predictor variables and `Salary`.
+We will start by creating a [linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) model from our training data. Linear regression provides coefficient values that can be used to understand the impact of each feature on the target variable `Salary`. It is important to note that this model will assume a linear relationship between the predictor variables and `Salary`.
 
 ```python
 # Fit a linear regression model
@@ -359,7 +359,7 @@ LR.fit(X_train, y_train)
 y_pred_lr = LR.predict(X_test)
 ```
 
-A random forest regression model will be able to handle non-linearity between predictor variables and `Salary`. It is a generally robust model and is less prone to overfit the data.
+A [random forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html) model will be able to handle non-linearity between predictor variables and `Salary`. It is a generally robust model and is less prone to overfit the data.
 
 ```python
 # Fit a random forest model
@@ -370,10 +370,10 @@ RF.fit(X_train, y_train)
 y_pred_rf = RF.predict(X_test)
 ```
 
-A decision tree regression model can handle non-linearity and interactions between features. A single decision tree might not generalize well to unseen data, but default parameters will prevent this issue.
+A [decision tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html) model can handle non-linearity and interactions between features. A single decision tree might not generalize well to unseen data, but default parameters will prevent this issue.
 
 ```python
-# Fit a decision tree regression model
+# Fit a decision tree model
 DT = DecisionTreeRegressor(random_state=123)
 DT.fit(X_train, y_train)
 
@@ -381,7 +381,7 @@ DT.fit(X_train, y_train)
 y_pred_dt = DT.predict(X_test)
 ```
 
-Lastly, we will deploy an XGBoost regression model that utilizes gradient boosting. XGBoost provies a powerful model that works well with a variety of data types. This model may require hyperparameter tuning for improvement. We will set the number of gradient boosted trees to 500.
+Finally, we will deploy an [XGBoost](https://xgboost.readthedocs.io/en/stable/parameter.html) regression model that utilizes gradient boosting. XGBoost provies a powerful model that works well with a variety of data types. This model may require hyperparameter tuning for improvement. We will set the number of gradient boosted trees to 500.
 
 ```python
 # Fit an XGBoost Regression Model
@@ -392,7 +392,7 @@ XGB.fit(X_train, y_train)
 y_pred_xgb = XGB.predict(X_test)
 ```
 
-It is time to take a look at the accuracy of these models by comparing predicted salaries with the test data. 
+We will now take a look at the accuracy of these models by comparing predicted salaries with the testing data. 
 
 ```python
 # Define dictionaries to identify models
@@ -434,7 +434,7 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/model_fit_plots.png)<!-- -->
 
-Finally, we will construct a table that allows us to compare performance metrics for each model.
+We can construct a table that allows us to compare performance metrics for each model.
 
 ```python
 # Initialize Table Columns
