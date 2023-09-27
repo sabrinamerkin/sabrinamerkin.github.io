@@ -1,8 +1,8 @@
 ---
-title: "Upload in progress..."
-date: "2000-01-01"
-tags: [Python, Machine Learning, Matplotlib, Data Visualization]
-excerpt: "Utilize machine learning models to estimate salary from employee metrics"
+title: "Python: Predicting Salary with Machine Learning"
+date: "2023-09-27"
+tags: [Python, Machine Learning, Sklearn, Data Visualization]
+excerpt: "Deploy machine learning models to estimate employee salary from metric data"
 mathjax: true
 ---
 
