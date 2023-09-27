@@ -348,7 +348,7 @@ y = df['Salary']
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size = 0.8, random_state = 123)
 ```
 
-We will start by creating a [linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) model from our training data. Linear regression provides coefficient values that can be used to understand the impact of each feature on the target variable `Salary`. It is important to note that this model will assume a linear relationship between the predictor variables and `Salary`.
+We will start by creating a [linear regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) model from our training data. Linear regression provides coefficient values that can be used to understand the impact of each predictor variable on the target variable `Salary`. It is important to note that this model will assume a linear relationship between the predictor variables and `Salary`.
 
 ```python
 # Fit a linear regression model
