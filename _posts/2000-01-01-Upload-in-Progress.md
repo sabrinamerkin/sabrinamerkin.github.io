@@ -178,7 +178,7 @@ fig.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_dist.png)<!-- -->
 
-We can see that the distribution of gender is split evenly. That is, there are exactly 100 male and 100 female employees. Next, we will compare the average salaries of male and female employees.
+We can see that the distribution of gender is split evenly. That is, there are exactly 100 male and 100 female employees. Next, we will compare the average salaries of male and female employees at this organization.
 
 ```python
 mean_salary = df.groupby('Gender').mean(numeric_only=True)['Salary'].reset_index()
@@ -187,9 +187,8 @@ px.bar(mean_salary, x = 'Gender', y = 'Average Salary', color='Gender', color_di
 ```
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_avg_salary.png)<!-- -->
 
-The average salaries for male and female employees are approximately equivalent.
+The average salaries for male and female employees are approximately equivalent. Next, we will plot the average salaries for both genders over time. This will require reformatting `Joining Date` in the dataset. We will extract the year information from `Joining Date` and hold these values in a new list. This new list of years (integers) will then be reassigned to `Joining Date`. Additionally, we will create a new data frame to hold gendered average salaries for each year. We will visualize this data with a line plot.
 
-We will now identify the average annual salary for both genders.
 
 ```python
 # Create a new list to extract the join year
@@ -227,13 +226,17 @@ fig.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/avg_annual_salary.png)<!-- -->
 
+Average salaries for both genders follow a relatively similar trend. Neither gender has had a dominant impact on average salary over the past 20 years. We will take one additional look at `Gender` and `Salary` by creating a boxplot to visualize gendered salary distributions across employee `Position`. 
+
 ```python
 px.box(df,x='Position',y='Salary',color='Gender')
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_salary_position.png)<!-- -->
 
-## Correlation
+Results from this boxplot can be easily understood. For either gender, managers at this company have the highest average salaries. Alternatively, interns of either gender have the lowest average salaries. There is one outlier in male intern salaries, but this salary still falls below the second-lowest paid position. 
+
+## Variable Correlation
 
 We can create a correlation heatmap for numeric variables in the dataset.
 
