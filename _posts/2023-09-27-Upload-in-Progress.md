@@ -482,7 +482,7 @@ The **Coefficient of Determination (R-squared)** measures the proportion of vari
 
 The **Adjusted Coefficient of Determination (Adjusted R-squared)** accounts for overfitting by penalizing the addition of independent variables to a model. Similar to R-squared, an adjusted R-squared value close to 1 indicates a good model fit.
 
-The random forest model is the best of the four models. It has the lowest mean squared error and lowest mean absolute error of the models. The random forest model also has the greatest standard and adjusted coefficients of determination (R-squared and Adjusted R-squared). 
+The random forest model is the best of the four models. It has the lowest mean squared error and lowest mean absolute error of the models. The random forest model also has the greatest standard *and* adjusted coefficients of determination (R-squared and Adjusted R-squared). 
 
 
 
