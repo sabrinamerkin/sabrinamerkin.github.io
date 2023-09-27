@@ -434,7 +434,7 @@ with plt.rc_context({'xtick.color':'grey','ytick.color':'grey'}):
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/model_fit_plots.png)<!-- -->
 
-Next, we will construct a table to allow the comparison of performance metrics for each model.
+Next, we will construct a table to compare performance metrics for each model.
 
 ```python
 # Initialize Table Columns
