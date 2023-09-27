@@ -7,10 +7,10 @@ mathjax: true
 ---
 
 ## Background
-The dataset in this analysis was created to explore factors that influence employee performance and satisfaction in a typical organization. These variables include personal traits, perfromance metrics, and job details of employees. In this project, I explore variable relativity and deploy machine learning models to predict employee salary from training data. The Employee Productivity and Satisfaction HR Data was imported from Kaggle. 
+The dataset in this project explores factors that influence employee performance and satisfaction. I investigate how different variables influence employee salary. I then create and test machine learning models to predict employee salary from the data. The *Employee Productivity and Satisfaction HR Data* was imported from Kaggle. Python code was run in a Jupyter Notebook environment.
 
 ## Exploratory Analysis
-We begin this analysis by importing required libraries and the dataset.
+We begin by importing the required libraries and dataset.
 
 ```python
 # Import required libraries
