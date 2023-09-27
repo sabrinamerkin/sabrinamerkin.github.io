@@ -122,7 +122,7 @@ df.describe(include='object')
 | top	| Douglas Lindsey	| Male |	Sales |	Manager	| Jan-18 |
 | freq	| 1	| 100 |	47 |	40 |	23 |
 
-`**Name**` is not an important variable for this analysis, so we can remove it from the data frame.
+`Name` is not an important variable for this analysis, so we can remove it from the data frame.
 
 ```python
 df=df.drop(['Name'],axis=1)
@@ -132,11 +132,7 @@ df.shape
 ```python
 (200, 10)
 ```
-We now have 200 employee records with 10 informative variables.
-
-## Visualizing Variable Distributions
-
-We can define a density plot function that will visualize the distributions of quantitative variables in the dataset.
+We now have 200 employee records with 10 informative variables. Next, we will define a density plot function to visualize variable distributions in the dataset.
 
 ```python
 # Define a density plot function
@@ -160,7 +156,7 @@ den_plot('Satisfaction Rate (%)')
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_1.png)<!-- -->
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/EDA_plots_2.png)<!-- -->
 
-All variable distributions look approximately normal. `Age` is slightly skewed right. We can use a boxplot to detect potential outliers in `Age`.
+All variable distributions look approximately normal. `Age` is slightly skewed right. A boxplot can be used to detect potential outliers in `Age`.
 
 ```python
 fig = px.box(df, y = 'Age', points = 'outliers')
@@ -169,11 +165,11 @@ fig.update_layout(hovermode='x')
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/age_box.png)<!-- -->
 
-There are no outliers in `Age`.
+`Age` has no outliers.
 
 ## Investigating Gender
 
-First, we will look at gender distribution in the dataset.
+In certain organizational contexts, gender has been identified as a significant influence on employee salary. We can investigate whether this occurrence holds true in our dataset. First, we will look at the distribution of gender across all employees. 
 
 ```python
 fig = px.pie(sex, values='Count', names='Gender', color_discrete_sequence=['blue', 'pink'])
@@ -182,7 +178,7 @@ fig.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_dist.png)<!-- -->
 
-There are exactly 100 male and 100 female employees in the dataset.
+We can see that the distribution of gender is split evenly. That is, there are exactly 100 male and 100 female employees. Next, we will compare the average salaries of male and female employees.
 
 ```python
 mean_salary = df.groupby('Gender').mean(numeric_only=True)['Salary'].reset_index()
@@ -191,7 +187,7 @@ px.bar(mean_salary, x = 'Gender', y = 'Average Salary', color='Gender', color_di
 ```
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/gender_avg_salary.png)<!-- -->
 
-The average salary for males and females is equivalent.
+The average salaries for male and female employees are approximately equivalent.
 
 We will now identify the average annual salary for both genders.
 
