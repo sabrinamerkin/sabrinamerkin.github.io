@@ -31,7 +31,7 @@ df.shape
 ```python
 (200, 11)
 ```
-The dataset contains 200 employee records with 11 informative variables.
+The dataset contains 200 employee records with 11 informative variables. We can print the first 6 rows of the dataset to get a better sense of these variables.
 
 ```python
 df.head(6)
@@ -46,7 +46,7 @@ df.head(6)
 | Stephanie Bailey |	43 |	Male	| 14 |	3 |	9 |	4.5 |	IT	| Team Lead |	Jan-05	| 101133 |
 | Jonathan King	| 24 |	Male	| 5	| 63 |	33 |	4.2 |	Sales |	Junior Developer |	Jan-21 |	48740 |
 
-We can check to see if there are any missing values in the dataset.
+All variables are relatively intuitive to understand. It is important to note that `Projects Completed` represents the total number of projects completed out of 25. We are left to assume that all projects hold the same amount of difficulty, regardless of employee position. Next, we will check to see if there are any missing values in the dataset.
 
 ```python
 df.isnull().sum()
@@ -67,7 +67,7 @@ Salary                   0
 dtype: int64
 ```
 
-There are no missing values. Next, we can see the type of each variable in the dataset.
+There are no missing values in any of the columns. Further, we can look at the data type of each column in the dataset.
 
 ```python
 df.info()
@@ -93,7 +93,8 @@ Data columns (total 11 columns):
 dtypes: float64(1), int64(5), object(5)
 memory usage: 17.3+ KB
 ```
-We can also see summary statistics of the data with the following commands.
+
+To provide more information, we will look at summary statistics for each column in the dataset.
 
 ```python
 df.describe()
@@ -121,7 +122,7 @@ df.describe(include='object')
 | top	| Douglas Lindsey	| Male |	Sales |	Manager	| Jan-18 |
 | freq	| 1	| 100 |	47 |	40 |	23 |
 
-*Name* is not an important variable to this analysis, so we can remove it from the data frame.
+`Name` is not an important variable for this analysis, so we can remove it from the data frame.
 
 ```python
 df=df.drop(['Name'],axis=1)
