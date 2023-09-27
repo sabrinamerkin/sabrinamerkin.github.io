@@ -94,7 +94,7 @@ dtypes: float64(1), int64(5), object(5)
 memory usage: 17.3+ KB
 ```
 
-To provide more information, we will look at summary statistics for each column in the dataset.
+To see more information, we can look at summary statistics for each column in the dataset.
 
 ```python
 df.describe()
