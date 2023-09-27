@@ -309,7 +309,7 @@ from xgboost import XGBRegressor
 from sklearn import metrics
 ```
 
-Before fitting any models on the data, it will be helpful to rescale the values of `Salary` in the dataset. Standardizing these values will help us better understand the accuracy of the machine learning models.
+Before fitting any models on the data, it will be helpful to rescale `Salary` values. Standardizing these values will help us better understand the accuracy of the machine learning models.
 
 ```python
 # Create scaling object from sklearn.preprocessing
