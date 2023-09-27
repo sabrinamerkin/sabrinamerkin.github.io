@@ -226,7 +226,7 @@ fig.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Salary/avg_annual_salary.png)<!-- -->
 
-Average salaries for both genders follow a relatively similar trend. Neither gender has had a dominant impact on average salary over the past 20 years. We will take one additional look at `Gender` and `Salary` by creating a boxplot to visualize gendered salary distributions across employee `Position`. 
+Average salaries for both genders follow a relatively similar trend. Neither gender has had a dominant impact on average salary over the past 20 years. We will take one additional look at `Gender` and `Salary` by creating a boxplot to visualize gendered salary distributions across `Position`. 
 
 ```python
 px.box(df,x='Position',y='Salary',color='Gender')
