@@ -381,7 +381,7 @@ DT.fit(X_train, y_train)
 y_pred_dt = DT.predict(X_test)
 ```
 
-Finally, we will deploy an [XGBoost](https://xgboost.readthedocs.io/en/stable/parameter.html) regression model that utilizes gradient boosting. XGBoost provies a powerful model that works well with a variety of data types. This model may require hyperparameter tuning for improvement. We will set the number of gradient boosted trees to 500.
+Finally, we will deploy an [XGBoost](https://xgboost.readthedocs.io/en/stable/parameter.html) regression model that utilizes gradient boosting. XGBoost provies a powerful model that works well with a variety of data types. This model may require hyperparameter tuning for later improvement. We will set the number of gradient boosted trees to 500.
 
 ```python
 # Fit an XGBoost Regression Model
