@@ -169,7 +169,7 @@ fig.update_layout(hovermode='x')
 
 ## Investigating Gender
 
-In certain organizational contexts, gender has been identified as a significant influence on employee salary. We can investigate whether this occurrence holds true in our dataset. First, we will look at the distribution of gender across all employees. 
+In certain organizational contexts, gender has been identified as an influence on employee salary. We can investigate whether this occurrence holds true in our dataset. First, we will look at the distribution of gender across all employees. 
 
 ```python
 fig = px.pie(sex, values='Count', names='Gender', color_discrete_sequence=['blue', 'pink'])
