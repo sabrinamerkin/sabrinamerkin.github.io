@@ -182,8 +182,10 @@ We can see that the distribution of gender is split evenly. That is, there are e
 
 ```python
 mean_salary = df.groupby('Gender').mean(numeric_only=True)['Salary'].reset_index()
-mean_salary.columns = ['Gender', 'Average Salary']
-fig = px.bar(mean_salary, x='Gender', y='Average Salary', text='Average Salary', text_auto='.0f', labels = {'Average Salary': 'Average Salary ($)'}, color='Gender', color_discrete_sequence=['pink', 'lightblue'])
+mean_salary['Label'] = '$' + mean_salary['Salary'].apply(lambda x: f'{x:.0f}')
+mean_salary.columns = ['Gender', 'Average Salary', 'Label']
+fig = px.bar(mean_salary, x='Gender', y='Average Salary', text='Label', labels = {'Average Salary': 'Average Salary ($)'}, color='Gender', color_discrete_sequence=['pink', 'lightblue'])
+fig.update_traces(textposition='inside', textfont=dict(size=14), insidetextanchor='middle')
 fig.update_traces(width=0.4)
 fig.show()
 ```
