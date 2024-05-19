@@ -27,10 +27,7 @@ Next, we take a brief look at the raw data
 ```python
 df.shape
 ```
-'''
 (6218, 15)
-'''
-
 ```python
 # Print the first 6 rows
 df.head(6)
