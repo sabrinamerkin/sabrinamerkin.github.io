@@ -6,9 +6,7 @@ excerpt: "Uploading..."
 ---
 
 ## Background
-Kooth is a free online mental health service for individuals aged 11-25 years old. Service users can access an online chatroom feature allowing them to speak with trained mental health counselers. 
-
-Kooth has provided two datasets containing information on service user activity within this chatroom feature. This data was collected during the week of April 13th, 2020. All service users in this data are located within the United States. 
+The NFL has players of all shapes and sizes. With diversity in player build, we might expect particular player types to excel in different NFL combine tests...
 
 We have been asked to investigate trends in service user behavior regarding chat attempts, wait times, and successful chats from queues. First, we will use SQL and Python to join and format the two datasets. After that, we will visualize our findings in Tableau with interactive dashboards. All Python code will be executed in an IPython kernel using Jupyter Notebook.
 
