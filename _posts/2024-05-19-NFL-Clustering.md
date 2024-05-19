@@ -9,7 +9,7 @@ excerpt: "Uploading..."
 While players in the National Football League are undoubtably athletic, their physical traits can vary significantly by position. Each year, the NFL Combine records physical and performance-based metrics for new athletes entering the NFL draft. These combine measurements allow scouts to further evaluate player prospects before drafting them. In this project, I explore the effectiveness of K-means clustering to identify player positions using NFL Combine data from 2000-2018.
 
 ## Data Analysis
-Using a Python 3 kernel in Jupyter, I load in the following libraries and dataset.
+Using a Python 3 kernel in Jupyter, we will load in the following libraries and dataset.
 
 ```python
 # Import libraries
@@ -22,7 +22,7 @@ from sklearn.cluster import KMeans
 df = pd.read_csv("C:/Users/ethan/OneDrive/Data Projects/Datasets/NFL_Combine.csv", index_col="Player")
 ```
 
-Next, we take a brief look at the raw data
+Next, we will take a brief look at the raw data
  
 ```python
 df.shape
