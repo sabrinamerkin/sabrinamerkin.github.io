@@ -137,5 +137,27 @@ df.describe()
 | 75% | 76.000000 | 300.000000 | 5.060000 | 35.500000 | 25.000000 | 120.000000 | 7.590000 | 4.590000 | 2014.000000 | 5.000000 | 137.000000 |
 | max | 81.000000 | 370.000000 | 6.000000 | 45.500000 | 45.000000 | 139.000000 | 9.040000 | 5.560000 | 2018.000000 | 7.000000 | 259.000000 |
 
+We are left with 2885 player records to evaluate.
+
+Next, we'll create a correlation heatmap to investigate connections between numeric variables in the dataset.
+
+```python
+# Create a copy of the DataFrame
+df_numeric = df.copy()
+
+# Drop the original 'team' and 'position' columns
+df_numeric.drop(['Team', 'Position'], axis=1, inplace=True)
+
+# Calculate the correlation matrix
+correlation_matrix = df_numeric.corr()
+
+# Create the heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap=sns.color_palette("vlag", as_cmap=True), fmt=".2f", square=True)
+plt.title('Correlation Heatmap')
+plt.show()
+```
+
+
 
 
