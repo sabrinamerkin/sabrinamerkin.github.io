@@ -1,6 +1,6 @@
 ---
 title: "Upload in progress..."
-date: 2024-5-19
+date: 2000-5-19
 tags: [Python, K-means Clustering]
 excerpt: "Uploading..."
 ---
