@@ -76,7 +76,7 @@ def map_position(pos):
 df["Position"] = df["Pos"].apply(map_position)
 ```
 
-Now, time to remove those useless fields...
+Now it's time to remove those useless fields.
 
 ```python
 # Drop unnecessary fields
@@ -110,8 +110,8 @@ df = df.rename(columns={
 # View the new dataframe!
 df.head(6)
 ```
-| Height | Weight | Forty | Vert | Bench | Jump | Cone | Shuttle | Year | Team | Round | Pick | Position |
-| --- | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: |
+| Player | Height | Weight | Forty | Vert | Bench | Jump | Cone | Shuttle | Year | Team | Round | Pick | Position |
+| --- | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: | --: |
 | Darnell Alford | 76 | 334 | 5.56 | 25.0 | 23.0 | 94.0 | 8.48 | 4.98 | 2000 | Kansas City Chiefs | 6 | 188 | O-Line |
 | Corey Atkins | 72 | 237 | 4.72 | 31.0 | 21.0 | 112.0 | 7.96 | 4.39 | 2000 | Undrafted | 0 | 0 | Linebacker |
 | Reggie Austin | 69 | 175 | 4.44 | 35.0 | 17.0 | 119.0 | 7.03 | 4.14 | 2000 | Chicago Bears | 4 | 125 | Secondary |
