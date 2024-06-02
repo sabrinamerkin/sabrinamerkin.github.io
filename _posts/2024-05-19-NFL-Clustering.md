@@ -1,7 +1,7 @@
 ---
 title: "Upload in progress..."
 date: 2000-5-19
-tags: [Python, K-means Clustering]
+tags: [Python, K-means Clustering, Regression Analysis]
 excerpt: "Apply K-means clustering to identify correlated performance metrics throughout NFL Combine history"
 ---
 
