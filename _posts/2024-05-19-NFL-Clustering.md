@@ -54,7 +54,7 @@ df['Pos'].value_counts()
 ```
 
 | Pos | Count |
-| --- | --: |
+| --- | :-- |
 | WR | 857 |
 | CB | 630 |
 
