@@ -166,6 +166,41 @@ Many correlations make intuitive sense. We'd expect a player's weight to be posi
 
 ## Cluster Analysis
 
-We will now explore various player groups within the dataset using K-means clustering. To decide on the optimal number of clusters, we'll develop a function that visualizes inertia across different values of k.
+We will now explore various player groups within the dataset using K-means clustering. To decide on the optimal number of clusters, we'll develop a function that visualizes inertia across different values of k. An *elbow point* on this plot will represent a significant decrease in inertia relative to increasing k values, indicating the optimal number of clusters where adding more clusters does not significantly reduce inertia.
+
+```python
+# Create a function to plot the inertias of k for k-means clustering
+def optimize_k(data, max_k):
+    means=[]
+    inertias=[]
+
+    for k in range(1, max_k):
+        kmeans=KMeans(n_clusters=k)
+        kmeans.fit(data)
+
+        means.append(k)
+        inertias.append(kmeans.inertia_)
+
+    # Elbow plot to identify optimal k-value
+    fig=plt.subplots(figsize=(10,5))
+    plt.plot(means, inertias, "o-")
+    plt.xlabel("Number of Clusters")
+    plt.ylabel("Inertia")
+    plt.grid(True)
+    plt.show()
+
+```
+
+Now that we've initialized the function, we can test it by clustering all numerical fields in the dataset. This process will effectively create k player clusters characterized by similar performance metrics among their members.
+
+```python
+# Determine k for clustering on all numerical fields in the data
+optimize_k(df[["Height", "Weight", "Forty", "Vert", "Bench", "Jump", "Cone", "Shuttle"]], 10)
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/NFL/All-Numeric Elbow Plot.png)<!-- -->
+
+
+
 
 
