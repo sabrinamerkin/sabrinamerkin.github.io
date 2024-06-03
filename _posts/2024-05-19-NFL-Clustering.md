@@ -244,4 +244,10 @@ plt.show()
 ```
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/All-Numeric Cluster Plot.png)<!-- -->
 
+As we specified, the 2285 player-records have been clustered using all numeric fields available to them (Height, Weight, Forty, Bench...) into three groups. We then plotted the distribution of player positions in each cluster.
 
+Cluster 1 contains mostly offensive and defensive linemen. This cluster makes up for the strong, hefty, and powerful players in our dataset.
+
+Cluster 2 contains lots of skill players like recievers, defensive backs, and running backs. This cluster contains lighter, faster, and more explosive player positions.
+
+Cluster 3 contains hybrid-style players that share similarities between the first two clusters. These players may be a bit weaker than Cluster 1 and slightly slower than Cluster 2, but are agile and powerful nonetheless. 
