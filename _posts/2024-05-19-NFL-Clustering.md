@@ -158,6 +158,7 @@ plt.title('Correlation Heatmap')
 plt.show()
 ```
 
+![]({{ site.url }}{{ site.baseurl }}/images/NFL/Correlation Heatmap.png)<!-- -->
 
 
 
