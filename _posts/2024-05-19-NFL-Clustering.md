@@ -8,7 +8,7 @@ excerpt: "Apply K-means clustering to identify correlated performance metrics ac
 ## Background
 While players in the National Football League are undoubtably athletic, their physical traits can vary significantly by position. Each year, the NFL Combine records physical and performance-based metrics for new athletes entering the NFL draft. These combine measurements allow scouts to further evaluate player prospects before drafting them. In this project, I explore the effectiveness of K-means clustering to identify player positions using NFL Combine data from 2000-2018. I also perform several tests to investigate an annual trend in the Cone Drill.  
 
-## Data Analysis
+## Exploratory Analysis
 Using a Python 3 kernel in Jupyter, we will load in the following libraries and dataset.
 
 ```python
@@ -139,6 +139,8 @@ df.describe()
 
 We are left with 2885 player records to evaluate.
 
+## Variable Correlation
+
 Next, we'll create a correlation heatmap to investigate connections between numeric variables in the dataset.
 
 ```python
@@ -160,5 +162,10 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Correlation Heatmap.png)<!-- -->
 
+Many correlations make intuitive sense. We'd expect a player's weight to be positively correlated with their 40-Yard Dash time, which we see with a correlation coefficient r of 0.89 (i.e., heavier players often take longer to complete this drill). It's also understandable that a player's standing jump would be negatively correlated with their Forty-Yard Dash time. Players who can complete the drill in less time (faster) are more likely to jump higher than heavier, slower players. We will circle back to these correlations later for deeper analysis.
+
+## Cluster Analysis
+
+We will now explore various player groups within the dataset using K-means clustering. To decide on the optimal number of clusters, we'll develop a function that visualizes inertia across different values of k.
 
 
