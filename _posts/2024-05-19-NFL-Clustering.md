@@ -211,11 +211,14 @@ cluster_1 = df[df["kmeans_3_all"]==1]
 cluster_2 = df[df["kmeans_3_all"]==2]
 cluster_3 = df[df["kmeans_3_all"]==0]
 
-# Plot the distribution of player positions within clusters
+# Identify the max player count for positions across all clusters
 max_count = max(cluster_1['Position'].value_counts().max(), cluster_2['Position'].value_counts().max(), cluster_3['Position'].value_counts().max())
-y_axis_limit = max_count + 50 # setting shared ylim for all three plots
-fig, axes = plt.subplots(1, 3, figsize=(15, 5), sharey=True) # creating the subplots
+# Set shared y-axis height
+y_axis_limit = max_count + 50
+# Create empty plots
+fig, axes = plt.subplots(1, 3, figsize=(15, 5), sharey=True)
 
+# Format cluster 1 subplot
 cluster_1['Position'].value_counts().plot(kind='bar', color='firebrick', ax=axes[0], width=0.50)
 axes[0].set_title('Cluster 1')
 axes[0].set_xlabel('Position')
@@ -223,6 +226,7 @@ axes[0].set_ylabel('Count')
 axes[0].set_ylim(0, y_axis_limit)
 axes[0].tick_params(axis='x', rotation=45)
 
+# Format cluster 2 subplot
 cluster_2['Position'].value_counts().plot(kind='bar', color='olivedrab', ax=axes[1], width=0.35)
 axes[1].set_title('Cluster 2')
 axes[1].set_xlabel('Position')
@@ -230,6 +234,7 @@ axes[1].set_ylabel('Count')
 axes[1].set_ylim(0, y_axis_limit)
 axes[1].tick_params(axis='x', rotation=45)
 
+# Format cluster 3 subplot
 cluster_3['Position'].value_counts().plot(kind='bar', color='royalblue', ax=axes[2], width=0.30)
 axes[2].set_title('Cluster 3')
 axes[2].set_xlabel('Position')
@@ -237,6 +242,7 @@ axes[2].set_ylabel('Count')
 axes[2].set_ylim(0, y_axis_limit)
 axes[2].tick_params(axis='x', rotation=45)
 
+# Display subplots
 plt.tight_layout()
 plt.show()
 ```
