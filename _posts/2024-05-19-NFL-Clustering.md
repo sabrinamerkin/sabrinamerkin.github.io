@@ -28,8 +28,7 @@ First, let's take a look at the raw data.
 df.shape
 ```
 
-| *(6218, 15)* |
-| --- |
+(6218, 15)
 
 ```python
 # Print the first 6 rows
@@ -46,9 +45,9 @@ df.head(6)
 | Jake Arians	| K |	70 |	202 |	NaN |	NaN |	NaN |	NaN |	NaN |	NaN |	2000 |	arianjak01 |	0 |	NaN |	NaN |	NaN |
 
 
-We have 15 biometric & performance-based fields for 6218 players in our dataset, including information on their draft outcome. Some players have missing information, and several fields that are not of interest to us...
+We have 15 fields for 6218 players in our dataset, including information on their draft outcome. Some players have missing information, and several fields that are not of interest to us...
 
-First, we can clean up the number of player positons in the dataset, we can group similar positons together (i.e., a linebacker *LB* and an inside linebacker *ILB*). This will be useful later for our cluster analysis.
+Let's start by alias the player positons in the dataset by grouping similar positons together (i.e., a linebacker *LB* and an inside linebacker *ILB*). This will be useful later in our cluster analysis.
 
 ```python
 # Create a dictonary to categorize player positions in the dataset
