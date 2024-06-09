@@ -213,8 +213,8 @@ cluster_3 = df[df["kmeans_3_all"]==0]
 
 # Plot the distribution of player positions within clusters
 max_count = max(cluster_1['Position'].value_counts().max(), cluster_2['Position'].value_counts().max(), cluster_3['Position'].value_counts().max())
-y_axis_limit = max_count + 50
-fig, axes = plt.subplots(1, 3, figsize=(15, 5), sharey=True)
+y_axis_limit = max_count + 50 # setting shared ylim for all three plots
+fig, axes = plt.subplots(1, 3, figsize=(15, 5), sharey=True) # creating the subplots
 
 cluster_1['Position'].value_counts().plot(kind='bar', color='firebrick', ax=axes[0], width=0.50)
 axes[0].set_title('Cluster 1')
