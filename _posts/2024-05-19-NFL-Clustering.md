@@ -257,3 +257,15 @@ As specified, the 2885 player-records have been clustered on all numeric fields 
 **Cluster 2** contains a majority of skilled players like recievers, defensive backs, and running backs. Known for their agility, speed, and explosive bursts, these athletes excel in making quick, decisive movements on the field.
 
 **Cluster 3** presents a diverse mix of player types, including linebackers, defensive ends, and tight ends. Combining elements from both Cluster 1 and Cluster 2, these players showcase a blend of strength, agility, and versatility, making them crucial assets in various facets of the game.
+
+
+Rather than looking at all numeric variables, let's narrow down our selection to two highly correlated variables, like Forty-Yard Dash and Weight (*r*=0.89). Similar to our last procedure, we'll have to determine a new value of k to cluster on a new variable set.
+
+```python
+# Determine k for clustering on Forty vs Weight
+optimize_k(df[["Weight", "Forty"]], 10)
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/NFL/Forty-Weight Elbow Plot.png)<!-- -->
+
+
