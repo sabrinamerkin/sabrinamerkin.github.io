@@ -268,7 +268,7 @@ optimize_k(df[["Weight", "Forty"]], 10)
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Forty-Weight Elbow Plot.png)<!-- -->
 
-Based on the elbow plot above, we will select k=3 again for our K-means clustering on all Forty-Yard Dash and Weight.
+Based on the elbow plot above, we will again select k=3 for clustering on Forty-Yard Dash (Forty) vs Weight.
 
 ```python
 # Let k=3 and cluster on forty vs weight
@@ -318,3 +318,26 @@ plt.show()
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Forty-Weight Cluster Plot.png)<!-- -->
+
+The distribution of player positions within these new Forty-vs-Weight clusters are nearly identical to that of our clusters on all numeric fields. Now that we've narrowed our focus to two dimensions, we can generate a scatter plot comparing the Forty-Yard Dash and Weight. We'll color-code these points based on their respective clusters.
+
+```python
+# Scatter plot of Forty vs Weight (k=3 clusters)
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Assign colors to match clusters above
+colors = ['royalblue', 'firebrick', 'olivedrab']
+
+# Create scatter plot colored by cluster
+for i, color in enumerate(colors):
+    cluster_data = df[df["kmeans_3_Wt_Fty"] == i]  # Filter data for each cluster
+    ax.scatter(x=cluster_data["Forty"], y=cluster_data["Weight"], c=color, label=f'Cluster {i+1}')
+
+ax.set_xlabel("40-Yard Dash (sec)")
+ax.set_ylabel("Weight (lbs)")
+ax.legend()  # Show legend for cluster colors
+
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/NFL/Forty-Weight Scatter Plot.png)<!-- -->
