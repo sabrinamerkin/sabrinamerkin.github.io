@@ -164,10 +164,10 @@ Many of these correlations seem intuitive. We might expect a player's weight to 
 
 ## Cluster Analysis
 
-We will now explore various player groups within the dataset using K-means clustering. To decide on the optimal number of clusters, we'll develop a function that visualizes inertia across different values of k. An *elbow point* on this plot will represent a significant decrease in inertia relative to increasing k values, indicating the optimal number of clusters where adding more clusters does not significantly reduce inertia.
+We will now explore different player types within the dataset using K-means clustering. To decide on an optimal number of clusters, we'll develop a function that visualizes inertia across different values of k. An *elbow point* on this plot will represent a significant decrease in inertia relative to increasing k-values, indicating the optimal number of clusters where adding more clusters does not significantly reduce inertia.
 
 ```python
-# Create a function to plot the inertias of k for k-means clustering
+# Create a function to plot the inertias of k for clustering
 def optimize_k(data, max_k):
     means=[]
     inertias=[]
@@ -189,7 +189,7 @@ def optimize_k(data, max_k):
 
 ```
 
-Now that we've initialized the function, we can test it by clustering all numerical fields in the dataset. This process will effectively create k player clusters characterized by similar performance metrics among their members.
+Now that we've created an inertia function, we can test it by first clustering on **all** numerical fields in the dataset. This process will effectively create k player clusters characterized by similar performance metrics among their members.
 
 ```python
 # Determine k for clustering on all numerical fields in the data
