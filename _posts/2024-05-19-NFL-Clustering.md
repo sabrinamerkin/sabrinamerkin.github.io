@@ -250,8 +250,8 @@ plt.show()
 
 As specified, the 2885 player-records have been clustered on all numeric fields (Height, Weight, Forty, Bench...) and assigned to one of three groups. The plots above show the distribution of player position counts within each cluster.
 
-**Cluster 1** contains mostly offensive and defensive linemen. This cluster makes up for the strong, hefty, and powerful players in our dataset.
+**Cluster 1** contains mostly offensive and defensive linemen, characterized by their substantial stature and weight. These players exhibit impressive power and explosiveness, making them formidable forces in the trenches.
 
-**Cluster 2** contains lots of skill players like recievers, defensive backs, and running backs. This cluster contains lighter, faster, and more explosive player positions.
+**Cluster 2** contains a majority of skilled players like recievers, defensive backs, and running backs. Known for their agility, speed, and explosive bursts, these athletes excel in making quick, decisive movements on the field.
 
-**Cluster 3** contains hybrid-style players that share similarities between the first two clusters. These players may be a bit weaker than Cluster 1 and slightly slower than Cluster 2, but are agile and powerful nonetheless. 
+**Cluster 3** presents a diverse mix of player types, including linebackers, defensive ends, and tight ends. Combining elements from both Cluster 1 and Cluster 2, these players showcase a blend of strength, agility, and versatility, making them crucial assets in various facets of the game.
