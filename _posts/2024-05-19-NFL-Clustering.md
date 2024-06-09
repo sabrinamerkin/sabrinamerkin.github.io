@@ -47,7 +47,7 @@ df.head(6)
 
 We have 15 fields for 6218 players in our dataset, including information on their draft outcome. Some players have missing information, and several fields that are not of interest to us...
 
-Let's start by alias the player positons in the dataset by grouping similar positons together (i.e., a linebacker *LB* and an inside linebacker *ILB*). This will be useful later in our cluster analysis.
+Let's group similar player positons together (i.e., a linebacker *LB* and an inside linebacker *ILB*). This will be useful later in our cluster analysis.
 
 ```python
 # Create a dictonary to categorize player positions in the dataset
@@ -74,14 +74,14 @@ def map_position(pos):
 df["Position"] = df["Pos"].apply(map_position)
 ```
 
-Now it's time to remove those useless fields.
+Now let's drop those pesky fields.
 
 ```python
 # Drop unnecessary fields
 df.drop(columns=["Pos", "AV", "Pfr_ID"], inplace=True)
 ```
 
-Upon investigating the data source, it is safe to assume players with NaN values for **Team**, **Round**, and **Pick** went undrafted. We will make these players easier to identify with some basic aliasing. As for the players with missing combine metrics, we will remove them altogether. 
+Upon investigating the data source, it is safe for us to assume players with NaN values for **Team**, **Round**, and **Pick** went undrafted. We will alias these players easier to make them easier to identify. As for the players with missing combine metrics, we will remove them altogether. 
 
 ```python
 # Replace NaN values for undrafted players
@@ -139,16 +139,16 @@ We are left with 2885 player records to evaluate.
 
 ## Variable Correlation
 
-Next, we'll create a correlation heatmap to investigate connections between numeric variables in the dataset.
+Next, we'll investigate relationships between numeric variables in the dataset by creating a correlation heatmap.
 
 ```python
-# Create a copy of the DataFrame
+# Create a copy of the dataframe
 df_numeric = df.copy()
 
-# Drop the original 'team' and 'position' columns
+# Drop 'team' and 'position' columns from the copied dataframe
 df_numeric.drop(['Team', 'Position'], axis=1, inplace=True)
 
-# Calculate the correlation matrix
+# Calculate a correlation matrix
 correlation_matrix = df_numeric.corr()
 
 # Create the heatmap
@@ -160,7 +160,7 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Correlation Heatmap.png)<!-- -->
 
-Many correlations make intuitive sense. We'd expect a player's weight to be positively correlated with their 40-Yard Dash time, which we see with a correlation coefficient r of 0.89 (i.e., heavier players often take longer to complete this drill). It's also understandable that a player's standing jump would be negatively correlated with their Forty-Yard Dash time. Players who can complete the drill in less time (faster) are more likely to jump higher than heavier, slower players. We will circle back to these correlations later for deeper analysis.
+Many of these correlations seem intuitive. We might expect a player's weight to be positively correlated with their 40-Yard Dash time, which we see with a correlation coefficient *r* of 0.89 (i.e., heavier players often take longer to complete this drill). It's also understandable that a player's standing jump would be negatively correlated with their Forty-Yard Dash time. Players who complete the dash in less time (faster) are more likely to jump higher than heavier, slower players. We will circle back to these correlations in a bit for further analysis.
 
 ## Cluster Analysis
 
