@@ -189,19 +189,19 @@ def optimize_k(data, max_k):
 
 ```
 
-Now that we've created an inertia function, we can test it by first clustering on **all** numerical fields in the dataset. This process will effectively create k player clusters characterized by similar performance metrics among their members.
+Now that we've created an inertia function, we can test it by first clustering on **all** numeric fields in the dataset. This process will effectively create k player clusters characterized by similar performance metrics among their members.
 
 ```python
-# Determine k for clustering on all numerical fields in the data
+# Determine k for clustering on all numeric fields in the data
 optimize_k(df[["Height", "Weight", "Forty", "Vert", "Bench", "Jump", "Cone", "Shuttle"]], 10)
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/All-Numeric Elbow Plot.png)<!-- -->
 
-Based on the elbow plot above, we will select k=3 for our first K-means clustering on all numerical fields.
+Based on the elbow plot above, we will select k=3 for our first K-means clustering on all numeric fields.
 
 ```python
-# Let k=3 and cluster on all numerical fields
+# Let k=3 and cluster on all numeric fields
 kmeans = KMeans(n_clusters=3)
 kmeans.fit(df[["Height", "Weight", "Forty", "Vert", "Bench", "Jump", "Cone", "Shuttle"]])
 df["kmeans_3_all"]=kmeans.labels_
@@ -248,10 +248,10 @@ plt.show()
 ```
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/All-Numeric Cluster Plot.png)<!-- -->
 
-As we specified, the 2285 player-records have been clustered using all numeric fields available to them (Height, Weight, Forty, Bench...) into three groups. We then plotted the distribution of player positions in each cluster.
+As specified, the 2885 player-records have been clustered on all numeric fields (Height, Weight, Forty, Bench...) and assigned to one of three groups. The plots above show the distribution of player position counts within each cluster.
 
-Cluster 1 contains mostly offensive and defensive linemen. This cluster makes up for the strong, hefty, and powerful players in our dataset.
+**Cluster 1** contains mostly offensive and defensive linemen. This cluster makes up for the strong, hefty, and powerful players in our dataset.
 
-Cluster 2 contains lots of skill players like recievers, defensive backs, and running backs. This cluster contains lighter, faster, and more explosive player positions.
+**Cluster 2** contains lots of skill players like recievers, defensive backs, and running backs. This cluster contains lighter, faster, and more explosive player positions.
 
-Cluster 3 contains hybrid-style players that share similarities between the first two clusters. These players may be a bit weaker than Cluster 1 and slightly slower than Cluster 2, but are agile and powerful nonetheless. 
+**Cluster 3** contains hybrid-style players that share similarities between the first two clusters. These players may be a bit weaker than Cluster 1 and slightly slower than Cluster 2, but are agile and powerful nonetheless. 
