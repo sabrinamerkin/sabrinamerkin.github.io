@@ -342,4 +342,6 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Forty-Weight Scatter Plot.png)<!-- -->
 
-This plot provides a visual representation of how our clustering methodology was applied to the Forty-Yard Dash versus Weight. As expected, the clusters are clearly delineated: Cluster 2 points (Agile Players) occupy the bottom left, Cluster 3 points (Hybrid Builds) situated in the middle, and Cluster 1 points (Power Positions) are predominantly positioned towards the top right.
+This plot provides a visual representation of how our clustering methodology was applied to the Forty-Yard Dash versus Weight. As expected, the clusters are clearly delineated: **Cluster 3** points (Agile Players) occupy the bottom left, **Cluster 1** points (Hybrid Builds) are situated in the middle, and **Cluster 2** points (Power Positions) are predominantly positioned towards the top right on the plot.
+
+## Deep Regression Analysis
