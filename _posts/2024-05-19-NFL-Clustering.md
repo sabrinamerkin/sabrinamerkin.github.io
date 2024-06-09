@@ -30,6 +30,7 @@ df.shape
 
 | (6218, 15) |
 | --- |
+| |
 
 We have 6218 player records and 15 data fields.
 
