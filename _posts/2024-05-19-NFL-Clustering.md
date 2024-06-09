@@ -26,9 +26,9 @@ First, let's take a look at the raw data.
  
 ```python
 df.shape
-```
 
 (6218, 15)
+```
 
 ```python
 # Print the first 6 rows
