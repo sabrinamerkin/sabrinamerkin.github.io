@@ -344,4 +344,7 @@ plt.show()
 
 This plot provides a visual representation of how our clustering methodology was applied to the Forty-Yard Dash versus Weight. As expected, the clusters are clearly delineated: **Cluster 3** points (Agile Players) occupy the bottom left, **Cluster 1** points (Hybrid Builds) are situated in the middle, and **Cluster 2** points (Power Positions) are predominantly positioned towards the top right on the plot.
 
-## Deep Regression Analysis
+## Cone Drill Regression Analysis
+
+I wanted to investigate any potential YOY player trends during the 18 years of combine data in the dataset. 
+Shifting our focus back to the correlation heatmap, we see that **Cone** had the greatest correlation with **Year** at _r_=-0.16. While this correlation isn't very large in comparison to others in the matrix, it still begs the question: Has there been a significant change in time to complete the cone drill?
