@@ -198,7 +198,7 @@ optimize_k(df[["Height", "Weight", "Forty", "Vert", "Bench", "Jump", "Cone", "Sh
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/All-Numeric Elbow Plot.png)<!-- -->
 
-Based on the elbow plot above, we will select k=3 for our first K-means cluster on all numerical fields.
+Based on the elbow plot above, we will select k=3 for our first K-means clustering on all numerical fields.
 
 ```python
 # Let k=3 and cluster on all numerical fields
