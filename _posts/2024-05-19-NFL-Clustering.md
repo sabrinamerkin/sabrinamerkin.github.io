@@ -368,8 +368,37 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Cone Speed YOY.png)<!-- -->
 
-While there does appear to be a dip in the average cone drill speed after 2005, we'll need to run more analyses... We will start by fitting a linear regression model to the data. This model will test the following hypotheses:
+While there does appear to be a dip in the average cone drill speed after 2005, further analysis is necessary to confirm this trend. We'll begin by fitting a linear regression model to the data. This model will test the following hypotheses:
 
-𝐻<sub>0</sub>: There is no significant linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill.
+**𝐻<sub>0</sub>**: There is no significant linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill.
 
-𝐻<sub>𝑎</sub>: There is a significant negative linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill, indicating that the speed is decreasing over the years.
+**𝐻<sub>𝑎</sub>**: There is a significant negative linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill, indicating that the speed is decreasing over the years.
+
+```python
+# Import scikit-learn library
+from sklearn.linear_model import LinearRegression
+
+# Extract independent and dependent variables
+X = df['Year'].values.reshape(-1, 1)  # Independent variable: Year
+y = df['Cone'].values  # Dependent variable: Cone drill speed
+
+# Fit the linear regression model
+model = LinearRegression()
+model.fit(X, y)
+
+# Predict the cone drill speed for the range of years in your data
+predicted_cone_speed = model.predict(X)
+
+# Plotting the data points and the linear regression line
+plt.figure(figsize=(10, 6))
+plt.scatter(X, y, color='blue', label='Actual Data')
+plt.plot(X, predicted_cone_speed, color='red', linewidth=2, label='Linear Regression Line')
+plt.title('Linear Regression: Cone Drill Speed vs. Year')
+plt.xlabel('Year')
+plt.ylabel('Cone Drill Speed')
+plt.legend()
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/NFL/LR Cone Drill Speed YOY.png)<!-- -->
+
