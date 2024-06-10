@@ -414,3 +414,40 @@ print("R-squared (Aggregated Data):", r_squared)
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/LR AVG Cone Drill Speed YOY.png)<!-- -->
 
+```python
+LR Slope: -0.013476126608817907
+R-squared (Aggregated Data): 0.5194528023129359
+```
+
+Across **all** players, the average time to complete the cone drill has been decreasing by about 0.0135 seconds per year. Further, approximately 51.95% of the variance in average cone drill speed can be explained by the year.
+
+```python
+import numpy as np
+from scipy.stats import t
+
+# Number of observations
+n = len(X)
+
+# Degrees of freedom
+deg = n - 2  # degrees of freedom for a simple linear regression
+
+# Calculate standard error of the slope coefficient
+residuals = y - predicted_cone_speed
+standard_error_slope = np.sqrt(np.sum(residuals**2) / deg) / np.sqrt(np.sum((X - np.mean(X))**2))
+
+# Calculate t-statistic
+t_statistic = slope / standard_error_slope
+
+# Calculate p-value
+p_value = 2 * (1 - t.cdf(np.abs(t_statistic), deg))
+
+print("t-statistic:", t_statistic)
+print("p-value:", p_value)
+```
+
+```python
+t-statistic: -4.286763092593991
+p-value: 0.0004989946412297108
+```
+
+The statistically significant t-statistic and small p-value suggest that the relationship between the year of the NFL Combine and the average cone drill speed is significant. Therefore, we reject the null hypothesis and conclude that there is a significant negative linear relationship between the year and the average cone drill speed.
