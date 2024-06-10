@@ -346,5 +346,30 @@ This plot provides a visual representation of how our clustering methodology was
 
 ## Cone Drill Regression Analysis
 
-I wanted to investigate any potential YOY player trends during the 18 years of combine data in the dataset. 
-Shifting our focus back to the correlation heatmap, we see that **Cone** had the greatest correlation with **Year** at _r_=-0.16. While this correlation isn't very large in comparison to others in the matrix, it still begs the question: Has there been a significant change in time to complete the cone drill?
+As promised, we will shift our focus back to the correlation heatmap above. Considering annual trends, we observed that Year shared its strongest correlation with Cone Drill (*r* = -0.16). While this correlation is relatively modest, it does raise the question: Has the average time to complete the Cone Drill seen a **significant** decrease since 2000?
+
+Before answering this question, we can investigate the average Cone Drill speed YOY with a line chart. 
+
+```python
+# Group by year and calculate the average cone drill speed for each year
+average_cone_speed_yearly = df.groupby('Year')['Cone'].mean()
+
+# Plot the average cone drill speed YOY
+plt.figure(figsize=(10, 6))
+average_cone_speed_yearly.plot(kind='line', marker='o', color='b')
+plt.title('Average Cone Speed Year Over Year')
+plt.xlabel('Year')
+plt.ylabel('Average Cone Speed')
+plt.grid(True)
+plt.xticks(average_cone_speed_yearly.index)  # Set x-axis ticks to be the years
+plt.tight_layout()
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/NFL/Cone Speed YOY.png)<!-- -->
+
+While there does appear to be a dip in the average cone drill speed after 2005, we'll need to run more analyses... We will start by fitting a linear regression model to the data. This model will test the following hypotheses:
+
+𝐻0: There is no significant linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill.
+
+𝐻𝑎: There is a significant negative linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill, indicating that the speed is decreasing over the years.
