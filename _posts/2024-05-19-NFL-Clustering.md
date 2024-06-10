@@ -454,5 +454,60 @@ The statistically significant t-statistic and small p-value suggest that the rel
 
 It's important to consider the diversity of player positions within each year of the NFL Combine. For example, a particular year might have had an abundance of skilled position players, resulting in a lower average cone drill speed compared to another year dominated by linemen.
 
-We can run similar analyses to the one above for each cluster group YOY. In doing so, we mitigate some of the bias introduced by variations in positional subgroups.
+We can run similar analyses to the one above for each cluster group YOY. In doing so, we mitigate some of the bias introduced by variations in positional subgroups. Let's aggregate the data for each cluster by taking the average cone drill speed YOY.
 
+```python
+# Aggregate data within each cluster
+cluster_1_aggregated = cluster_1.groupby('Year')['Cone'].mean().reset_index()
+cluster_2_aggregated = cluster_2.groupby('Year')['Cone'].mean().reset_index()
+cluster_3_aggregated = cluster_3.groupby('Year')['Cone'].mean().reset_index()
+```
+
+### Cluster 1 Test
+
+```python
+# Extracting data for Cluster 1
+X_cluster1 = cluster_1_aggregated['Year'].values.reshape(-1, 1)  # Independent variable: Year
+y_cluster1 = cluster_1_aggregated['Cone'].values  # Dependent variable: Average cone drill speed
+
+# Fitting the linear regression model for Cluster 1
+model_cluster1 = LinearRegression()
+model_cluster1.fit(X_cluster1, y_cluster1)
+
+# Predicting the average cone drill speed for Cluster 1
+predicted_cone_speed_cluster1 = model_cluster1.predict(X_cluster1)
+
+# Calculate slope for Cluster 1
+slope_cluster1 = model_cluster1.coef_[0]
+
+# Calculate R-squared for Cluster 1
+r_squared_cluster1 = r2_score(y_cluster1, predicted_cone_speed_cluster1)
+
+# Calculate standard error of the slope coefficient for Cluster 1
+residuals_cluster1 = y_cluster1 - predicted_cone_speed_cluster1
+deg_cluster1 = len(X_cluster1) - 2  # degrees of freedom for a simple linear regression
+standard_error_slope_cluster1 = np.sqrt(np.sum(residuals_cluster1**2) / deg_cluster1) / np.sqrt(np.sum((X_cluster1 - np.mean(X_cluster1))**2))
+
+# Calculate t-statistic for Cluster 1
+t_statistic_cluster1 = slope_cluster1 / standard_error_slope_cluster1
+
+# Calculate p-value for Cluster 1
+p_value_cluster1 = 2 * (1 - t.cdf(np.abs(t_statistic_cluster1), deg_cluster1))
+
+# Print results for Cluster 1
+print("Cluster 1 Results:")
+print("LR Slope:", slope_cluster1)
+print("R-squared (Cluster 1):", r_squared_cluster1)
+print("t-statistic (Cluster 1):", t_statistic_cluster1)
+print("p-value (Cluster 1):", p_value_cluster1)
+
+```
+```python
+Cluster 1 Results:
+LR Slope: -0.007647503300494627
+R-squared: 0.28323756870638084
+t-statistic: -2.591864376333815
+p-value: 0.018996908932555012
+```
+
+The negative slope indicates that the average cone drill speed for Cluster 1 (hybrid-build Players) has been decreasing by approximately 0.0076 seconds per year. The R-squared value of 0.2832 suggests that about 28.32% of the variance in the average cone drill speed for Cluster 1 can be explained by the year. The statistically significant negative t-statistic and p-value suggest that there is a significant negative linear relationship between the year of the NFL Combine and the average cone drill speed for Cluster 1. Therefore, we reject the null hypothesis and conclude that the average cone drill speed for hybrid-build players in Cluster 1 has been decreasing over the years.
