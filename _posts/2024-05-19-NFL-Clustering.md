@@ -370,6 +370,6 @@ plt.show()
 
 While there does appear to be a dip in the average cone drill speed after 2005, we'll need to run more analyses... We will start by fitting a linear regression model to the data. This model will test the following hypotheses:
 
-𝐻0: There is no significant linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill.
+𝐻<sub>0</sub>: There is no significant linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill.
 
-𝐻𝑎: There is a significant negative linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill, indicating that the speed is decreasing over the years.
+𝐻<sub>𝑎</sub>: There is a significant negative linear relationship between the year of the NFL Combine and the speed at which players complete the cone drill, indicating that the speed is decreasing over the years.
