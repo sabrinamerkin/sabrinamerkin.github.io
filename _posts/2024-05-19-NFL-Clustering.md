@@ -502,6 +502,7 @@ print("t-statistic (Cluster 1):", t_statistic_cluster1)
 print("p-value (Cluster 1):", p_value_cluster1)
 
 ```
+
 ```python
 Cluster 1 Results:
 LR Slope: -0.007647503300494627
@@ -509,5 +510,24 @@ R-squared: 0.28323756870638084
 t-statistic: -2.591864376333815
 p-value: 0.018996908932555012
 ```
+
+Similarly for clusters 2 and 3...
+
+```python
+Cluster 2 Results:
+LR Slope: -0.007647503300494627
+R-squared: 0.28323756870638084
+t-statistic: -2.591864376333815
+p-value: 0.018996908932555012
+```
+
+```python
+Cluster 3 Results:
+LR Slope: -0.007647503300494627
+R-squared: 0.28323756870638084
+t-statistic: -2.591864376333815
+p-value: 0.018996908932555012
+```
+Below discussed C1 only.......
 
 The negative slope indicates that the average cone drill speed for Cluster 1 (hybrid-build Players) has been decreasing by approximately 0.0076 seconds per year. The R-squared value of 0.2832 suggests that about 28.32% of the variance in the average cone drill speed for Cluster 1 can be explained by the year. The statistically significant negative t-statistic and p-value suggest that there is a significant negative linear relationship between the year of the NFL Combine and the average cone drill speed for Cluster 1. Therefore, we reject the null hypothesis and conclude that the average cone drill speed for hybrid-build players in Cluster 1 has been decreasing over the years.
