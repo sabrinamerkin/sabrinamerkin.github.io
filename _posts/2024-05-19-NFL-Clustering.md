@@ -370,9 +370,9 @@ plt.show()
 
 While there does appear to be a dip in the average cone drill speed after 2005, further analysis is necessary to confirm this trend. We'll begin by fitting a linear regression model to the data. This model will test the following hypotheses:
 
-**𝐻<sub>0</sub>**: There is no significant linear relationship between the year of the NFL Combine and the <u>average</u> speed at which players complete the cone drill.
+**𝐻<sub>0</sub>**: There is no significant linear relationship between the year of the NFL Combine and the <u>average</u> speed at which players have completed the cone drill from 2000 to 2018.
 
-**𝐻<sub>𝑎</sub>**: There is a significant negative linear relationship between the year of the NFL Combine and the <u>average</u> speed at which players complete the cone drill, indicating that the average speed is decreasing over the years.
+**𝐻<sub>𝑎</sub>**: There is a significant negative linear relationship between the year of the NFL Combine and the <u>average</u> speed at which players have completed the cone drill from 2000 to 2018, indicating that the average speed has decreased in this period.
 
 ```python
 Import scikit-learn libraries
@@ -450,11 +450,11 @@ t-statistic: -4.286763092593991
 p-value: 0.0004989946412297108
 ```
 
-The statistically significant t-statistic and small p-value suggest that the relationship between the year of the NFL Combine and the average cone drill speed is significant. Therefore, we reject the null hypothesis and conclude that there is a significant negative linear relationship between the year and the average cone drill speed.
+The statistically significant t-statistic and small p-value suggest that the relationship between the year of the NFL Combine and the average cone drill speed is significant. Therefore, we reject the null hypothesis and conclude that there is a significant negative linear relationship between the year and the average cone drill speed in our data.
 
-It's important to consider the diversity of player positions within each year of the NFL Combine. For example, a particular year might have had an abundance of skilled position players, resulting in a lower average cone drill speed compared to another year dominated by linemen.
+It's important to consider the diversity of player positions within each year of the NFL Combine. A particular draft class might predominantly consist of fast players, resulting in a lower average cone drill time for that year. Conversely, the following draft year might be dominated by slower positions. This positional bias could give the impression that overall player speed changed from year to year, when in reality, it may just reflect the composition of the draft class.
 
-We can run similar analyses to the one above for each cluster group YOY. In doing so, we mitigate some of the bias introduced by variations in positional subgroups. Let's aggregate the data for each cluster by taking the average cone drill speed YOY.
+We can run similar analyses to the one above for each cluster group from 2000 to 2018. In doing so, we mitigate some of the bias introduced by variations in positional subgroups. Let's aggregate the data for each cluster by taking the average cone drill speed each year.
 
 ```python
 # Aggregate data within each cluster
