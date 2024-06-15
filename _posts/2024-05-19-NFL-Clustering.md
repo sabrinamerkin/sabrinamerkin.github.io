@@ -383,7 +383,7 @@ Import scikit-learn libraries
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 
-# Aggregate data by year
+# Reaggregate data by year
 yearly_avg_cone_speed = df.groupby('Year')['Cone'].mean().reset_index()
 
 # Extract independent and dependent variables
