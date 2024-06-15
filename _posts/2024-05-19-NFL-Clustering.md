@@ -210,8 +210,8 @@ df["kmeans_3_all"]=kmeans.labels_
 
 # Split up clusters for plotting
 cluster_1 = df[df["kmeans_3_all"]==1]
-cluster_2 = df[df["kmeans_3_all"]==2]
-cluster_3 = df[df["kmeans_3_all"]==0]
+cluster_2 = df[df["kmeans_3_all"]==0]
+cluster_3 = df[df["kmeans_3_all"]==2]
 
 # Identify the max player count for positions across all clusters
 max_count = max(cluster_1['Position'].value_counts().max(), cluster_2['Position'].value_counts().max(), cluster_3['Position'].value_counts().max())
@@ -277,9 +277,9 @@ kmeans.fit(df[["Weight", "Forty"]])
 df["kmeans_3_Wt_Fty"]=kmeans.labels_
 
 # Split up clusters for plotting
-cluster_1 = df[df["kmeans_3_Wt_Fty"]==1]
-cluster_2 = df[df["kmeans_3_Wt_Fty"]==2]
-cluster_3 = df[df["kmeans_3_Wt_Fty"]==0]
+cluster_1 = df[df["kmeans_3_Wt_Fty"]==2]
+cluster_2 = df[df["kmeans_3_Wt_Fty"]==0]
+cluster_3 = df[df["kmeans_3_Wt_Fty"]==1]
 
 # Identify the max player count for positions across all clusters
 max_count = max(cluster_1['Position'].value_counts().max(), cluster_2['Position'].value_counts().max(), cluster_3['Position'].value_counts().max())
@@ -330,7 +330,7 @@ colors = ['firebrick', 'olivedrab', 'royalblue']
 
 # Function to assign clusters with proper colors in scatter plot
 def f(i):
-    return [1, 2, 0][i % 3]
+    return [2, 0, 1][i % 3]
 
 # Scatter plot with custom colors for each cluster
 for i, color in enumerate(colors):
@@ -509,30 +509,30 @@ print("p-value:", p_value_cluster1)
 
 ```python
 Cluster 1 Results:
-LR Slope: -0.007647503300494627
-R-squared: 0.28323756870638084
-t-statistic: -2.591864376333815
-p-value: 0.018996908932555012
+LR Slope: -0.007284025968538165
+R-squared: 0.27525153202504027
+t-statistic: -2.5409474310335876
+p-value: 0.021099052456581946
 ```
 
 Similarly for clusters 2 and 3...
 
 ```python
 Cluster 2 Results:
+LR Slope: -0.0077117141767901794
+R-squared: 0.36953339540415586
+t-statistic: -3.156605168807558
+p-value: 0.00576068502698579
+```
+
+```python
+Cluster 3 Results:
 LR Slope: -0.01193051964700224
 R-squared: 0.48944498115367974
 t-statistic: -4.036966314785228
 p-value: 0.0008558581836797252
 ```
-
-```python
-Cluster 3 Results:
-LR Slope: -0.007284025968538165
-R-squared: 0.27525153202504027
-t-statistic: -2.5409474310335876
-p-value: 0.021099052456581946
-```
-Below discussed C1 only.......
+Below discussed C? only.......
 
 The negative slope indicates that the average cone drill speed for Cluster 1 (hybrid-build Players) has been decreasing by approximately 0.0076 seconds per year. The R-squared value of 0.2832 suggests that about 28.32% of the variance in the average cone drill speed for Cluster 1 can be explained by the year. The statistically significant negative t-statistic and p-value suggest that there is a significant negative linear relationship between the year of the NFL Combine and the average cone drill speed for Cluster 1. Therefore, we reject the null hypothesis and conclude that the average cone drill speed for hybrid-build players in Cluster 1 has been decreasing over the years.
 
