@@ -532,6 +532,53 @@ R-squared: 0.48944498115367974
 t-statistic: -4.036966314785228
 p-value: 0.0008558581836797252
 ```
+
+ALL MODELS
+
+```python
+# Function to fit linear regression model and predict
+def fit_and_predict(cluster_data):
+    X = cluster_data['Year'].values.reshape(-1, 1)
+    y = cluster_data['Cone'].values
+    model = LinearRegression()
+    model.fit(X, y)
+    return model, model.predict(X)
+
+# Fit and predict for each cluster
+model_cluster1, predicted_cone_speed_cluster1 = fit_and_predict(cluster_1_aggregated)
+model_cluster2, predicted_cone_speed_cluster2 = fit_and_predict(cluster_2_aggregated)
+model_cluster3, predicted_cone_speed_cluster3 = fit_and_predict(cluster_3_aggregated)
+
+# Generate a year-range for plotting the regression lines
+years = np.linspace(df['Year'].min(), df['Year'].max(), 100).reshape(-1, 1)
+pred_cluster1_line = model_cluster1.predict(years)
+pred_cluster2_line = model_cluster2.predict(years)
+pred_cluster3_line = model_cluster3.predict(years)
+
+# Plotting
+plt.figure(figsize=(12, 8))
+
+# Scatter plot
+plt.scatter(cluster_1_aggregated['Year'], cluster_1_aggregated['Cone'], color='firebrick', label='Cluster 1')
+plt.scatter(cluster_2_aggregated['Year'], cluster_2_aggregated['Cone'], color='olivedrab', label='Cluster 2')
+plt.scatter(cluster_3_aggregated['Year'], cluster_3_aggregated['Cone'], color='royalblue', label='Cluster 3')
+
+# Plot linear regression lines
+plt.plot(years, pred_cluster1_line, color='firebrick', linewidth=2, alpha=0.5)
+plt.plot(years, pred_cluster2_line, color='olivedrab', linewidth=2, alpha=0.5)
+plt.plot(years, pred_cluster3_line, color='royalblue', linewidth=2, alpha=0.5)
+
+# Labels and legend
+plt.xlabel('Year')
+plt.ylabel('Time (sec)')
+plt.title('Year vs Cone Drill Time')
+plt.legend()
+
+plt.show()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/NFL/All Fitted Models.png)<!-- -->
+
 Below discussed C? only.......
 
 The negative slope indicates that the average cone drill speed for Cluster 1 (hybrid-build Players) has been decreasing by approximately 0.0076 seconds per year. The R-squared value of 0.2832 suggests that about 28.32% of the variance in the average cone drill speed for Cluster 1 can be explained by the year. The statistically significant negative t-statistic and p-value suggest that there is a significant negative linear relationship between the year of the NFL Combine and the average cone drill speed for Cluster 1. Therefore, we reject the null hypothesis and conclude that the average cone drill speed for hybrid-build players in Cluster 1 has been decreasing over the years.
