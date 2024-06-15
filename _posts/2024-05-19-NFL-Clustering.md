@@ -533,7 +533,12 @@ t-statistic: -4.036966314785228
 p-value: 0.0008558581836797252
 ```
 
-ALL MODELS
+**Cluster 1:** The average cone drill speed for Power Players has been decreasing by approximately 0.0073 seconds each year. The R-squared value of 0.2752 suggests that about 28% of the variance in the average cone drill speed for this cluster can be explained by the year. The negative t-statistic and p-value suggest that there is a significant negative linear relationship between the year of the NFL Combine and the average cone drill speed. Therefore, we reject the null hypothesis and conclude that the average cone drill speed for Power Players has been decreasing over the years.
+
+**Cluster 2:** The average cone drill speed for Agile Players has been decreasing by approximately 0.0077 seconds each year. The R-squared value of 0.3695 suggests that about 37% of the variance in the average cone drill speed for this cluster can be explained by the year. The negative t-statistic and p-value suggest that there is a significant negative linear relationship between the year of the NFL Combine and the average cone drill speed. Therefore, we reject the null hypothesis and conclude that the average cone drill speed for Agile Players has been decreasing over the years.
+
+**Cluster 3:** The average cone drill speed for Hybrid Players has been decreasing by approximately 0.0119 seconds each year. The R-squared value of 0.4894 suggests that about 49% of the variance in the average cone drill speed for this cluster can be explained by the year. The negative t-statistic and p-value suggest that there is a significant negative linear relationship between the year of the NFL Combine and the average cone drill speed. Therefore, we reject the null hypothesis and conclude that the average cone drill speed for Hybrid Players has been decreasing over the years.
+
 
 ```python
 # Function to fit linear regression model and predict
@@ -579,7 +584,4 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/All Fitted Models.png)<!-- -->
 
-Below discussed C? only.......
-
-The negative slope indicates that the average cone drill speed for Cluster 1 (hybrid-build Players) has been decreasing by approximately 0.0076 seconds per year. The R-squared value of 0.2832 suggests that about 28.32% of the variance in the average cone drill speed for Cluster 1 can be explained by the year. The statistically significant negative t-statistic and p-value suggest that there is a significant negative linear relationship between the year of the NFL Combine and the average cone drill speed for Cluster 1. Therefore, we reject the null hypothesis and conclude that the average cone drill speed for hybrid-build players in Cluster 1 has been decreasing over the years.
 
