@@ -372,7 +372,7 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Cone Speed YOY.png)<!-- -->
 
-While there does appear to be a dip in the average cone drill speed after 2005, further analysis is necessary to confirm this trend. We'll begin by fitting a linear regression model to the data. This model will test the following hypotheses:
+While there does appear to be a dip in the average cone drill speed over time, further analysis is necessary to confirm this trend. We'll begin by fitting a linear regression model to the data. This model will test the following hypotheses:
 
 **𝐻<sub>0</sub>**: There is no significant linear relationship between the year of the NFL Combine and the <u>average</u> speed at which players have completed the cone drill from 2000 to 2018.
 
