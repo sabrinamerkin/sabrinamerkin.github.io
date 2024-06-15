@@ -423,7 +423,7 @@ LR Slope: -0.013476126608817907
 R-squared (Aggregated Data): 0.5194528023129359
 ```
 
-Across **all** players, the average time to complete the cone drill has been decreasing by about 0.0135 seconds per year. Further, approximately 51.95% of the variance in average cone drill speed can be explained by the year.
+Across **all** players, the average time to complete the cone drill has been decreasing by about 0.0135 seconds per year. Further, approximately 51.95% of the variance in average cone drill speed can be explained by the year. Let's examine the results of the hypothesis test based on this model.
 
 ```python
 import numpy as np
