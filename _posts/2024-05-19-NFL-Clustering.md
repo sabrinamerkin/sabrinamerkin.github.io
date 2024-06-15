@@ -322,15 +322,19 @@ plt.show()
 The distribution of player positions within these new Forty-vs-Weight clusters are nearly identical to that of our clusters on all numeric fields. Now that we've narrowed our focus to two dimensions, we can generate a scatter plot comparing the Forty-Yard Dash and Weight. We'll color-code these points based on their respective clusters.
 
 ```python
-# Scatter plot of Forty vs Weight (k=3 clusters)
+# Scatter plot of Forty vs Weight (3 clusters)
 fig, ax = plt.subplots(figsize=(8, 6))
 
-# Assign colors to match clusters above
-colors = ['royalblue', 'firebrick', 'olivedrab']
+# Define custom colors for the clusters
+colors = ['firebrick', 'olivedrab', 'royalblue']
 
-# Create scatter plot colored by cluster
+# Function to assign clusters with proper colors in scatter plot
+def f(i):
+    return [1, 2, 0][i % 3]
+
+# Scatter plot with custom colors for each cluster
 for i, color in enumerate(colors):
-    cluster_data = df[df["kmeans_3_Wt_Fty"] == i]  # Filter data for each cluster
+    cluster_data = df[df["kmeans_3_Wt_Fty"] == f(i)]  # Filter data for each cluster
     ax.scatter(x=cluster_data["Forty"], y=cluster_data["Weight"], c=color, label=f'Cluster {i+1}')
 
 ax.set_xlabel("40-Yard Dash (sec)")
