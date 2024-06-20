@@ -166,7 +166,7 @@ Many of these correlations seem intuitive. We might expect a player's weight to 
 
 ## Cluster Analysis
 
-We will now explore different player types within the dataset using K-means clustering. To decide on an optimal number of clusters, we'll develop a function that visualizes inertia across different values of k. An *elbow point* on this plot will represent a significant decrease in inertia relative to increasing k-values, indicating the optimal number of clusters where adding more clusters does not significantly reduce inertia.
+Let's explore different player types within the dataset using K-means clustering. To decide on an optimal number of clusters, we'll develop a function that visualizes inertia across different values of k. An *elbow point* on this plot will represent a significant decrease in inertia relative to increasing k-values, indicating the optimal number of clusters where adding more clusters does not significantly reduce inertia.
 
 ```python
 # Create a function to plot the inertias of k for clustering
