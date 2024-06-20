@@ -454,7 +454,7 @@ t-statistic: -4.286763092593991
 p-value: 0.0004989946412297108
 ```
 
-The statistically significant t-statistic and small p-value suggest that the relationship between the year of the NFL Combine and the average cone drill speed is significant. Therefore, we reject the null hypothesis and conclude that there is a significant negative linear relationship between the year and the average cone drill speed in our data.
+The statistically significant t-statistic and small p-value suggest that the relationship between the year of the NFL Combine and the average cone drill speed is significant. Therefore, we reject the null hypothesis and conclude that there is a significant negative linear relationship between **Year** and average **Cone** drill speed in our data.
 
 It's important to consider the diversity of player positions within each year of the NFL Combine. A particular draft class might predominantly consist of fast players, resulting in a lower average cone drill time for that year. Conversely, the following draft year might be dominated by slower positions. This positional bias could give the impression that overall player speed changed significantly from year to year, when in reality, it may just reflect the composition of the draft class.
 
