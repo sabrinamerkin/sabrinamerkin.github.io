@@ -319,7 +319,7 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Forty-Weight Cluster Plot.png)<!-- -->
 
-The distribution of player positions within these new Forty-vs-Weight clusters are nearly identical to that of our clusters on all numeric fields. Now that we've narrowed our focus to two dimensions, we can generate a scatter plot comparing the Forty-Yard Dash and Weight. We'll color-code these points based on their respective clusters.
+The distribution of player positions within these new Forty-vs-Weight clusters is nearly identical to that of our clusters on all numeric fields. Now that we've narrowed our focus to two dimensions, we can generate a scatter plot comparing the Forty-Yard Dash and Weight. We'll color-code these points based on their respective clusters.
 
 ```python
 # Scatter plot of Forty vs Weight (3 clusters)
