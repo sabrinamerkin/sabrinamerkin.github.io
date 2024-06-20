@@ -191,7 +191,7 @@ def optimize_k(data, max_k):
 
 ```
 
-Now that we've created an inertia function, we can test it by first clustering on **all** numeric fields in the dataset. This process will effectively create k player clusters characterized by similar performance metrics among their members.
+Now that we've created an inertia function, we can test it by first clustering on **all** numeric fields in the dataset. This process will effectively create *k* player clusters characterized by similar performance metrics among their members.
 
 ```python
 # Determine k for clustering on all numeric fields in the data
