@@ -350,7 +350,7 @@ This plot provides a visual representation of how our clustering methodology was
 
 ## Cone Drill Regression Analysis
 
-As promised, we will shift our focus back to the correlation heatmap above. Considering annual trends, we observed that Year shared its strongest correlation with Cone Drill (*r* = -0.16). While this correlation is relatively modest, it does raise the question: Has the average time to complete the Cone Drill seen a **significant** decrease since 2000?
+As promised, it's time to shift our focus back to the correlation heatmap above. Considering annual trends, we observed that Year shared its strongest correlation with Cone Drill (*r* = -0.16). While this correlation is relatively modest, it does raise a question: Has the average time to complete the Cone Drill seen a **significant** decrease since 2000?
 
 Before answering this question, we can investigate the average Cone Drill speed year-over-year with a line chart. 
 
