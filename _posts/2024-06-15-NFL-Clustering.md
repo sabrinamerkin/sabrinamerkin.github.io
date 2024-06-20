@@ -6,7 +6,7 @@ excerpt: "Apply K-means clustering & regression analysis to identify correlated 
 ---
 
 ## Background
-In the National Football League (NFL), athletes exhibit a remarkable range of physical attributes tailored to the demands of their positions. Every year, the NFL Combine collects physical and performance data from new athletes declaring for the NFL draft. Scouts use this data to further evaluate player prospects beyond their prior on-field performances.
+In the National Football League (NFL), athletes exhibit a remarkable range of physical attributes tailored to the demands of their positions. Every year, the NFL Combine collects physical and performance data from new athletes declaring for the NFL draft. Scouts use this data to further evaluate player prospects beyond their on-field performances.
 
 In this post, I will investigate the effectiveness of K-means clustering in identifying player positions using NFL Combine data from 2000 to 2018. Additionally, I will conduct several tests to investigate annual trends in the Cone Drill.  
 
