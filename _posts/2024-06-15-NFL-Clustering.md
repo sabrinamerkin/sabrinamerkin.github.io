@@ -162,7 +162,7 @@ plt.show()
 
 ![]({{ site.url }}{{ site.baseurl }}/images/NFL/Correlation Heatmap.png)<!-- -->
 
-Many of these correlations seem intuitive. We might expect a player's weight to be positively correlated with their 40-Yard Dash time, which we see with a correlation coefficient *r* of 0.89 (i.e., heavier players often take longer to complete this drill). It's also understandable that a player's standing jump would be negatively correlated with their Forty-Yard Dash time. Players who complete the dash in less time (faster) are more likely to jump higher than heavier, slower players. We will circle back to these correlations in a bit for further analysis.
+Many of these correlations seem intuitive. We might expect a player's weight to be positively correlated with their 40-Yard Dash time, which we see with a correlation coefficient *r* of 0.89 (i.e., heavier players often take longer to complete this drill). It's also reasonable that a player's standing jump would be negatively correlated with their Forty-Yard Dash time. Players who complete the dash in less time (faster) are more likely to jump higher than heavier, slower players. We will circle back to these correlations in a bit for further analysis.
 
 ## Cluster Analysis
 
