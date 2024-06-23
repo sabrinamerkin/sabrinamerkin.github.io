@@ -5,10 +5,8 @@ header:
   image: "/images/bean.jpg"
 ---
 
-I have a passion for applying statistical techniques in data analysis to draw meaningful conclusions. My background in statistics and programming enables me to effectively approach problems and extract data-driven insights. I am familiar with statistical modeling concepts like Regression Analysis, Time Series Analysis, Clustering, and Significance Testing. I also have a strong understanding of Optimization in Operations Research and Linear Programming.
+I have a passion for leveraging statistical analysis and visualization to explore patterns in data. As an undergraduate, I actively pursued independent research opportunities with professors to explore topics beyond the scope of my coursework. These areas included regression analysis, time series analysis, k-means clustering, and significance testing.
 
-I have the most experience using SQL, Tableau, R, and Python in analysis. I am currently taking courses on DataCamp to further develop my skills as a Data Scientist.
+I am most experienced using SQL, Tableau, R, and Python in my analysis projects.
 
 I utilized statistical data analysis and programming throughout my undergraduate research at The University of North Carolina at Charlotte. These projects required identifying differentially expressed genes through Poisson-Tweedie modeling, exploring variable selection methods in logistic regression, and developing my own simplex algorithm in Python! I served as the 2021-2022 President of the Mathematics Club at UNCC. I also tutored for a Deterministic Modeling course during my spring semester of 2023.
-
-I can be reached via email at ethanfeiza@gmail.com.
