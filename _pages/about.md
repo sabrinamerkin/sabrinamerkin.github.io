@@ -9,4 +9,4 @@ I have a passion for leveraging statistical analysis and visualization to explor
 
 I am most experienced using SQL, Tableau, R, and Python in my analysis projects.
 
-As an undergraduate, I served as the 2021-2022 President of the Mathematics Club at UNC Charlotte. I also tutored for a course in deterministic modeling during the spring semester of 2023.
+I served as the 2021-2022 President of the Mathematics Club at UNC Charlotte. I also tutored for a course in deterministic modeling during the spring semester of 2023.
