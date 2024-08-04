@@ -66,11 +66,11 @@ ggplot(sales_profit, aes(x = Order_Date, y = Total_Sales)) +
 
 Looking at our *total sales* plot, we see a slight positive trend over time—something a store owner would certainly hope for! We also observe signs of seasonality in the data, which can be expected as shopping patterns generally change throughout the year.
 
-Given the apparent trend in sales over time, we will need to test for stationarity in our data. This will ensure that the time series has a constant mean and variance over time. If our series is non-stationary, we will need to transform it. One common method is differencing, which involves subtracting the previous observation from the current observation. This is calculated using the following formula:
+Given the apparent positive trend in sales, we will need to test for stationarity in our data. This will ensure that the time series has a constant mean and variance over time. If our series is non-stationary, we will need to transform it. One common method to achieve stationarity is differencing, which involves subtracting the previous observation from the current observation. This is calculated using the following formula:
 
-ΔY<sub>t</sub> = Y<sub>t</sub> - Y<sub>t-1</sub>
+**ΔY<sub>t</sub> = Y<sub>t</sub> - Y<sub>t-1</sub>**
 
-Where ΔY<sub>t</sub> is the first difference, Y<sub>t</sub> is the current observation, and Y<sub>t-1</sub> is the previous observation. This transformation can help stabilize the mean of the time series.
+Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation. This transformation can help stabilize the mean of the time series.
 
-We would like to consider the choice of AR(*p*), MA(*q*) and ARIMA(*p*,*d*,*q*) models to forecast the data. These models require stationary data to produce reliable forecasts. AR(*p*) models capture the relationship between an observation and a specified number of lagged observations, MA(*q*) models account for past forecast errors, and ARIMA(*p*,*d*,*q*) models combine these approaches with differencing to handle non-stationarity. 
+I'd like to consider the choice of a traditional AR(*p*), MA(*q*) and ARIMA(*p*,*d*,*q*) models to forecast the data. These models require stationary data to produce reliable forecasts. AR(*p*) models capture the relationship between an observation and a specified number of lagged observations, MA(*q*) models account for past forecast errors, and ARIMA(*p*,*d*,*q*) models combine these approaches with differencing to handle non-stationarity. 
 
