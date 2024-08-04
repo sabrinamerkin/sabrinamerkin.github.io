@@ -10,7 +10,7 @@ There are plenty of methods that can be used to forecast time series data. The c
 
 Traditional models like ARIMA and exponential smoothing have been widely used for decades due to their robustness and simplicity. However, new advancements in modeling can offer fresh perspectives by simplifying implementation and improving performance on complex data.
 
-Using [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final) sales, we'll explore traditional time series forecasting methods and compare them to Facebook's 2017 Prophet model. We will assess model diagnostics and accuracy between these approaches while considering the potential drawbacks of different models. Lastly, we'll take a deep dive into the features of the Facebook Prophet model package in RStudio.
+Using daily sales from a [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final) dataset, we'll explore traditional time series forecasting methods and compare them to Facebook's 2017 Prophet model. We will assess model diagnostics and accuracy between these approaches while considering the potential drawbacks of different models. Lastly, we'll take a deep dive into the features of the Facebook Prophet model package in RStudio.
 
 ## Traditional Time Series Modeling
 Let's start creating some forecasts! First, we'll load the superstore data into RStudio and format our time series dataframe.
@@ -48,3 +48,24 @@ head(sales_profit)
 | 2014-01-06 | 4407.0 | 1358.0 |
 | 2014-01-07 | 87.2 | -72.0 |
 | 2014-01-09 | 40.5 | 10.9 |
+
+Our time series ranges from January 2014 to December 2017. For each day in the series, we have *total sales* and *total profit* values. We will only focus on *total sales* for now. Let's investigate further to see if any seasonality or trends are present in the data.
+
+```R
+# Plot sales time series
+library(ggplot2)
+ggplot(sales_profit, aes(x = Order_Date, y = Total_Sales)) +
+  geom_line(color = "blue") +
+  labs(title = "Time Series of Total Sales",
+       x = "Order Date",
+       y = "Total Sales") +
+  theme_minimal()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Raw Sales Plot.png)
+
+Looking at our *total sales* plot, we see a slight positive trend over time — something a store owner would definitely hope for! We also observe signs of seasonality in the data. This can be expected as shopping patterns generally change throughout the year.
+
+With the presence of an apparent trend, we will need to test the stationarity of our data before constructing a forecasting model. If the data is not stationary, we will take...
+
+
