@@ -62,13 +62,22 @@ ggplot(sales_profit, aes(x = Order_Date, y = Total_Sales)) +
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Raw Sales Plot.png)
 
-Looking at our *total sales* plot, we see a slight positive trend over time—something our store owner would hope for! We also observe signs of seasonality in the data, which is expected as shopping patterns generally change throughout the year.
+Our *total sales* plot appears to exhibit a slight positive trend over time—something our store owner would surely hope for! We can observe signs of seasonality in our data with sales spiking at various times of the year. This is expected since shopping habits typically shift with the changing seasons.
 
-Given this apparent positive trend in sales, it's important to test for stationarity in our data. This will ensure that the time series has a constant mean and variance over time. If our series is non-stationary, we will need to transform it. One common method to achieve stationarity is differencing, which involves subtracting the previous observation from the current observation. This is calculated using the following formula:
+A time series is considered *stationary* if it maintains a constant mean and variance over time. Attempting to forecast a non-stationary time series can result in inaccurate predictions because the model will struggle to understand underlying patterns in the data. With an apparent trend and seasonality in our plot, it's likely our time series is non-stationary. We can use the *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity. The ACF will measure how data points in a time series are correlated with each other over different lag times. The PACF will measure the correlation of the time series with its own lagged values, excluding the effects of intermediate lags. In both the graphs of ACF and PACF, a stationary time series typically shows a rapid decline in correlation as the lag increases. This rapid decline indicates that past values have little influence on future values beyond a certain point.
+
+Let's take a look at the ACF and PACF plots of our raw timeseries.
+
+```r
+
+```
+
+The ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. This reveals that our data is indeed non-stationary.
+
+One common method to achieve stationarity is through differencing. Differencing involves subtracting the previous observation from the current observation. This is calculated using the following formula:
 
 **ΔY<sub>t</sub> = Y<sub>t</sub> - Y<sub>t-1</sub>**
 
 Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation. This transformation can help stabilize the mean of the time series.
 
-I'd like to begin by considering the choice of a traditional AR(*p*), MA(*q*), or ARIMA(*p*,*d*,*q*) model to forecast the data. These models require stationary data to produce reliable forecasts. AR(*p*) models capture the relationship between an observation and a specified number of lagged observations, MA(*q*) models account for past forecast errors, and ARIMA(*p*,*d*,*q*) models combine these approaches with differencing to handle non-stationarity. 
 
