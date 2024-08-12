@@ -69,8 +69,14 @@ A time series is considered *stationary* if it maintains a constant mean and var
 Let's take a look at the ACF and PACF plots of our raw timeseries.
 
 ```r
-
+# Check Stationarity by plotting ACF and PACF
+library(forecast)
+par(mfrow = c(2, 1))
+acf(sales_profit$Total_Sales, main = "ACF of Total Sales")
+pacf(sales_profit$Total_Sales, main = "PACF of Total Sales")
 ```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 1.png)
 
 The ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. This is sufficient evidence to believe that our data is indeed non-stationary.
 
@@ -98,5 +104,12 @@ ggplot(diff_sales_profit, aes(x = Order_Date, y = Diff_Total_Sales)) +
        y = "Differenced Total Sales") +
   theme_minimal()
 ```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/First Difference Plot.png)
+
+
+
+
+
 
 
