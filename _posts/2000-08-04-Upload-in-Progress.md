@@ -64,7 +64,7 @@ ggplot(sales_profit, aes(x = Order_Date, y = Total_Sales)) +
 
 Our *total sales* plot appears to exhibit a slight positive trend over time—something our store owner would surely hope for! We can observe signs of seasonality in our data with sales spiking at various times of the year. This is expected since shopping habits typically shift with the changing seasons.
 
-A time series is considered *stationary* if it maintains a constant mean and variance over time. Attempting to forecast a non-stationary time series can result in inaccurate predictions because the model will struggle to understand underlying patterns in the data. With an apparent trend and seasonality in our plot, it's likely our time series is non-stationary. We can use the *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity. The ACF will measure how data points in a time series are correlated with each other over different lag times. The PACF will measure the correlation of the time series with its own lagged values, excluding the effects of intermediate lags. In both the graphs of ACF and PACF, a stationary time series typically shows a rapid decline in correlation as the lag increases. This rapid decline indicates that past values have little influence on future values beyond a certain point.
+A time series is considered *stationary* if it maintains a constant mean and variance over time. Oftentimes, attempting to forecast a non-stationary time series will result in inaccurate predictions. This is because the forecasting model will struggle to detect underlying patterns like trends and seasonality in the data. For the reasons mentioned above, the likelihood of our time series being non-stationary is quite high. We can use the *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity. The ACF will measure how data points in a time series are correlated with each other over different lag times. The PACF will measure the correlation of the time series with its own lagged values, excluding the effects of intermediate lags. In the graphs of the ACF and PACF, a stationary time series will typically show a rapid decline in correlation as the lag increases. This rapid decline indicates that past values have little influence on future values beyond a certain point.
 
 Let's take a look at the ACF and PACF plots of our raw timeseries.
 
@@ -72,9 +72,9 @@ Let's take a look at the ACF and PACF plots of our raw timeseries.
 
 ```
 
-The ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. This reveals that our data is indeed non-stationary.
+The ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. This is sufficient evidence to believe that our data is indeed non-stationary.
 
-One common method to achieve stationarity is through differencing. Differencing involves subtracting the previous observation from the current observation. This is calculated using the following formula:
+One common method to achieve stationarity is through differencing. *Differencing* involves subtracting the previous observation from the current observation in an effort to stabilize the mean of the time series. This is calculated using the following formula:
 
 **ΔY<sub>t</sub> = Y<sub>t</sub> - Y<sub>t-1</sub>**
 
