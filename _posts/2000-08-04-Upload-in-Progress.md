@@ -80,4 +80,23 @@ One common method to achieve stationarity is through differencing. Differencing 
 
 Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation. This transformation can help stabilize the mean of the time series.
 
+We will use the *diff* function in R to take the first difference of our time series.
+
+```r
+# Calculate the first difference of the Total Sales
+diff_total_sales <- diff(sales_profit$Total_Sales, differences = 1)
+
+# Create a new data frame for the differenced series
+diff_sales_profit <- sales_profit[-1, ] # removes first row to match first difference dimensions
+diff_sales_profit$Diff_Total_Sales <- diff_total_sales
+
+# Plot the differenced time series for total sales
+ggplot(diff_sales_profit, aes(x = Order_Date, y = Diff_Total_Sales)) +
+  geom_line(color = "blue") +
+  labs(title = "Differenced Time Series of Total Sales",
+       x = "Order Date",
+       y = "Differenced Total Sales") +
+  theme_minimal()
+```
+
 
