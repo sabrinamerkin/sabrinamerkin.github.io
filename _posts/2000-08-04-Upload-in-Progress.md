@@ -84,7 +84,7 @@ The most common way to achieve stationarity is through a method called differenc
 
 **ΔY<sub>t</sub> = Y<sub>t</sub> - Y<sub>t-1</sub>**
 
-Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation. This transformation can help stabilize the mean of the time series.
+Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation. This transformation can help stabilize the mean and variance of the time series.
 
 We will use the *diff* function in R to take the first difference of our time series.
 
@@ -107,8 +107,35 @@ ggplot(diff_sales_profit, aes(x = Order_Date, y = Diff_Total_Sales)) +
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/First Difference Plot.png)
 
+The mean of this new plot appears to be around zero, indicating that differencing has removed most of the trend component. Compared to the first plot, the variation of the differenced series is more consistent over time. This suggests that the process of differencing also helped to stabilize the variance as we'd hoped for! 
 
+Next, using the *Augmented Dicky-Fuller Test*, we will test for stationarity in the first-differenced time series. The ADF test evaluates the null hypothesis that a unit root is present in the time series. If the p-value of this test is below a threshold of 0.05, we can reject the null hypothesis. This suggests that the series is stationary.
 
+```r
+# Test staionarity using the Augmemted Dickey-Fuller Test
+library(tseries)
+adf.test(diff_sales_profit$Total_Sales) # Significant p-value suggests differenced series is stationary
+
+ ------------------------------
+	Augmented Dickey-Fuller Test
+
+data:  diff_sales_profit$Total_Sales
+Dickey-Fuller = -8.1878, Lag order = 10, p-value = 0.01
+alternative hypothesis: stationary
+```
+
+A p-value of 0.01 indicates that our differenced time series is stationary. Lastly, we will look at the ACF and PACF plots of the differenced series.
+
+```r
+# Plot ACF and PACF of the differenced series
+par(mfrow = c(2, 1))  # Set up the plotting area for two plots
+acf(diff_sales_profit$Diff_Total_Sales, main = "ACF of Differenced Total Sales")
+pacf(diff_sales_profit$Diff_Total_Sales, main = "PACF of Differenced Total Sales")
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 2 (Differenced).png)
+
+As we can see, the ACF and PACF show a rapid decline in correlation as lags increase. Again, this suggests our new time series is stationary. 
 
 
 
