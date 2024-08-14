@@ -135,7 +135,9 @@ pacf(diff_sales_profit$Diff_Total_Sales, main = "PACF of Differenced Total Sales
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 2 (Differenced).png)
 
-As we can see, the ACF and PACF show a rapid decline in correlation as lags increase. Again, this suggests our new time series is stationary. 
+As we can see, the ACF and PACF show a rapid decline in correlation as lags increase. Again, this suggests our new time series is stationary.
+
+Like the title of this section suggests, it's finally time to look at some "traditional" time series models.
 
 
 
