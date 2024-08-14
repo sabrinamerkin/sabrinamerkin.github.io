@@ -78,9 +78,9 @@ pacf(sales_profit$Total_Sales, main = "PACF of Total Sales")
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 1.png)
 
-The ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. This is sufficient evidence to believe that our data is indeed non-stationary.
+The ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. These plots further indicate that our time series is non-stationary.
 
-One common method to achieve stationarity is through differencing. *Differencing* involves subtracting the previous observation from the current observation in an effort to stabilize the mean of the time series. This is calculated using the following formula:
+The most common way to achieve stationarity is through a method called differencing. *Differencing* involves subtracting the previous observation from the current observation in an effort to stabilize the mean of the time series. This is calculated using the following formula:
 
 **ΔY<sub>t</sub> = Y<sub>t</sub> - Y<sub>t-1</sub>**
 
