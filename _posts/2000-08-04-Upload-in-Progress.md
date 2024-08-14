@@ -64,7 +64,7 @@ ggplot(sales_profit, aes(x = Order_Date, y = Total_Sales)) +
 
 Our *total sales* plot exhibits a slight positive trend over time. We can observe signs of seasonality in our data with sales spiking at various times of the year. This can be expected as shopping habits shift with things like holidays, promotonal events, and market conditions.
 
-A time series is considered *stationary* if its mean and variance remain constant over time. When traditional models are used to forecast a non-stationary time series, their predictions often lack reliability. This is because they struggle to detect underlying patterns in the data, like trends and seasonality. For this reason, it's quite likely our time series is non-stationary. We will use an *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity in the data. The ACF measures how data points in our time series are correlated with each other over different lag times. The PACF measures the correlation of the time series with its own lagged values, excluding the effects of intermediate lags. Typically, graphing the ACF and PACF of a stationary time series will show a rapid decline in correlation as the lag increases. This rapid decline indicates that past values have little influence on future values beyond a certain point.
+A time series is considered *stationary* if its mean and variance remain constant over time. When traditional models are used to forecast a non-stationary time series, their predictions often lack reliability. This is because they struggle to detect underlying patterns in the data, like trends and seasonality. For this reason, it's quite likely our time series is non-stationary. We will use an *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity in the data. The ACF measures how data points in our time series are correlated with each other over different past value (lag) times. The PACF measures the correlation of the time series with its own lagged values, excluding the effects of intermediate lags. Typically, graphing the ACF and PACF of a stationary time series will show a rapid decline in correlation as the lag increases. This rapid decline indicates that past values have little influence on future values beyond a certain point.
 
 Let's take a look at the ACF and PACF plots of our raw timeseries.
 
@@ -137,7 +137,15 @@ pacf(diff_sales_profit$Diff_Total_Sales, main = "PACF of Differenced Total Sales
 
 As we can see, the ACF and PACF show a rapid decline in correlation as lags increase. Again, this suggests our new time series is stationary.
 
-Like the title of this section suggests, it's finally time to look at some "traditional" time series models.
+Like the title of this section suggests, we'll be looking at some "traditional" time series models to forecast our sales data.
+
+- **AR(*p*)**: The Autoregressive model uses a linear combination of past values (lags) to predict future values, where p represents the number of lagged observations used in the model. This model is beneficial when the time series has a strong correlation with its past values.
+
+- The Moving Average MA(*q*) model uses past forecast errors to make predictions, with q indicating the number of lagged forecast errors considered. This model is useful when the forecast errors are correlated.
+
+- The AutoRegressive Integrated Moving Average ARIMA(*p*,*d*,*q*) model combines both approaches, incorporating differencing (indicated by d) to handle non-stationarity, along with the autoregressive and moving average components to create a comprehensive forecasting model. This model is powerful because it can handle both autoregressive and moving average components while also addressing non-stationarity through differencing.
+
+Since we already differenced our sales time series, we will immediately focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. 
 
 
 
