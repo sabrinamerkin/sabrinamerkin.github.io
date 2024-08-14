@@ -78,7 +78,7 @@ pacf(sales_profit$Total_Sales, main = "PACF of Total Sales")
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 1.png)
 
-The ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. These plots further indicate that our time series is non-stationary.
+The blue dashed lines in the ACF and PACF plots represent 95% confidence bounds. Values that fall outside these bounds indicate statistically significant correlations that may need to be accounted for in the model. In our plots, the ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. These plots further indicate that our time series is non-stationary.
 
 The most common way to achieve stationarity is through a method called differencing. *Differencing* involves subtracting the previous observation from the current observation in an effort to stabilize the mean of the time series. This is calculated using the following formula:
 
@@ -175,19 +175,18 @@ Training set error measures:
 Training set 52.00244 2259.017 1487.412 -866.918 897.8833 0.7558027 0.03421496
 ```
 
-The model diagnostics calculated above from the *summary* function will be useful later when comparing the performance of alternative forecasting models. Next, we will check the residuals of our ARIMA(0,1,1) model to see if they are random and behave like white noise.
+The model diagnostics calculated above from the *summary* function will be useful later when comparing the performance of alternative forecasting models. Next, we will check the residual diagnostics of our ARIMA(0,1,1) model and see if they are random and behave like white noise.
 
-residuals∼WN(0,σ<sup>2</sup>)
+**ϵ<sub>t</sub> ∼ WN(0,σ<sup>2</sup>)**
 
-*White noise* has a mean of zero, constant variance, and no autocorrelation.
+*White noise* (WN) has a mean of zero, constant variance, and no autocorrelation.
 
 ```r
-# Plot the residuals
+# Plot residual diagnostics
 checkresiduals(sales_arima_model)
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Residuals.png)
 
-In the top plot, we see our model residuals over time. Ideally, these residuals should fluctuate around zero with no clear pattern. While the residuals are mostly centered around zero, there are some large spikes. These spikes likey indicate outliers or periods where the model did not fit the data well.
-
+In the top plot, we see our model residuals over time. Ideally, these residuals should fluctuate around zero with no clear pattern. While the residuals are mostly centered around zero, there are some large spikes. These spikes likey indicate outliers or periods where the model did not fit the data well. In the bottom left, an ACF plot of ***residuals** reveals some significant autocorrelations at certain lags, which suggests that there might still be some pattern in the residuals that the model has not captured. In the bottom right, we see the distribution of residuals normally distributed around zero.
 
