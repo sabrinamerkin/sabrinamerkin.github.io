@@ -139,14 +139,55 @@ As we can see, the ACF and PACF show a rapid decline in correlation as lags incr
 
 Like the title of this section suggests, we'll be looking at some "traditional" time series models to forecast our sales data.
 
-- **AR(*p*)**: The Autoregressive model uses a linear combination of past values (lags) to predict future values, where p represents the number of lagged observations used in the model. This model is beneficial when the time series has a strong correlation with its past values.
+- **AR(*p*)**: The Autoregressive model uses a linear combination of lags to predict future values. The parameter *p* represents the number of lagged observations used in the model. AR models are most beneficial when a time series has a strong correlation with its past values.
 
-- The Moving Average MA(*q*) model uses past forecast errors to make predictions, with q indicating the number of lagged forecast errors considered. This model is useful when the forecast errors are correlated.
+- **MA(*q*)**: The Moving Average model uses past forecast errors to make predictions, with *q* indicating the number of lagged forecast errors considered. MA models are useful when forecasting errors are correlated.
 
-- The AutoRegressive Integrated Moving Average ARIMA(*p*,*d*,*q*) model combines both approaches, incorporating differencing (indicated by d) to handle non-stationarity, along with the autoregressive and moving average components to create a comprehensive forecasting model. This model is powerful because it can handle both autoregressive and moving average components while also addressing non-stationarity through differencing.
+- **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. This makes ARIMA a powerful tool, as it can account for both autoregressive and moving average components while also addressing non-stationarity in the data through differencing.
 
-Since we already differenced our sales time series, we will immediately focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. 
+Since we already differenced our sales time series, we will immediately focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
 
+- If the ACF declines quickly to zero as lags increase, and the PACF has signiicant spikes at lags 1 to *p*, an AR(*p*) model should be considered.
+- If the ACF has significant spikes at lags 1 to *q*, and the PACF declines quickly to zero, an MA(*q*) model should be considered.
 
+Looking back at our ACF and PACF graphs, we see the ACF has a single significant spike at lag 1, and the PACF spikes decline quickly to zero. Thus, a determine a value of 1 for *q*. In summary, we will consider an ARIMA(0,1,1) model to forecast our original sales data.
+
+```r
+# Fit ARIMA(0,1,1) model
+sales_arima_model <- arima(sales_profit$Total_Sales, c(0,1,1))
+
+# Summarize the model
+summary(sales_arima_model)
+
+ ------------------------------
+Call:
+arima(x = sales_profit$Total_Sales, order = c(0, 1, 1))
+
+Coefficients:
+          ma1
+      -0.9641
+s.e.   0.0098
+
+sigma^2 estimated as 5107288:  log likelihood = -11300.87,  aic = 22605.75
+
+Training set error measures:
+                   ME     RMSE      MAE      MPE     MAPE      MASE       ACF1
+Training set 52.00244 2259.017 1487.412 -866.918 897.8833 0.7558027 0.03421496
+```
+
+The model diagnostics calculated above from the *summary* function will be useful later when comparing the performance of alternative forecasting models. Next, we will check the residuals of our ARIMA(0,1,1) model to see if they are random and behave like white noise.
+
+residuals∼WN(0,σ<sup>2</sup>)
+
+*White noise* has a mean of zero, constant variance, and no autocorrelation.
+
+```r
+# Plot the residuals
+checkresiduals(sales_arima_model)
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Residuals.png)
+
+In the top plot, we see our model residuals over time. Ideally, these residuals should fluctuate around zero with no clear pattern. While the residuals are mostly centered around zero, there are some large spikes. These spikes likey indicate outliers or periods where the model did not fit the data well.
 
 
