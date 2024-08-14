@@ -62,7 +62,7 @@ ggplot(sales_profit, aes(x = Order_Date, y = Total_Sales)) +
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Raw Sales Plot.png)
 
-Our *total sales* plot exhibits a slight positive trend over time. We can observe signs of seasonality in our data with sales spiking at various times of the year. This can be expected as shopping habits typically shift with holidays and seasons.
+Our *total sales* plot exhibits a slight positive trend over time. We can observe signs of seasonality in our data with sales spiking at various times of the year. This can be expected as shopping habits typically shift with holidays, promotonal events, and seasons.
 
 A time series is considered *stationary* if its mean and variance remain constant over time. When traditional models are used to forecast a non-stationary time series, their predictions often lack reliability. This is because they struggle to detect underlying patterns in the data, like trends and seasonality. For this reason, it's quite likely our time series is non-stationary. We will use an *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity in the data. The ACF measures how data points in our time series are correlated with each other over different lag times. The PACF measures the correlation of the time series with its own lagged values, excluding the effects of intermediate lags. Typically, graphing the ACF and PACF of a stationary time series will show a rapid decline in correlation as the lag increases. This rapid decline indicates that past values have little influence on future values beyond a certain point.
 
