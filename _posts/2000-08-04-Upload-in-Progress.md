@@ -206,3 +206,28 @@ X-squared = 23.103, df = 20, p-value = 0.2838
 ```
 
 With a p-value of 0.2838, we fail to reject the null hypothesis and assume there is no significant autocorrelation in the residuals.
+
+Now that we've manually selected an ARIMA model, let's see how it compares to the model that R's auto.arima function identifies as the best fit. This function automatically selects ARIMA parameters from the original time series.
+
+```r
+# Check if proposed model matches auto.arima() function
+test_arima = auto.arima(sales_profit$Total_Sales)
+
+summary(test_arima) # also proposes ARIMA(0,1,1)
+
+------------------------------------------------------------
+Series: sales_profit$Total_Sales 
+ARIMA(0,1,1) 
+
+Coefficients:
+          ma1
+      -0.9641
+s.e.   0.0098
+
+sigma^2 = 5111424:  log likelihood = -11300.87
+AIC=22605.75   AICc=22605.76   BIC=22615.98
+
+Training set error measures:
+                   ME     RMSE      MAE      MPE     MAPE      MASE       ACF1
+Training set 52.00244 2259.017 1487.412 -866.918 897.8833 0.7558027 0.03421496
+```
