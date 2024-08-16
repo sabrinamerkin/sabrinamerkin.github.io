@@ -145,7 +145,7 @@ Like the title of this section suggests, we'll be looking at some "traditional" 
 
 - **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. This makes ARIMA a powerful tool, as it can account for both autoregressive and moving average components while also addressing non-stationarity in the data through differencing.
 
-Since we already differenced our sales time series, we will immediately focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
+Because we already differenced our sales time series, we will immediately focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
 
 - If the ACF declines quickly to zero as lags increase, and the PACF has signiicant spikes at lags 1 to *p*, an AR(*p*) model should be considered.
 - If the ACF has significant spikes at lags 1 to *q*, and the PACF declines quickly to zero, an MA(*q*) model should be considered.
