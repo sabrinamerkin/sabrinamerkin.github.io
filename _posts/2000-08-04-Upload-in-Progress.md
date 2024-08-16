@@ -190,7 +190,7 @@ checkresiduals(sales_arima_model)
 
 In the top plot, we see our model residuals over time. Ideally, these residuals should fluctuate around zero with no clear pattern. While the residuals are mostly centered around zero, there are some large spikes. These spikes likey indicate outliers or periods where the model did not fit the data well. In the bottom left, an ACF plot of ***residuals*** reveals one significant autocorrelations at lag 18. While there could be a pattern in the residuals that the model has not captured, it's likely due to random variation. In the bottom right, we see a distribution of residuals that are mostly centered at zero (with the exception of a few large outliers). The ARIMA(0,1,1) model seems to have captured the general pattern of the data well.
 
-We can also perform the *Ljung-Box Test* to check for the presence of any significant autocorrelation in the residuals of the model. This test helps determine whether the residuals are independently distributed.
+Additionally, we can perform the *Ljung-Box Test* to check for significant autocorrelation in the residuals of the model. This test helps determine whether the residuals are independently distributed. A p-value less than 0.05 would indicate significant autocorrelation in residuals.
 
 ```r
 # Ljung-Box Test
@@ -205,3 +205,4 @@ data:  res
 X-squared = 23.103, df = 20, p-value = 0.2838
 ```
 
+With a p-value of 0.2838, we fail to reject the null hypothesis and assume there is no significant autocorrelation in the residuals.
