@@ -141,11 +141,11 @@ Like the title of this section suggests, we'll be looking at some "traditional" 
 
 - **AR(*p*)**: The Autoregressive model uses a linear combination of lags to predict future values. The parameter *p* represents the number of lagged observations used in the model. AR models are most beneficial when a time series has a strong correlation with its past values.
 
-- **MA(*q*)**: The Moving Average model uses past forecast errors to make predictions, with *q* indicating the number of lagged forecast errors considered. MA models are useful when forecasting errors are correlated.
+- **MA(*q*)**: The Moving Average model uses past forecast errors to make predictions. The parameter *q* indicates the number of lagged forecast errors considered. MA models are useful when forecasting errors are correlated.
 
-- **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. This makes ARIMA a powerful tool, as it can account for both autoregressive and moving average components while also addressing non-stationarity in the data through differencing.
+- **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. It can account for both autoregressive and moving average components while also addressing non-stationarity in the data through differencing.
 
-Because we already differenced our sales time series, we will immediately focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
+Because we already differenced our sales time series, we will focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
 
 - If the ACF declines quickly to zero as lags increase, and the PACF has signiicant spikes at lags 1 to *p*, an AR(*p*) model should be considered.
 - If the ACF has significant spikes at lags 1 to *q*, and the PACF declines quickly to zero, an MA(*q*) model should be considered.
