@@ -116,7 +116,7 @@ Next, using the *Augmented Dicky-Fuller Test*, we will test for stationarity in 
 library(tseries)
 adf.test(diff_sales_profit$Total_Sales) # Significant p-value suggests differenced series is stationary
 
- ------------------------------
+ ------------------------------------------------------------
 	Augmented Dickey-Fuller Test
 
 data:  diff_sales_profit$Total_Sales
@@ -159,7 +159,7 @@ sales_arima_model <- arima(sales_profit$Total_Sales, c(0,1,1))
 # Summarize the model
 summary(sales_arima_model)
 
- ------------------------------
+ ------------------------------------------------------------
 Call:
 arima(x = sales_profit$Total_Sales, order = c(0, 1, 1))
 
@@ -198,7 +198,7 @@ res = residuals(sales_arima_model)
 box_ljung_test = Box.test(res, lag = 20, type = "Ljung-Box")
 print(box_ljung_test)
 
-------------------------------
+------------------------------------------------------------
 Box-Ljung test
 
 data:  res
