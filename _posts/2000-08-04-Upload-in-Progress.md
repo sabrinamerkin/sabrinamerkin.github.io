@@ -175,7 +175,7 @@ Training set error measures:
 Training set 52.00244 2259.017 1487.412 -866.918 897.8833 0.7558027 0.03421496
 ```
 
-The model diagnostics calculated above from the *summary* function will be useful later when comparing the performance of alternative forecasting models. Next, we will check the residual diagnostics of our ARIMA(0,1,1) model and see if they are random and behave like white noise.
+The model diagnostics calculated above from the *summary* function will be useful later when comparing the performance of alternative forecasting models. Next, we will check the residual diagnostics of our ARIMA(0,1,1) model to see if they are random and behave like white noise.
 
 **ϵ<sub>t</sub> ∼ WN(0,σ<sup>2</sup>)**
 
