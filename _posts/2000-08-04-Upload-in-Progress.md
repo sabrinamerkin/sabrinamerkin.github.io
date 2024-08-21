@@ -139,16 +139,16 @@ As we can see, the ACF and PACF show a rapid decline in correlation as lags incr
 
 Like the title of this section suggests, we'll be looking at more "traditional" forecasting methods to predict future sales. These models have been used in time series forecasting for quite some time.
 
-- **AR(*p*)**: The Autoregressive model uses a linear combination of lags to predict future values. The parameter *p* represents the number of lagged observations used in the model. AR models are most beneficial when a time series has a strong correlation with its past values.
+- **AR(*p*)**: The Autoregressive model uses a linear combination of lags to predict future values. The parameter value *p* represents the number of lagged observations used in the model formula (I will refrain from diving too deep into these calculations here). AR models are most beneficial when a time series has a strong correlation with its past values.
 
-- **MA(*q*)**: The Moving Average model uses past forecast errors to make predictions. The parameter *q* indicates the number of lagged forecast errors considered. MA models are useful when forecasting errors are correlated.
+- **MA(*q*)**: The Moving Average model uses previous forecasting errors to make predictions. The parameter *q* indicates the number of lagged forecasting errors considered by the model. MA models are useful when forecasting errors are highly correlated over time.
 
-- **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. It can account for both autoregressive and moving average components while also addressing non-stationarity in the data through differencing.
+- **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. Of the three models discussed, ARIMA models are the most versatile for handling real-world data. This is because data is often non-stationary and requires some degree of differencing.
 
 Because we already differenced our sales time series, we will focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
 
-- If the ACF declines quickly to zero as lags increase, and the PACF has significant spikes at lags 1 to *p*, an AR(*p*) model should be considered.
-- If the ACF has significant spikes at lags 1 to *q*, and the PACF declines quickly to zero, an MA(*q*) model should be considered.
+- If the ACF declines quickly to zero as lags increase and the PACF has significant spikes at lags 1 to *p*, an AR(*p*) model should be considered.
+- If the ACF has significant spikes at lags 1 to *q* and the PACF declines quickly to zero, an MA(*q*) model should be considered.
 
 Looking back at our ACF and PACF plots, we see the ACF has a single significant spike at lag 1, and the PACF spikes decline quickly to zero. Thus, we determine a value of 1 for *q*. In summary, we will consider an ARIMA(0,1,1) model to forecast our original sales data.
 
@@ -175,11 +175,11 @@ Training set error measures:
 Training set 52.00244 2259.017 1487.412 -866.918 897.8833 0.7558027 0.03421496
 ```
 
-The model diagnostics calculated above from the *summary* function will be useful later when comparing the performance of alternative forecasting models. Next, we will check the residuals (error terms) of our ARIMA(0,1,1) model to see if they are random. We would like our residuals to follow a white noise distribution.
+The model diagnostics calculated above using the *summary* function will be useful later when comparing the performance of alternative forecasting models. Next, we will check the residuals (error terms) of our ARIMA(0,1,1) model to see if they are random. We would like our residuals to follow a white noise distribution.
 
 **ϵ<sub>t</sub> ∼ WN(0,σ<sup>2</sup>)**
 
-*White noise* (WN) has a mean of zero, constant variance, and no autocorrelation between residuals at different lags.
+*White noise* (WN) has a mean of zero, a constant variance, and no autocorrelation between residuals at different lags.
 
 ```r
 # Plot residual diagnostics
@@ -188,7 +188,7 @@ checkresiduals(sales_arima_model)
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Residuals.png)
 
-In the top plot, we see our model residuals over time. Ideally, these residuals should fluctuate around zero with no clear pattern. While the residuals are mostly centered around zero, there are some large spikes. These spikes likey indicate outliers or periods where the model did not fit the data well. In the bottom left, an ACF plot of ***residuals*** reveals one significant autocorrelations at lag 18. While there could be a pattern in the residuals that the model has not captured, it's likely due to random variation. In the bottom right, we see a distribution of residuals that are mostly centered at zero (with the exception of a few large outliers). The ARIMA(0,1,1) model seems to have captured the general pattern of the data well.
+In the top plot, we see our model residuals over time. Ideally, these residuals should fluctuate around zero with no clear pattern. While the residuals are mostly centered around zero, there are some large spikes. These spikes likey indicate outliers or periods where the model did not fit the data well. In the bottom left, an ACF plot of **<u>residuals</u>** reveals one significant autocorrelation at lag 18. While there could be a pattern in the residuals that the model has not captured, it's likely due to random variation. In the bottom right, we see a distribution of residuals that are mostly centered at zero (with the exception of a few large outliers). The ARIMA(0,1,1) model seems to have captured the general pattern of the data well.
 
 Additionally, we can perform the *Ljung-Box Test* to check for significant autocorrelation in the residuals of the model. This test helps determine whether the residuals are independently distributed. A p-value less than 0.05 would indicate significant autocorrelation in residuals.
 
@@ -207,7 +207,7 @@ X-squared = 23.103, df = 20, p-value = 0.2838
 
 With a p-value of 0.2838, we fail to reject the null hypothesis and assume there is no significant autocorrelation in the residuals.
 
-Now that we've manually selected an ARIMA model, let's see how it compares to the model that R's auto.arima function identifies as the best fit. This function automatically selects ARIMA parameters from the original time series.
+Now that we've manually selected an ARIMA model, let's see how it compares to the model that R's auto.arima function identifies as the best fit. This function automatically selects ARIMA parameters from the original time series as we did.
 
 ```r
 # Check if proposed model matches auto.arima() function
