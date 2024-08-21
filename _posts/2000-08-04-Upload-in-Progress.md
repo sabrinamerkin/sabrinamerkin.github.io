@@ -6,12 +6,12 @@ excerpt: "Upload in Progress 8/4/24"
 ---
 
 ## Background
-There are plenty of methods that can be used to forecast time series data. The characteristics of your data can help guide your choice, but it's important to acknowledge that every model will have strengths and limitations. Traditional models like ARIMA and exponential smoothing have been widely used for decades due to their robustness and simplicity. However, new advancements in modeling can offer a fresh perspective by simplifying implementation and improving performance on complex data.
+There are plenty of methods that can be used to forecast a time series. While data characteristics can help guide your approach to forecasting, it's important to recognize every model has its own strengths and limitations. Traditional models like ARIMA and exponential smoothing have been used for decades due to their robustness and simplicity. Some emerging models can simplify implementation and improve overall performance on complex data. But is new truly better than old?
 
-Using daily sales from a [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final), we'll evaluate traditional time series forecasting methods and explore Facebook's 2017 Prophet model package in R. We will assess model diagnostics and accuracy between these approaches while considering the potential drawbacks of different models.
+Using daily sales from a [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final), we'll evaluate traditional time series forecasting methods and explore Facebook's 2017 Prophet model package in R. This data was sourced from Kaggle -- a platform that hosts a rich collection of real-world datasets.
 
-## Traditional Time Series Modeling
-We will begin by loading our superstore data into RStudio and formatting a time series dataframe.
+## "Traditional" Time Series Modeling
+Let's begin by loading our superstore data into RStudio and formatting a time series dataframe.
 
 ```R
 # Load in Superstore data from Kaggle
@@ -47,7 +47,7 @@ head(sales_profit)
 | 2014-01-07 | 87.2 | -72.0 |
 | 2014-01-09 | 40.5 | 10.9 |
 
-Our data ranges from January 2014 to December 2017. For each day in the series, we have *total sales* and *total profit* values. We will only focus on *total sales* for now. Let's investigate if any seasonality or trends are present in the data.
+Our data was collected from January 2014 to December 2017. For each day in the series, we have *total sales* and *total profit* values. We will only focus on *total sales* for now. Let's look for any seasonality or trends present in the data.
 
 ```R
 # Plot sales time series
@@ -62,11 +62,11 @@ ggplot(sales_profit, aes(x = Order_Date, y = Total_Sales)) +
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Raw Sales Plot.png)
 
-Our *total sales* plot exhibits a slight positive trend over time. We can observe signs of seasonality in our data with sales spiking at various times of the year. This can be expected as shopping habits shift with things like holidays, promotonal events, and market conditions.
+Our plot of *total sales* shows a slight positive trend over time. We can observe signs of seasonality in the data with sales spiking at various times of the year. This can be expected as shopping habits tend to shift with holidays, promotonal events, market conditions, and more.
 
-A time series is considered *stationary* if its mean and variance remain constant over time. When traditional models are used to forecast a non-stationary time series, their predictions often lack reliability. This is because they struggle to detect underlying patterns in the data, like trends and seasonality. For this reason, it's quite likely our time series is non-stationary. We will use an *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity in the data. The ACF measures how data points in our time series are correlated with each other over different past value (lag) times. The PACF measures the correlation of the time series with its own lagged values, excluding the effects of intermediate lags. Typically, graphing the ACF and PACF of a stationary time series will show a rapid decline in correlation as the lag increases. This rapid decline indicates that past values have little influence on future values beyond a certain point.
+A time series is considered *stationary* if its expected value (mean), autocorrelation, and variance remain constant over time. When models are used to forecast a non-stationary time series, their predictions often lack accuracy. This is because they struggle to detect underlying patterns in the data like trends and seasonality. For this exact reason, it's likely our time series is non-stationary. We will use an *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity in the data. The ACF measures how data points in our time series are correlated with each other over different past value times (lags). The PACF measures the correlation of our time series with its own lagged values, excluding the effects of intermediate lags. Typically, graphing the ACF and PACF of a stationary time series will show a rapid decline in correlation as the lag increases. This rapid decline indicates that past values have little influence on future values beyond a certain point.
 
-Let's take a look at the ACF and PACF plots of our raw timeseries.
+Let's take a look at the ACF and PACF of our sales data to explore stationarity before forecasting.
 
 ```r
 # Check Stationarity by plotting ACF and PACF
@@ -78,13 +78,13 @@ pacf(sales_profit$Total_Sales, main = "PACF of Total Sales")
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 1.png)
 
-The blue dashed lines in the ACF and PACF plots represent 95% confidence bounds. Values that fall outside these bounds indicate statistically significant correlations that may need to be accounted for in the model. In our plots, the ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. These plots further indicate that our time series is non-stationary.
+The blue dashed lines in both plots represent 95% confidence bounds. Values that fall outside these bounds indicate statistically significant correlations that may need to be accounted for in the model. In our plots, the ACF does not decline quickly to zero as it has significant spikes beyond lag 5. The PACF also has several lags after lag 5 that are significantly different from zero. These plots further indicate that our time series is non-stationary.
 
-The most common way to achieve stationarity is through a method called differencing. *Differencing* involves subtracting the previous observation from the current observation in an effort to stabilize the mean of the time series. This is calculated using the following formula:
+The most common way to achieve stationarity is through a method called *differencing*. Differencing involves subtracting the previous observation from the current observation in an effort to stabilize the mean and variance of the time series. This is calculated using the following formula:
 
 **ΔY<sub>t</sub> = Y<sub>t</sub> - Y<sub>t-1</sub>**
 
-Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation. This transformation can help stabilize the mean and variance of the time series.
+Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation at time **t**.
 
 We will use the *diff* function in R to take the first difference of our time series.
 
