@@ -89,7 +89,7 @@ Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the curr
 We will use the *diff* function in R to take the first difference of our time series.
 
 ```r
-# Calculate the first difference of the Total Sales
+# Calculate the first difference of Total Sales
 diff_total_sales <- diff(sales_profit$Total_Sales, differences = 1)
 
 # Create a new data frame for the differenced series
@@ -107,9 +107,9 @@ ggplot(diff_sales_profit, aes(x = Order_Date, y = Diff_Total_Sales)) +
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/First Difference Plot.png)
 
-The mean of this new plot appears to be around zero, indicating that differencing has removed most of the trend component. Compared to the first plot, the variation of the differenced series is more consistent over time. This suggests that the process of differencing also helped to stabilize the variance as we'd hoped for! 
+The mean of this new plot appears to be around zero, indicating that differencing has removed most of the trend component. Compared to the first plot, the variation in the differenced series is slightly more consistent over time. This suggests that differencing also helped stabilize the variance as we had hoped!
 
-Next, using the *Augmented Dicky-Fuller Test*, we will test for stationarity in the first-differenced time series. The ADF test evaluates the null hypothesis that a unit root is present in the time series. If the p-value of this test is below a threshold of 0.05, we can reject the null hypothesis. This suggests that the series is stationary.
+Next, using the *Augmented Dicky-Fuller Test*, we will test for stationarity in the first-differenced time series. The ADF test evaluates a null hypothesis that a *unit root* is present in the time series. If the p-value of this test falls below 0.05, we can reject the null hypothesis. This suggests that the series is stationary.
 
 ```r
 # Test staionarity using the Augmemted Dickey-Fuller Test
@@ -124,7 +124,7 @@ Dickey-Fuller = -8.1878, Lag order = 10, p-value = 0.01
 alternative hypothesis: stationary
 ```
 
-A p-value of 0.01 indicates that our differenced time series is stationary. Lastly, we will look at the ACF and PACF plots of the differenced series.
+A p-value of 0.01 indicates that our differenced time series is stationary. Oncemore, we'll look at ACF and PACF plots of our differenced series.
 
 ```r
 # Plot ACF and PACF of the differenced series
@@ -135,9 +135,9 @@ pacf(diff_sales_profit$Diff_Total_Sales, main = "PACF of Differenced Total Sales
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 2 (Differenced).png)
 
-As we can see, the ACF and PACF show a rapid decline in correlation as lags increase. Again, this suggests our new time series is stationary.
+As we can see, the ACF and PACF show a rapid decline in correlation as lags increase. Again, this backs our statement that the differenced time series is stationary.
 
-Like the title of this section suggests, we'll be looking at some "traditional" time series models to forecast our sales data.
+Like the title of this section suggests, we'll be looking at more "traditional" forecasting methods to predict future sales. These models have been used in time series forecasting for quite some time.
 
 - **AR(*p*)**: The Autoregressive model uses a linear combination of lags to predict future values. The parameter *p* represents the number of lagged observations used in the model. AR models are most beneficial when a time series has a strong correlation with its past values.
 
