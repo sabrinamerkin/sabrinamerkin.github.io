@@ -84,7 +84,7 @@ The most common way to achieve stationarity is through a method called *differen
 
 **ΔY<sub>t</sub> = Y<sub>t</sub> - Y<sub>t-1</sub>**
 
-Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation at time **t**.
+Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation.
 
 We will use the *diff* function in R to take the first difference of our time series.
 
