@@ -69,7 +69,7 @@ A time series is considered *stationary* if its expected value (mean), autocorre
 Let's take a look at the ACF and PACF of our sales data to explore stationarity before forecasting.
 
 ```r
-# Check Stationarity by plotting ACF and PACF
+# Check stationarity by plotting ACF and PACF
 library(forecast)
 par(mfrow = c(2, 1))
 acf(sales_profit$Total_Sales, main = "ACF of Total Sales")
@@ -112,7 +112,7 @@ The mean of this new plot appears to be around zero, indicating that differencin
 Next, using the *Augmented Dicky-Fuller Test*, we will test for stationarity in the first-differenced time series. The ADF test evaluates a null hypothesis that a *unit root* is present in the time series. If the p-value of this test falls below 0.05, we can reject the null hypothesis. This suggests that the series is stationary.
 
 ```r
-# Test staionarity using the Augmemted Dickey-Fuller Test
+# Test stationarity using the Augmemted Dickey-Fuller Test
 library(tseries)
 adf.test(diff_sales_profit$Total_Sales) # Significant p-value suggests differenced series is stationary
 
@@ -124,7 +124,7 @@ Dickey-Fuller = -8.1878, Lag order = 10, p-value = 0.01
 alternative hypothesis: stationary
 ```
 
-A p-value of 0.01 indicates that our differenced time series is stationary. Oncemore, we'll look at ACF and PACF plots of our differenced series.
+A p-value of 0.01 indicates that our differenced time series is stationary. Once more, we'll look at ACF and PACF plots of our differenced series.
 
 ```r
 # Plot ACF and PACF of the differenced series
@@ -145,7 +145,7 @@ Like the title of this section suggests, we'll be looking at more "traditional" 
 
 - **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. Of the three models discussed, ARIMA models are the most versatile for handling real-world data. This is because data is often non-stationary and requires some degree of differencing.
 
-Because we already differenced our sales time series, we will focus our attention to the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
+Because we already differenced our sales time series, we will focus our attention on the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
 
 - If the ACF declines quickly to zero as lags increase and the PACF has significant spikes at lags 1 to *p*, an AR(*p*) model should be considered.
 - If the ACF has significant spikes at lags 1 to *q* and the PACF declines quickly to zero, an MA(*q*) model should be considered.
@@ -188,7 +188,7 @@ checkresiduals(sales_arima_model)
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Residuals.png)
 
-In the top plot, we see our model residuals over time. Ideally, these residuals should fluctuate around zero with no clear pattern. While the residuals are mostly centered around zero, there are some large spikes. These spikes likey indicate outliers or periods where the model did not fit the data well. In the bottom left, an ACF plot of <u>residuals</u> reveals one significant autocorrelation at lag 18. While there could be a pattern in the residuals that the model has not captured, it's likely due to random variation. In the bottom right, we see a distribution of residuals that are mostly centered at zero (with the exception of a few large outliers). The ARIMA(0,1,1) model seems to have captured the general pattern of the data well.
+In the top plot, we see our model residuals over time. Ideally, these residuals should fluctuate around zero with no clear pattern. While the residuals are mostly centered around zero, there are some large spikes. These spikes likely indicate outliers or periods where the model did not fit the data well. In the bottom left, an ACF plot of <u>residuals</u> reveals one significant autocorrelation at lag 18. While there could be a pattern in the residuals that the model has not captured, it's likely due to random variation. In the bottom right, we see a distribution of residuals that are mostly centered at zero (with the exception of a few large outliers). The ARIMA(0,1,1) model seems to have captured the general pattern of the data well.
 
 Additionally, we can perform the *Ljung-Box Test* to check for significant autocorrelation in the residuals of the model. This test helps determine whether the residuals are independently distributed. A p-value less than 0.05 would indicate significant autocorrelation in residuals.
 
