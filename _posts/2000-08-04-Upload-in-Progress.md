@@ -6,7 +6,7 @@ excerpt: "Upload in Progress 8/4/24"
 ---
 
 ## Background
-There are plenty of methods that can be used to forecast a time series. While data characteristics can help guide your approach to forecasting, it's important to recognize every model has its own strengths and limitations. Traditional models like ARIMA and exponential smoothing have been used for decades due to their robustness and simplicity. Some emerging models can simplify implementation and improve overall performance on complex data. But is new truly better than old?
+There are plenty of methods that can be used to forecast time series data. While data characteristics can help guide your approach to forecasting, it's important to recognize every model has its own strengths and limitations. Traditional models like ARIMA and exponential smoothing have been used for decades due to their robustness and simplicity. Some emerging models can simplify implementation and improve overall performance on complex data. But is new truly better than old?
 
 Using daily sales from a [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final), we'll evaluate traditional time series forecasting methods and explore Facebook's 2017 Prophet model package in R. This data was sourced from Kaggle -- a platform that hosts a rich collection of real-world datasets.
 
