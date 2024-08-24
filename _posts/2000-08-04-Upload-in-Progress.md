@@ -141,7 +141,7 @@ Like the title of this section suggests, we'll be looking at more "traditional" 
 
 - **MA(*q*)**: The Moving Average model uses previous forecasting errors to make predictions. The parameter *q* indicates the number of lagged forecasting errors considered by the model. MA models are useful when forecasting errors are highly correlated over time.
 
-- **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. Of the three models discussed, ARIMA models are the most versatile for handling real-world data. This is because data is often non-stationary and requires some degree of differencing.
+- **ARIMA(*p*,*d*,*q*)**: The AutoRegressive Integrated Moving Average model combines elements of the AutoRegressive (AR) model, Moving Average (MA) model, and differencing. ARIMA models are the most versatile for handling real-world data. This is because data is often non-stationary and requires some degree of differencing.
 
 Because we already differenced our sales time series, we will focus our attention on the ARIMA(*p*,*d*,*q*) model with *d*=1. We can use the following rules to determine *p* and *q*.
 
