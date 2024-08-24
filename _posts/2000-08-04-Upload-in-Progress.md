@@ -83,7 +83,7 @@ pacf(sales_profit$Total_Sales, main = "PACF of Total Sales")
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 1.png)
 
-The blue dashed lines in both plots represent a 95% confidence interval. Values that fall outside these bounds indicate statistically significant correlations that may need to be accounted for in the model. In our first plot, the ACF does decline quickly, but there are several significant spikes beyond lag 5. There are also several PACF values beyond lag 5 that are significantly different from zero. These plots further indicate our time series is non-stationary.
+The blue dashed lines in both plots represent a 95% confidence interval. Values that fall outside these bounds indicate statistically significant correlations that may need to be accounted for in the model. In our first plot, the ACF does decline quickly, but there are several significant spikes beyond lag 5. There are also several PACF values beyond lag 5 that are significantly different from zero. These plots further indicate our time series is non-stationary...
 
 The most common way to achieve stationarity is through a method called *differencing*. Differencing involves subtracting the previous observation from the current observation in an effort to stabilize the mean and variance of the time series. This is calculated using the following formula:
 
