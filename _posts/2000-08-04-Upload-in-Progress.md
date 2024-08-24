@@ -112,9 +112,9 @@ ggplot(diff_sales_profit, aes(x = Order_Date, y = Diff_Total_Sales)) +
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/First Difference Plot.png)
 
-The mean of this new plot appears to be around zero, indicating that differencing has removed most of the trend component. Compared to the first plot, the variation in the differenced series is slightly more consistent over time. This suggests that differencing also helped stabilize the variance as we had hoped!
+The mean of this new plot now appears to be around zero, indicating that differencing has removed most of the trend component. Compared to our original plot, the variation in the differenced series is slightly more consistent over time. This suggests that differencing also helped stabilize the variance as we had hoped!
 
-Next, using the *Augmented Dicky-Fuller Test*, we will test for stationarity in the first-differenced time series. The ADF test evaluates a null hypothesis that a *unit root* is present in the time series. If the p-value of this test falls below 0.05, we can reject the null hypothesis. This suggests that the series is stationary.
+Next, using the *Augmented Dicky-Fuller Test*, we will test for stationarity in the first-differenced time series. The ADF test evaluates a null hypothesis that a *unit root* is present in the time series. If the p-value of this test falls below 0.05, we can reject the null hypothesis. This would suggest that the series is stationary.
 
 ```r
 # Test stationarity using the Augmemted Dickey-Fuller Test
@@ -129,7 +129,7 @@ Dickey-Fuller = -8.1878, Lag order = 10, p-value = 0.01
 alternative hypothesis: stationary
 ```
 
-A p-value of 0.01 indicates that our differenced time series is stationary. Once more, we'll look at ACF and PACF plots of our differenced series.
+A p-value of 0.01 tells us that our differenced time series is now stationary. Once more, we'll look at the ACF and PACF plots of our differenced series.
 
 ```r
 # Plot ACF and PACF of the differenced series
