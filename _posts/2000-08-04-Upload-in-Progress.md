@@ -76,7 +76,7 @@ Let's take a look at the ACF and PACF of our sales data to explore stationarity 
 ```r
 # Check stationarity by plotting ACF and PACF
 library(forecast)
-par(mfrow = c(2, 1))
+par(mfrow = c(2, 1)) # Arrange top and bottom plots
 acf(sales_profit$Total_Sales, main = "ACF of Total Sales")
 pacf(sales_profit$Total_Sales, main = "PACF of Total Sales")
 ```
