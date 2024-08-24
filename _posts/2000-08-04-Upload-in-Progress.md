@@ -148,11 +148,11 @@ Because we already differenced our sales time series, we will focus our attentio
 - If the ACF declines quickly to zero as lags increase and the PACF has significant spikes at lags 1 to *p*, an AR(*p*) model should be considered.
 - If the ACF has significant spikes at lags 1 to *q* and the PACF declines quickly to zero, an MA(*q*) model should be considered.
 
-Looking back at our ACF and PACF plots, we see the ACF has a single significant spike at lag 1, and the PACF spikes decline quickly to zero. Thus, we determine a value of 1 for *q*. In summary, we will consider an ARIMA(0,1,1) model to forecast our original sales data.
+Looking back at the ACF and PACF plots of the first-differenced series, the ACF had a single significant spike at lag 1, and the PACF spikes declined quickly to zero. Thus, we determine a value of 1 for *q* and consider an ARIMA(0,1,1) model to forecast our original sales data.
 
 ```r
 # Fit ARIMA(0,1,1) model
-sales_arima_model <- arima(sales_profit$Total_Sales, c(0,1,1))
+sales_arima_model <- arima(sales_profit$Total_Sales, c(0,1,1)) # Assign vector for p, d, q
 
 # Summarize the model
 summary(sales_arima_model)
