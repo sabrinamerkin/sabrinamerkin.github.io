@@ -236,10 +236,48 @@ Let's see how the model predicts the next 365 days of sales using R's AutoPlot f
 
 ```r
 # Forecast next year with ARIMA(0,1,1)
-forecast_arima <- forecast(sales_arima_model, h = 365)
+forecast_arima <- forecast(sales_arima_model, h = 365, level=95)
 autoplot(forecast_arima) +
   ylab("Total Sales") +
   ggtitle("ARIMA(0,1,1) Model Forecast")
 ```
 
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Year Forecast.png)
 
+Here, we can see our ARIMA model's forecasted values in purple. A 95% confidence interval is shaded blue around these forecasts. Note that, given the simplicity of the model, our forecasted values follow a linear trend.
+
+Let's try comparing our ARIMA model to some other approaches. First, we will consider an Exponential Smoothing State Space (ETS) model. ETS models can be a good alternative when forecasting time series with trends and seasonality. These models include componets for error, trend, and seasonality...
+
+```r
+sales_ets_model = ets(sales_profit$Total_Sales)
+forecast_ets <- forecast(sales_ets_model, h = 365, level=95)
+autoplot(forecast_ets) +
+  ylab("Total Sales") +
+  ggtitle("ETS Model Forecast")
+```
+
+IMAGE
+
+```r
+summary(sales_ets_model) # Not optimal... BIC = 27935
+------------------------------------------------------------
+ETS(A,N,N) 
+
+Call:
+ets(y = sales_profit$Total_Sales)
+
+  Smoothing parameters:
+    alpha = 0.0346 
+
+  Initial states:
+    l = 852.6856 
+
+  sigma:  2260.831
+
+     AIC     AICc      BIC 
+27919.90 27919.92 27935.26
+
+Training set error measures:
+                   ME     RMSE     MAE       MPE     MAPE      MASE       ACF1
+Training set 49.49787 2259.002 1489.77 -881.6218 912.3988 0.7570005 0.03535812
+```
