@@ -131,13 +131,6 @@ alternative hypothesis: stationary
 
 A p-value of 0.01 tells us that our differenced time series is now stationary. Once more, we'll look at the ACF and PACF plots of our differenced series.
 
-```r
-# Plot ACF and PACF of the differenced series
-par(mfrow = c(2, 1))  # Set up the plotting area for two plots
-acf(diff_sales_profit$Diff_Total_Sales, main = "ACF of Differenced Total Sales")
-pacf(diff_sales_profit$Diff_Total_Sales, main = "PACF of Differenced Total Sales")
-```
-
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 2 (Differenced).png)
 
 As we can see, the ACF and PACF show a rapid decline in correlation as lags increase. Again, this backs our statement that the differenced time series is stationary.
