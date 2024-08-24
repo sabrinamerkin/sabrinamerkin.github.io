@@ -11,7 +11,7 @@ There are plenty of methods that can be used to forecast a time series. While da
 Using daily sales from a [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final), we'll evaluate traditional time series forecasting methods and explore Facebook's 2017 Prophet model package in R. This data was sourced from Kaggle -- a platform that hosts a rich collection of real-world datasets.
 
 ## "Traditional" Time Series Modeling
-Let's begin by loading our superstore data into RStudio and formatting a time series dataframe.
+Let's begin by loading our Superstore data into RStudio and formatting a time series dataframe.
 
 ```R
 # Load in Superstore data from Kaggle
