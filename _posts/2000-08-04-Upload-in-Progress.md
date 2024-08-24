@@ -91,7 +91,7 @@ The most common way to achieve stationarity is through a method called *differen
 
 Where **ΔY<sub>t</sub>** is the first difference, **Y<sub>t</sub>** is the current observation, and **Y<sub>t-1</sub>** is the previous observation.
 
-We will use the *diff* function in R to take the first difference of our time series.
+Luckily, the *diff* function in R will calculate the first difference of our time series for us.
 
 ```r
 # Calculate the first difference of Total Sales
