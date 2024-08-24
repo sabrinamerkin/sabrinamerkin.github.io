@@ -229,3 +229,17 @@ Training set error measures:
                    ME     RMSE      MAE      MPE     MAPE      MASE       ACF1
 Training set 52.00244 2259.017 1487.412 -866.918 897.8833 0.7558027 0.03421496
 ```
+
+This function also selected an ARIMA(0,1,1) model!
+
+Let's see how the model predicts the next 365 days of sales using R's AutoPlot function.
+
+```r
+# Forecast next year with ARIMA(0,1,1)
+forecast_arima <- forecast(sales_arima_model, h = 365)
+autoplot(forecast_arima) +
+  ylab("Total Sales") +
+  ggtitle("ARIMA(0,1,1) Model Forecast")
+```
+
+
