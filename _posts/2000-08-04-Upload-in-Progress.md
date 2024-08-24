@@ -137,7 +137,7 @@ As we can see, plots of the ACF and PACF show a decline in correlation as lags i
 
 Like the title of this section suggests, we'll be looking at more "traditional" forecasting methods to predict future sales. These models have been used in time series forecasting for quite some time.
 
-- **AR(*p*)**: The Autoregressive model uses a linear combination of lags to predict future values. The parameter value *p* represents the number of lagged observations used in the model formula (I will refrain from diving too deep into these calculations here). AR models are most beneficial when a time series has a strong correlation with its past values.
+- **AR(*p*)**: The Autoregressive model uses a linear combination of lags to predict future values. The parameter value *p* represents the number of lagged observations used in the model formula (I won't delve into the calculations here). AR models are most beneficial when a time series has a strong correlation with its past values.
 
 - **MA(*q*)**: The Moving Average model uses previous forecasting errors to make predictions. The parameter *q* indicates the number of lagged forecasting errors considered by the model. MA models are useful when forecasting errors are highly correlated over time.
 
