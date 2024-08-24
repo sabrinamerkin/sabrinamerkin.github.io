@@ -98,7 +98,7 @@ Luckily, the *diff* function in R will calculate the first difference of our tim
 diff_total_sales <- diff(sales_profit$Total_Sales, differences = 1)
 
 # Create a new data frame for the differenced series
-diff_sales_profit <- sales_profit[-1, ] # removes first row to match first difference dimensions
+diff_sales_profit <- sales_profit[-1, ] # Removes first row to match first-difference dimensions
 diff_sales_profit$Diff_Total_Sales <- diff_total_sales
 
 # Plot the differenced time series for total sales
