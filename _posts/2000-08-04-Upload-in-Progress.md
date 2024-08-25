@@ -256,7 +256,9 @@ autoplot(forecast_ets) +
   ggtitle("ETS Model Forecast")
 ```
 
-IMAGE
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ETS Year Forecast.png)
+
+It's difficult to visually compare the accuracies of the ETS and ARIMA models. Let's focus on analyzing model diagnostics instead.
 
 ```r
 summary(sales_ets_model) # Not optimal... BIC = 27935
@@ -281,3 +283,15 @@ Training set error measures:
                    ME     RMSE     MAE       MPE     MAPE      MASE       ACF1
 Training set 49.49787 2259.002 1489.77 -881.6218 912.3988 0.7570005 0.03535812
 ```
+
+As we compare ARIMA to ETS, we see the following.
+
+- **Mean Error (ME)**: Both models have similar ME values, with the ETS model showing a slightly smaller ME (49.50) compared to the ARIMA model (52.00). This indicates that both models have similar levels of bias, though the ETS model may be marginally better.
+- **Mean Absolute Error (MAE)**: Both models have comparable MAE values (1487.77 for ETS and 1487.41 for ARIMA). This indicates that both models have very similar predictive performance.
+- **Mean Percentage Error (MPE)**: On average, both models tend to under-predict the true value of daily sales. The ETS model has a more negative MPE (-881.62) compared to the ARIMA model (-866.92), indicating the ETS model shows slightly higher under-prediction.
+- **Mean Absolute Percentage Error (MAPE)**: The ARIMA model has a slightly lower MAPE (897.88) compared to the ETS model (912.40). This indicates that the ARIMA model might have a slight edge in terms of percentage error.
+- **AIC, AICc, BIC**: The ARIMA model has significantly lower AIC (22605.75), AICc (22605.76), and BIC (22615.98) values compared to the ETS model (AIC = 27919.00, AICc = 27919.92, BIC = 27935.26). Lower values for these criteria generally indicate a better fit, so the ARIMA model is preferred based on these measures.
+
+The ARIMA and ETS models share similar performance in terms of error measures (ME, RMSE, MAE, MPE, MAPE, and MASE). However, the ARIMA model has a slight edge with lower AIC, AICc, and BIC values. These lower values suggest that the ARIMA model provides a better fit to the data. ACF1 values tell us the residuals' autocorrelation is minimal in both models, indicating they both handle the data's autocorrelation well. All in all, the ARIMA model remains the preferred choice.
+
+
