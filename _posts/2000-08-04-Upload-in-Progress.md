@@ -319,6 +319,6 @@ Forecasts:
 1239         713.79 -4875.060 6302.640 -7833.619 9261.199
 ```
 
-In the table below, we summarize our analysis of model diagnostics.
+The table below summarizes the diagnostics for our three models.
 
-![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/export.jpeg)
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Model Diagnostics Table.png)
