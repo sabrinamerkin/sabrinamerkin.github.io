@@ -321,4 +321,4 @@ Forecasts:
 
 The table below summarizes the diagnostics for our three models.
 
-![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Model Diagnostics Table.jpeg)
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Model Diagnostics Table.png)
