@@ -16,13 +16,12 @@ $indent-var: 1.3em !default;
 
 /* system typefaces */
 $serif: Georgia, Times, serif !default;
-$sans-serif: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
-  "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$sans-serif: "Open Sans", Arial, sans-serif !default; // Updated to include Open Sans
 $monospace: Monaco, Consolas, "Lucida Console", monospace !default;
 
 /* sans serif typefaces */
-$sans-serif-narrow: $sans-serif !default;
-$helvetica: Helvetica, "Helvetica Neue", Arial, sans-serif !default;
+$sans-serif-narrow: "Open Sans", Arial, sans-serif !default; // Updated to include Open Sans
+$helvetica: "Open Sans", Arial, sans-serif !default; // Updated to replace Helvetica with Open Sans
 
 /* serif typefaces */
 $georgia: Georgia, serif !default;
@@ -36,14 +35,14 @@ $header-font-family: "Open Sans", Arial, sans-serif !default;
 $caption-font-family: "Open Sans", Arial, sans-serif !default;
 
 /* type scale */
-$type-size-1: 2.441em !default; // ~39.056px
-$type-size-2: 1.953em !default; // ~31.248px
-$type-size-3: 1.563em !default; // ~25.008px
-$type-size-4: 1.25em !default; // ~20px
-$type-size-5: 1em !default; // ~16px
-$type-size-6: 0.75em !default; // ~12px
-$type-size-7: 0.6875em !default; // ~11px
-$type-size-8: 0.625em !default; // ~10px
+$type-size-1: 2.441em !default; // ~39.056px, suitable for main headings
+$type-size-2: 1.953em !default; // ~31.248px, suitable for subheadings
+$type-size-3: 1.563em !default; // ~25.008px, suitable for section titles
+$type-size-4: 1.25em !default; // ~20px, suitable for smaller headings
+$type-size-5: 1em !default; // ~16px, suitable for body text
+$type-size-6: 0.875em !default; // ~14px, adjusted for better readability for secondary text
+$type-size-7: 0.75em !default; // ~12px, suitable for captions or footnotes
+$type-size-8: 0.625em !default; // ~10px, suitable for legal text or very small captions
 
 /*
    Colors
