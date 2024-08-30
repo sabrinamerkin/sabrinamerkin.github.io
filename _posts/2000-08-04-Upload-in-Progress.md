@@ -232,35 +232,11 @@ Training set 52.00244 2259.017 1487.412 -866.918 897.8833 0.7558027 0.03421496
 
 This function also selected an ARIMA(0,1,1) model!
 
-Let's see how the model predicts the next 365 days of sales using R's AutoPlot function.
-
-```r
-# Forecast next year with ARIMA(0,1,1)
-forecast_arima <- forecast(sales_arima_model, h = 365, level=95)
-autoplot(forecast_arima) +
-  ylab("Total Sales") +
-  ggtitle("ARIMA(0,1,1) Model Forecast")
-```
-
-![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Year Forecast.png)
-
-Here, we can see our ARIMA model's forecasted values in purple. A 95% confidence interval is shaded blue around these forecasts. Note that, given the simplicity of the model, our forecasted values follow a linear trend.
-
 Let's try comparing our ARIMA model to some other approaches. First, we will consider an Exponential Smoothing State Space (ETS) model. ETS models can be a good alternative when forecasting time series with trends and seasonality. These models include componets for error, trend, and seasonality...
 
 ```r
+# Construct an ETS model
 sales_ets_model = ets(sales_profit$Total_Sales)
-forecast_ets <- forecast(sales_ets_model, h = 365, level=95)
-autoplot(forecast_ets) +
-  ylab("Total Sales") +
-  ggtitle("ETS Model Forecast")
-```
-
-![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ETS Year Forecast.png)
-
-It's difficult to visually compare the accuracies of the ETS and ARIMA models. Let's focus on analyzing model diagnostics instead.
-
-```r
 summary(sales_ets_model)
 ------------------------------------------------------------
 ETS(A,N,N) 
@@ -294,10 +270,10 @@ As we compare ARIMA to ETS, we see the following.
 
 In summary, the ARIMA and ETS models share similar performance in terms of error measures (ME, RMSE, MAE, MPE, MAPE, and MASE). ACF1 values tell us the residuals' autocorrelation is minimal in both models, indicating they both handle the data's autocorrelation well. However, the ARIMA model has a slight edge with lower AIC, AICc, and BIC values. These lower values suggest that the ARIMA model provides a better fit to the data. Thus, the ARIMA model remains the preferred choice!
 
-Let's introduce one last "traditional" model as a challenger: the Seasonal Naive (SNAIVE) model. The SNAIVE model is a simple yet effective forecasting approach that assumes the value of a time series at a given period is equal to the value from the same period in the previous season. By leveraging seasonality, this model can often provide surprisingly accurate forecasts when underlying patterns are consistent and strong.
+We'll introduce one last "traditional" model as a challenger: the Seasonal Naive (SNAIVE) model. The SNAIVE model is a simple yet effective forecasting approach that assumes the value of a time series at a given period is equal to the value from the same period in the previous season. By leveraging seasonality, this model can often provide surprisingly accurate forecasts when underlying patterns are consistent and strong.
 
 ```r
-# Test a SNAIVE model
+# Construct a SNAIVE model
 sales_snaive_model = snaive(sales_profit$Total_Sales)
 summary(sales_snaive_model)
 
@@ -318,7 +294,26 @@ Forecasts:
 1238         713.79 -3238.124 4665.704 -5330.141 6757.721
 1239         713.79 -4875.060 6302.640 -7833.619 9261.199
 ```
-
-The table below summarizes the diagnostics for our three models.
+Rather than summarizing the SNAIVE model in another head-to-head comparison with ARIMA(0,1,1), we will compare all three models in a model diagnostics table below.
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Model Diagnostics Table.png)
+
+The ARIMA(0,1,1) model remains triumphant. Aside from Mean Error, ARIMA(0,1,1) outperforms the ETS and SNAIVE models in every model diagnostic. Let's see how our ARIMA(0,1,1) model predicts the next 30 days of sales using R's AutoPlot function.
+
+```r
+# Forecast next year with ARIMA(0,1,1)
+forecast_arima <- forecast(sales_arima_model, h = 30, level=95)
+autoplot(forecast_arima) +
+  ylab("Total Sales") +
+  ggtitle("ARIMA(0,1,1) Model Forecast")
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Month Forecast.png)
+
+Here, we can see our ARIMA model's forecasted values in purple. A 95% confidence interval is shaded blue around these forecasts. Although it remains the best model among the three we tested, ARIMA(0,1,1) has difficulty accounting for the high variability and outliers in our historical data. Wide confidence intervals around the model's predictions reflect its inability to accurately capture seasonality and trends. For this reason, ARIMA models are generally best suited for short-term forecasts.
+
+
+
+
+
+
