@@ -296,18 +296,6 @@ Forecasts:
 ```
 Rather than summarizing the SNAIVE model in another head-to-head comparison with ARIMA(0,1,1), we will compare all three models in a model diagnostics table below.
 
-![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Model Diagnostics Table.png)
-
-The ARIMA(0,1,1) model remains triumphant. Aside from Mean Error, ARIMA(0,1,1) outperforms the ETS and SNAIVE models in every model diagnostic. Let's see how our ARIMA(0,1,1) model predicts the next 30 days of sales using R's AutoPlot function.
-
-```r
-# Forecast next year with ARIMA(0,1,1)
-forecast_arima <- forecast(sales_arima_model, h = 30, level=95)
-autoplot(forecast_arima) +
-  ylab("Total Sales") +
-  ggtitle("ARIMA(0,1,1) Model Forecast")
-```
-
 | **Diagnostic Metric**                  | **ARIMA(0,1,1)** | **SNAIVE** | **ETS**        | **Better Model** |
 |----------------------------------------|------------------|------------|----------------|-----------------|
 | Mean Error (ME)                        | 52.00            | **0.564**  | **49.50**      | SNAIVE / ETS    |
@@ -320,6 +308,18 @@ autoplot(forecast_arima) +
 | AIC                                    | **22605.75**     | N/A        | 27919.00       | ARIMA           |
 | AICc                                   | **22605.76**     | N/A        | 27919.92       | ARIMA           |
 | BIC                                    | **22615.98**     | N/A        | 27935.26       | ARIMA           |
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Model Diagnostics Table.png)
+
+The ARIMA(0,1,1) model remains triumphant. Aside from Mean Error, ARIMA(0,1,1) outperforms the ETS and SNAIVE models in every model diagnostic. Let's see how our ARIMA(0,1,1) model predicts the next 30 days of sales using R's AutoPlot function.
+
+```r
+# Forecast next year with ARIMA(0,1,1)
+forecast_arima <- forecast(sales_arima_model, h = 30, level=95)
+autoplot(forecast_arima) +
+  ylab("Total Sales") +
+  ggtitle("ARIMA(0,1,1) Model Forecast")
+```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Month Forecast.png)
 
