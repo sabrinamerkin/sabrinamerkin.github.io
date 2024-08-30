@@ -309,8 +309,6 @@ Rather than summarizing the SNAIVE model in another head-to-head comparison with
 | AICc                                   | **22605.76**     | N/A        | 27919.92       | ARIMA           |
 | BIC                                    | **22615.98**     | N/A        | 27935.26       | ARIMA           |
 
-![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Model Diagnostics Table.png)
-
 The ARIMA(0,1,1) model remains triumphant. Aside from Mean Error, ARIMA(0,1,1) outperforms the ETS and SNAIVE models in every model diagnostic. Let's see how our ARIMA(0,1,1) model predicts the next 30 days of sales using R's AutoPlot function.
 
 ```r
