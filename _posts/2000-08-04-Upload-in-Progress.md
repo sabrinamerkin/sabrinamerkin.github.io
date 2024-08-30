@@ -308,6 +308,19 @@ autoplot(forecast_arima) +
   ggtitle("ARIMA(0,1,1) Model Forecast")
 ```
 
+| **Diagnostic Metric**                  | **ARIMA(0,1,1)** | **SNAIVE** | **ETS**        | **Better Model** |
+|----------------------------------------|------------------|------------|----------------|-----------------|
+| Mean Error (ME)                        | 52.00            | **0.564**  | **49.50**      | SNAIVE / ETS    |
+| Root Mean Squared Error (RMSE)         | **2259.017**     | 3083.695   | N/A            | ARIMA           |
+| Mean Absolute Error (MAE)              | **1487.412**     | 1967.99    | 1487.77        | ARIMA           |
+| Mean Percentage Error (MPE)            | **-866.92**      | -692.80    | -881.62        | ARIMA           |
+| Mean Absolute Percentage Error (MAPE)  | **897.88**       | 755.91     | 912.40         | ARIMA           |
+| Mean Absolute Scaled Error (MASE)      | **0.7558**       | 1.0        | N/A            | ARIMA           |
+| Autocorrelation of Residuals at Lag 1 (ACF1)| **0.034** | -0.496     | N/A            | ARIMA           |
+| AIC                                    | **22605.75**     | N/A        | 27919.00       | ARIMA           |
+| AICc                                   | **22605.76**     | N/A        | 27919.92       | ARIMA           |
+| BIC                                    | **22615.98**     | N/A        | 27935.26       | ARIMA           |
+
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ARIMA Month Forecast.png)
 
 Here, we can see our ARIMA model's forecasted values in purple. A 95% confidence interval is shaded blue around these forecasts. Although it remains the best model among the three we tested, ARIMA(0,1,1) has difficulty accounting for the high variability and outliers in our historical data. Wide confidence intervals around the model's predictions reflect its inability to accurately capture seasonality and trends. For this reason, ARIMA models are generally best suited for short-term forecasts.
