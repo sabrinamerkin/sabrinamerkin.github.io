@@ -261,7 +261,7 @@ autoplot(forecast_ets) +
 It's difficult to visually compare the accuracies of the ETS and ARIMA models. Let's focus on analyzing model diagnostics instead.
 
 ```r
-summary(sales_ets_model) # Not optimal... BIC = 27935
+summary(sales_ets_model)
 ------------------------------------------------------------
 ETS(A,N,N) 
 
