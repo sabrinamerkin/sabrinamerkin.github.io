@@ -294,10 +294,10 @@ As we compare ARIMA to ETS, we see the following.
 
 In summary, the ARIMA and ETS models share similar performance in terms of error measures (ME, RMSE, MAE, MPE, MAPE, and MASE). ACF1 values tell us the residuals' autocorrelation is minimal in both models, indicating they both handle the data's autocorrelation well. However, the ARIMA model has a slight edge with lower AIC, AICc, and BIC values. These lower values suggest that the ARIMA model provides a better fit to the data. Thus, the ARIMA model remains the preferred choice!
 
-Let's introduce one last "traditional" challenger: the Seasonal Naive (snaive) model. The snaive model is a simple yet effective forecasting approach that assumes the value of a time series at a given period is equal to the value from the same period in the previous season. By leveraging seasonality, this model can often provide surprisingly accurate forecasts when underlying patterns are consistent and strong.
+Let's introduce one last "traditional" model as a challenger: the Seasonal Naive (SNAIVE) model. The SNAIVE model is a simple yet effective forecasting approach that assumes the value of a time series at a given period is equal to the value from the same period in the previous season. By leveraging seasonality, this model can often provide surprisingly accurate forecasts when underlying patterns are consistent and strong.
 
 ```r
-# Test a seasonal naive (snaive) model
+# Test a SNAIVE model
 sales_snaive_model = snaive(sales_profit$Total_Sales)
 summary(sales_snaive_model)
 
