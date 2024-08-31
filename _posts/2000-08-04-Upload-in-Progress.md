@@ -323,8 +323,9 @@ autoplot(forecast_arima) +
 
 Here, we can see our ARIMA model's forecasted values in purple. A 95% confidence interval is shaded blue around these forecasts. Although it remains the best model among the three we tested, ARIMA(0,1,1) has difficulty accounting for the high variability and outliers in our historical data. Wide confidence intervals around the model's predictions reflect its inability to accurately capture seasonality and trends. For this reason, ARIMA models are generally best suited for short-term forecasts.
 
+## Prophet Model Forecasting
 
-
+The last model we will discuss is 2017 Prophet Model from Facebook.
 
 
 
