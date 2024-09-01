@@ -385,3 +385,9 @@ plot(model, forecast) # Plot model predictions against past & future dates
 
 We can see Prophet appears to track seasonality and nuances in the data better than ARIMA. Generally, the solid blue forecast line aligns closely with historical sales values. We also see the 95% confidence interval captures _most_ of the outliers in the data (with the exception of a few drastic sales jumps). The solid blue forecast line & CI extends 30 days into the future as we specified. 
 
+Using the _prophet_plot_components_ function, we can take a closer look at trend, weekly seasonality, and yearly seasonality captured in the model.
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Prophet Plot Components.png)
+
+As we expected earlier, a positive trend in sales over time was detected by the model. Looking at weekly seasonality, we see a large dip in the magnitude of sales (y-axis) on Wednesdays. Likewise, we can observe how sales trend across different times of the year. We see large spikes in sales towards the end of September, start of November, and beginning of March!
+
