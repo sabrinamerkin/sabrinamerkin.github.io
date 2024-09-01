@@ -344,8 +344,8 @@ Using functions from this library, we need to format our time series dataframe w
 ```r
 # Reload the sales time series
 sales = sales_profit[,1:2] # Eliminating the profit column
-names(sales) = c("ds", "y")
-head(sales)
+names(sales) = c("ds", "y") # Rename columns
+head(sales) # Display first 6 rows
 ```
 
 |     ds       |    y   |
@@ -357,7 +357,31 @@ head(sales)
 | 2014-01-07   |  87.2  |
 | 2014-01-09   |  40.5  |
 
+Next, we'll call the _prophet_ function to fit the model to our data. We'll then use the _make_future_dataframe_ and _predict_ functions to predict the next 30 days of sales data.
 
+```r
+model = prophet(sales) # Build Prophet model
+future = make_future_dataframe(model, periods = 30) # Create dataframe with future ds values
+forecast <- predict(model, future) # Forecast sales for next 30 days
+head(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')]) # Display next 6 days of forecasted sales
+```
 
+|     ds       |   yhat   | yhat_lower | yhat_upper |
+|--------------|----------|------------|------------|
+| 2014-01-03   | 1548.0190 | -1314.286  | 4235.268   |
+| 2014-01-04   | 1053.2698 | -1689.295  | 3843.975   |
+| 2014-01-05   | 1144.7549 | -1626.911  | 3836.048   |
+| 2014-01-06   | 1269.8428 | -1650.039  | 4041.167   |
+| 2014-01-07   |  612.3520 | -1971.007  | 3394.232   |
+| 2014-01-09   |  822.3456 | -1808.667  | 3641.302   |
 
+You can see the _predict_ function gives us forecasted sales for future dates as well as a 95% confidence interval around them. We can display the model's forecast against our historical dates and future dates.
+
+```r
+plot(model, forecast) # Plot model predictions against past & future dates
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Prophet Plot.png)
+
+We can see Prophet appears to track seasonality and nuances in the data better than ARIMA. Generally, the solid blue forecast line aligns closely with historical sales values. We also see the 95% confidence interval captures _most_ of the outliers in the data (with the exception of a few drastic sales jumps). The solid blue forecast line & CI extends 30 days into the future as we specified. 
 
