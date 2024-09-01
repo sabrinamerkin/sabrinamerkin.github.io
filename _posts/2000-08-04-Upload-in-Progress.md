@@ -338,3 +338,26 @@ Implementation of Prophet is available as open source software in R and Python. 
 ```r
 library(prophet)
 ```
+
+Using functions from this library, we need to format our time series dataframe with two columns: _ds_ and _y_. _ds_ will contain our dates formatted YYYY-MM-DD. _y_ will hold our daily sales values.
+
+```r
+# Reload the sales time series
+sales = sales_profit[,1:2] # Eliminating the profit column
+names(sales) = c("ds", "y")
+head(sales)
+```
+
+|     ds       |    y   |
+|--------------|--------|
+| 2014-01-03   |  16.4  |
+| 2014-01-04   | 288.0  |
+| 2014-01-05   |  19.5  |
+| 2014-01-06   | 4407.0 |
+| 2014-01-07   |  87.2  |
+| 2014-01-09   |  40.5  |
+
+
+
+
+
