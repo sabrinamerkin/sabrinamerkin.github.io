@@ -325,7 +325,13 @@ Here, we can see our ARIMA model's forecasted values in purple. A 95% confidence
 
 ## Prophet Model Forecasting
 
-The last model we will discuss is the Prophet model from Facebook. Prophet was designed in 2017 to make forecasting more intuitive and accessible to those who may be less experienced with forecasting. Its parameters are easy to adjust and can be tailored to capture specific patterns in a business time series. As we've observed so far, fully automated models can struggle with adapting to components like seasonality, trend changes, and outliers. Prophet allows users to easily incorporate these components for more accurate forecasts. The ability to fine-tune model parameters for specific data patterns makes Prohet a very powerful tool.
+The last model we will discuss is the Prophet model from Facebook. Prophet was created in 2017 to simplify forecasting and allow for greater customization modeling specific components of business time series data. As we've observed so far, fully automated models can struggle with adapting to components like seasonality, trend changes, and outliers. Prophet allows users to easily incorporate these components for more accurate forecasts. The ability to fine-tune model parameters for specific data patterns makes Prohet a very powerful tool.
+
+Prophet uses three main componets in its model: seasonality, trend, and holidays. This model is defined using the following equation:
+
+**y(t) = g(t) + s(t) + h(t) + ϵ<sub>t</sub>**
+
+Where **g(t)** is a trend function modeling non-periodic changes, **s(t)** is a function modeling periodic changes like seasonality, and **h(t)** is a function modeling holiday effects at irregulart intervals (sometimes over one or more days). **ϵ<sub>t</sub>** is an error term assumed to follow a normal distribution.
 
 Implementation of Prophet is available as open source software in R and Python. We will continue our exploration by loading the library into R Studio.
 
