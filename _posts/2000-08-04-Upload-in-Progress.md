@@ -8,7 +8,7 @@ excerpt: "Upload in Progress 8/4/24"
 ## Background
 There are plenty of methods that can be used to forecast a time series. While data characteristics can help guide your approach to forecasting, it's important to acknowledge every model's strengths and limitations. Popular models like ARIMA and exponential smoothing have been used for decades due to their robustness and simplicity. In recent years, newer models have made implementation easier and boosted overall performance on complex datasets. But can we really say which one is superior?
 
-Using daily sales from a [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final), we'll evaluate traditional time series forecasting methods and explore Facebook's 2017 Prophet model package in R. This data was sourced from Kaggle -- a platform that hosts a rich collection of real-world datasets.
+Using daily sales from a [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final), we'll evaluate traditional time series forecasting methods and explore Facebook's Prophet forecasting model in R. This data was sourced from Kaggle -- a platform that hosts a rich collection of real-world datasets.
 
 ## "Traditional" Time Series Modeling
 Let's begin by loading our Superstore data into RStudio and formatting a time series dataframe.
@@ -325,7 +325,5 @@ Here, we can see our ARIMA model's forecasted values in purple. A 95% confidence
 
 ## Prophet Model Forecasting
 
-The last model we will discuss is 2017 Prophet Model from Facebook.
-
-
+The last model we will discuss is the Prophet model from Facebook. Prophet was designed in 2017 to make forecasting more intuitive and accessible to those who may not have extensive forecasting experience. Its parameters are straightforward and can easily be adjusted to capture specific patterns in a business time series. As we've observed so far, fully automated models can struggle with adapting to components like seasonality, trend changes, and outliers. Prophet allows users to easily incorporate these components for more accurate forecasts. The ability to fine-tune model parameters for specific data patterns makes Prohet a very powerful tool.
 
