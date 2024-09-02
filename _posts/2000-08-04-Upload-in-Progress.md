@@ -528,4 +528,12 @@ As mentioned earlier, the Prophet model is easily adjustable to capture patterns
 
 Below is an annotated version of our annual seasonality plot. 
 
+### INSERT IMAGE
 
+I've labled several popular US holidays in red. In yellow, I've highlighted significant changes in sales magnitude. Green highlights represent the specific changepoints we will analyze:
+
+- Thanksgiving
+- Christmas
+- Halloween Season
+- Peak Fall Season
+- Post-Valentines Day
