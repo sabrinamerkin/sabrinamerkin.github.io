@@ -536,7 +536,7 @@ I've labled several popular US holidays in red. In yellow, I've highlighted sign
 - Christmas
 - Halloween Season
 - Peak Fall Season
-- Post-Valentines Day
+- Post-Valentine's Day
 
 We'll begin by adding a holiday componet for Thanksgiving.
 
@@ -573,7 +573,7 @@ print(paste("sMAPE:", smape_value <- smape(predicted = prophet_predicted, actual
 
 With this code, we output model diagnostics for the new Prophet model with an additive changepoint for Thanksgiving. By mimicking this code structure, we can easily build out a model diagnostic table for each additive changepoint (and a few combinations).
 
-| Diagnostic Metric                      | Prophet (original) | Thanksgiving  | Christmas     | Halloween Season | Peak Fall Season | Post-Valentines Day | Halloween & Post-Valentines Day | Halloween, Post-Valentines Day & Christmas |
+| Diagnostic Metric                      | Prophet (original) | Thanksgiving  | Christmas     | Halloween Season | Peak Fall Season | Post-Valentine's Day | Halloween & Post-Valentine's Day | Halloween, Post-Valentine' Day & Christmas |
 |----------------------------------------|--------------------|---------------|---------------|------------------|------------------|--------------------|-------------------------------|--------------------------------------------|
 | **MSE**                                | 6400382.13         | 6399608.10    | 6403317.13    | 6349794.95       | 6486754.90       | 6398750.35         | 6365829.14                    | 6382343.11                                |
 | **RMSE**                               | 2529.90            | 2529.74       | 2530.48       | 2519.88          | 2546.91          | 2529.58            | 2523.06                       | 2526.33                                   |
