@@ -528,12 +528,58 @@ As mentioned earlier, the Prophet model is easily adjustable to capture patterns
 
 Below is an annotated version of our annual seasonality plot. 
 
-### INSERT IMAGE
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Annotated Annual Seasonality.png)
 
-I've labled several popular US holidays in red. In yellow, I've highlighted significant changes in sales magnitude. Green highlights represent the specific changepoints we will analyze:
+I've labled several popular US holidays in red. In yellow, I've highlighted significant changes in sales magnitude. The specific changepoints we will analyze are:
 
 - Thanksgiving
 - Christmas
 - Halloween Season
 - Peak Fall Season
 - Post-Valentines Day
+
+We'll begin by adding a holiday componet for Thanksgiving.
+
+```r
+#  List out all Thanksgiving dates in the training data
+thanksgiving = data_frame(
+     holiday = 'thanksgiving',
+     ds = as.Date(c('2014-11-27', '2015-11-26', '2016-11-24', '2017-11-23')),
+     lower_window = 0,
+     upper_window = 1
+)
+
+# Define the holidays parameter
+holidays = thanksgiving # This parameter can hold multiple holidays / changepoints
+
+# Construct a new model with holiday component
+m = prophet(sales, holidays = holidays)
+future = make_future_dataframe(m, periods = nrow(test_data)) # Build out dataframe for forecasted values
+forecast = predict(m, future) # Forecast values for testing data
+prophet_predicted = forecast$yhat[990:1237]
+combined$Prophet_Predicted = NA
+combined$Prophet_Predicted[combined$Type == "Testing"] = prophet_predicted # Assign forecasted values to combined dataframe
+
+# Run model diagnostics (we'll display these in a master table)
+print(paste("MSE:", mse_value <- mse(test_data$y, prophet_predicted))) # Calculate and print MSE (Prophet)
+print(paste("RMSE:", rmse_value <- rmse(test_data$y, prophet_predicted))) # Calculate and print RMSE
+print(paste("MAE:", mae_value <- mae(test_data$y, prophet_predicted))) # Calculate and print MAE
+print(paste("MAPE:", mape_value <- MAPE(y_pred = prophet_predicted, y_true = test_data$y))) # Calculate and print MAPE
+print(paste("R-squared:", 
+            r2_value <- 1 - sum((test_data$y - prophet_predicted)^2) / sum((test_data$y - mean(test_data$y))^2)))
+print(paste("MASE:", mase_value <- mase(test_data$y, prophet_predicted))) # Calculate and print MASE
+print(paste("sMAPE:", smape_value <- smape(predicted = prophet_predicted, actual = test_data$y))) # Calculate and print sMAPE
+```
+
+With this code, we output model diagnostics for the new Prophet model with an additive changepoint for Thanksgiving. By mimicking this code structure, we can easily build out a model diagnostic table for each additive changepoint (and a few combinations).
+
+| Diagnostic Metric                      | Prophet (original) | Thanksgiving  | Christmas     | Halloween Season | Peak Fall Season | Post-Valentines Day | Halloween & Post-Valentines Day | Halloween, Post-Valentines Day & Christmas |
+|----------------------------------------|--------------------|---------------|---------------|------------------|------------------|--------------------|-------------------------------|--------------------------------------------|
+| **MSE**                                | 6400382.13         | 6399608.10    | 6403317.13    | 6349794.95       | 6486754.90       | 6398750.35         | 6365829.14                    | 6382343.11                                |
+| **RMSE**                               | 2529.90            | 2529.74       | 2530.48       | 2519.88          | 2546.91          | 2529.58            | 2523.06                       | 2526.33                                   |
+| **MAE**                                | 1809.24            | 1816.45       | 1808.29       | 1817.97          | 1822.93          | 1809.66            | 1813.58                       | 1809.90                                   |
+| **MAPE**                               | 7.41%              | 7.45%         | 7.37%         | 7.61%            | 7.43%            | 7.42%              | 7.50%                         | 7.39%                                     |
+| **R-squared**                          | -0.0518            | -0.0516       | -0.0523       | -0.0435          | -0.0660          | -0.0515            | -0.0461                       | -0.0488                                   |
+| **MASE**                               | 0.7315             | 0.7345        | 0.7312        | 0.7351           | 0.7371           | 0.7317             | 0.7333                        | 0.7318                                    |
+| **sMAPE**                              | 0.8125             | 0.8134        | 0.8123        | 0.8130           | 0.8134           | 0.8125             | 0.8133                        | 0.8134                                    |
+
