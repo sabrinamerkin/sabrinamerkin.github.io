@@ -424,7 +424,7 @@ ggplot(combined, aes(x = ds, y = y, color = Type)) +
   theme_minimal()
 ```
 
-![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Train Test Plot.png)
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Training Testing Plot.png)
 
 Next, we'll plot a new ARIMA model from the training data over the testing data.
 
@@ -486,3 +486,43 @@ ggplot() +
 ```
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Train Prophet Plot.png)
+
+Alright, enough with the plots! Time to dive into some model diagnostics for comparison!
+
+```r
+library(Metrics)
+library(MLmetrics)
+
+# ARIMA Model
+mse_value = mse(test_data$y, arima_predicted) # Calculate MSE
+rmse_value = rmse(test_data$y, arima_predicted) # Calculate RMSE
+mae_value = mae(test_data$y, arima_predicted) # Calculate MAE
+mape_value = MAPE(y_pred = arima_predicted, y_true = test_data$y) # Calculate MAPE
+r2_value = r2(test_data$y, arima_predicted) # Calculate R-squared
+mase_value = mase(test_data$y, arima_predicted) # Calculate MASE
+smape_value = smape(predicted = arima_predicted, actual = test_data$y) # Calculate sMAPE (Symmetric Mean Absolute Percentage Error)
+
+# Prophet Model
+mse_value = mse(test_data$y, prophet_predicted) # Calculate MSE (Prophet)
+rmse_value = rmse(test_data$y, prophet_predicted) # Calculate RMSE
+mae_value = mae(test_data$y, prophet_predicted) # Calculate MAE
+mape_value = MAPE(y_pred = prophet_predicted, y_true = test_data$y) # Calculate MAPE
+r2_value = r2(test_data$y, prophet_predicted) # Calculate R-squared
+mase_value = mase(test_data$y, prophet_predicted) # Calculate MASE
+smape_value = smape(predicted = prophet_predicted, actual = test_data$y) # Calculate sMAPE (Symmetric Mean Absolute Percentage Error)
+```
+
+| Diagnostic Metric         | ARIMA                   | Prophet                  |
+|----------------|--------------------------|--------------------------|
+| MSE            | 6363458.45165793         | 6400382.13253398         |
+| RMSE           | 2522.58963203648         | 2529.89765258083         |
+| MAE            | 2035.75398421562         | 1809.23701661578         |
+| MAPE           | 10.0397134661968         | 7.40745439363767         |
+| R2             | -0.0457047638430084      | -0.0517724186071631      |
+| MASE           | 0.823131108472401        | 0.73154186729987         |
+| sMAPE          | 0.854683605726403        | 0.812536143483654        |
+
+
+Between both models, similar RMSE values indicate comparable performance in terms of overall prediction error. Prophet generally performs better in terms of MAE, MAPE, MASE, and sMAPE, indicating more accurate predictions and better relative performance. ARIMA performs comparably in terms of MSE and RMSE but is slightly less effective in other metrics. All things considered, the Prophet model provides the best forecast.
+
+
