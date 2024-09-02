@@ -313,7 +313,7 @@ The ARIMA(0,1,1) model remains triumphant. Aside from Mean Error, ARIMA(0,1,1) o
 
 ```r
 # Forecast next year with ARIMA(0,1,1)
-forecast_arima <- forecast(sales_arima_model, h = 30, level=95)
+forecast_arima = forecast(sales_arima_model, h = 30, level=95)
 autoplot(forecast_arima) +
   ylab("Total Sales") +
   ggtitle("ARIMA(0,1,1) Model Forecast")
@@ -362,7 +362,7 @@ Next, we'll call the _prophet_ function to fit the model to our data. We'll then
 ```r
 model = prophet(sales) # Build Prophet model
 future = make_future_dataframe(model, periods = 30) # Create dataframe with future ds values
-forecast <- predict(model, future) # Forecast sales for next 30 days
+forecast = predict(model, future) # Forecast sales for next 30 days
 head(forecast[c('ds', 'yhat', 'yhat_lower', 'yhat_upper')]) # Display next 6 days of forecasted sales
 ```
 
@@ -405,16 +405,16 @@ While the Prophet model appears more accurate than ARIMA (our previous model cha
 
 ```r
 # Split into training & testing data (80% training, 20% testing)
-split_point <- floor(0.8 * nrow(sales))
+split_point = floor(0.8 * nrow(sales))
 
 # Split into training and testing datasets
-train_data <- sales[1:split_point, ]
-test_data <- sales[(split_point + 1):nrow(sales), ]
+train_data = sales[1:split_point, ]
+test_data = sales[(split_point + 1):nrow(sales), ]
 
 # Combine training and testing data with a new label column
-train_data$Type <- "Training"
-test_data$Type <- "Testing"
-combined <- rbind(train_data, test_data)
+train_data$Type = "Training"
+test_data$Type = "Testing"
+combined = rbind(train_data, test_data)
 
 # Plot the split data
 ggplot(combined, aes(x = ds, y = y, color = Type)) +
@@ -433,13 +433,13 @@ Next, we'll plot a new ARIMA model from the training data over the testing data.
 training_arima = auto.arima(sales$y) # Still creates an ARIMA(0,1,1)
 
 # Predict ARIMA forecasted values
-arima_forecast <- forecast(training_arima, h = nrow(test_data))
+arima_forecast = forecast(training_arima, h = nrow(test_data))
 
 # New vector for arima-predicted values
-arima_predicted <- arima_forecast$mean
+arima_predicted = arima_forecast$mean
 
 # Add an Arima_Predicted column to the combined dataframe & initialize with N/A
-combined$Arima_Predicted <- NA
+combined$Arima_Predicted = NA
 
 # Fill the Arima_Predicted column with arima_predicted values for the test data
 combined$Arima_Predicted[combined$Type == "Testing"] = arima_predicted
