@@ -524,4 +524,8 @@ smape_value = smape(predicted = prophet_predicted, actual = test_data$y) # Calcu
 
 Between both models, similar RMSE values indicate comparable performance in terms of overall prediction error. Prophet generally performs better in terms of MAE, MAPE, MASE, and sMAPE, indicating more accurate predictions and better relative performance. ARIMA performs slightly better in MSE and R², but it falls short in the other key metrics. Overall, Prophet appears to be the better model for forecasting our daily sales.
 
+As mentioned earlier, the Prophet model is easily adjustable to capture patterns that an automated model might overlook. We observed several peaks and valleys in the magnitude of sales throughout the year in our model components plot above. Using Prophet's holiday parameter, we can specify seasonal changepoints to the model at different times of the year. We'll now investigate adding different seasonal changepoints to enhance forecast accuracy beyond the base model.
+
+Below is an annotated version of our annual seasonality plot. 
+
 
