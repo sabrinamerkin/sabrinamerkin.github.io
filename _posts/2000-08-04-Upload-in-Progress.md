@@ -399,4 +399,90 @@ dyplot.prophet(model, forecast)
 
 <iframe src="/images/Sales Forecasting/Prophet Dygraph.html" width="100%" height="500px"></iframe>
 
-Hover over the plot above to see actual and predicted data points along with their corresponding dates. To focus on specific periods of interest, use the slider below the plot to adjust the date range!
+Hover over the plot above to see actual and predicted data points along with their corresponding dates. To focus on specific periods of interest, use the slider below the plot to adjust the date range.
+
+While the Prophet model appears more accurate than ARIMA (our previous model champion), we must confirm with model diagnostic tests to be certain. Rather than comparing diagnostics from model summary functions, we'll take a slightly modified approach this go around. This time, we will split our original time series into testing and training data. We will train new ARIMA and Prophet models on testing data and plot forecasted values from both models against testing data.
+
+```r
+# Split into training & testing data (80% training, 20% testing)
+split_point <- floor(0.8 * nrow(sales))
+
+# Split into training and testing datasets
+train_data <- sales[1:split_point, ]
+test_data <- sales[(split_point + 1):nrow(sales), ]
+
+# Combine training and testing data with a new label column
+train_data$Type <- "Training"
+test_data$Type <- "Testing"
+combined <- rbind(train_data, test_data)
+
+# Plot the split data
+ggplot(combined, aes(x = ds, y = y, color = Type)) +
+  geom_line() +
+  labs(title = "Sales Data: Training vs Testing", x = "Date", y = "Sales") +
+  scale_color_manual(values = c("Training" = "blue", "Testing" = "red")) +
+  theme_minimal()
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Train Test Plot.png)
+
+Next, we'll plot a new ARIMA model from the training data over the testing data.
+
+```r
+# Train an ARIMA Model
+training_arima = auto.arima(sales$y) # Still creates an ARIMA(0,1,1)
+
+# Predict ARIMA forecasted values
+arima_forecast <- forecast(training_arima, h = nrow(test_data))
+
+# New vector for arima-predicted values
+arima_predicted <- arima_forecast$mean
+
+# Add an Arima_Predicted column to the combined dataframe & initialize with N/A
+combined$Arima_Predicted <- NA
+
+# Fill the Arima_Predicted column with arima_predicted values for the test data
+combined$Arima_Predicted[combined$Type == "Testing"] = arima_predicted
+
+# Plot combined the predicted values
+ggplot() +
+  geom_line(data = combined, aes(x = ds, y = y, color = Type), size = 1) +
+  geom_line(data = combined[!is.na(combined$Arima_Predicted), ], aes(x = ds, y = Arima_Predicted), color = "black", linetype = "solid", size = 1) +
+  labs(title = "Sales Data: Training vs Testing with ARIMA(0,1,1) Forecast", x = "Date", y = "Sales") +
+  scale_color_manual(values = c("Training" = "blue", "Testing" = "red")) +
+  theme_minimal() +
+  guides(color = guide_legend(title = NULL)) +
+  theme(legend.position = "bottom")
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Train ARIMA Plot.png)
+
+Predicted values from the ARIMA(0,1,1) model appear in black. Again, the forecasted values we see from this model are linear and static. We'll repeat this same procedure for the Prophet model...
+
+```r
+# Repeat procedure for the Prophet (default) model
+sales = train_data[,1:2]
+names(sales) = c("ds", "y")
+m = prophet(sales)
+future = make_future_dataframe(m, periods = nrow(test_data))
+forecast <- predict(m, future)
+prophet_predicted = forecast$yhat[990:1237]
+
+# Add a column for Prophet predictions, initializing with NA
+combined$Prophet_Predicted <- NA
+
+# Assign Prophet predictions to the test data
+combined$Prophet_Predicted[combined$Type == "Testing"] <- prophet_predicted
+
+# Plot the original data with Prophet predictions
+ggplot() +
+  geom_line(data = combined, aes(x = ds, y = y, color = Type), size = 1) +
+  geom_line(data = combined[!is.na(combined$Prophet_Predicted), ], aes(x = ds, y = Prophet_Predicted, color = "Prophet"), linetype = "solid", size = 1) +
+  labs(title = "Sales Data: Training vs Testing with Prophet Forecast", x = "Date", y = "Sales") +
+  scale_color_manual(values = c("Training" = "blue", "Testing" = "red", "Prophet" = "green")) +
+  theme_minimal() +
+  guides(color = guide_legend(title = NULL)) +
+  theme(legend.position = "bottom")
+```
+
+![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Train Prophet Plot.png)
