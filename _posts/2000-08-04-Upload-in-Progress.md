@@ -573,13 +573,14 @@ print(paste("sMAPE:", smape_value <- smape(predicted = prophet_predicted, actual
 
 With this code, we output model diagnostics for the new Prophet model with an additive changepoint for Thanksgiving. By mimicking this code structure, we can easily build out a model diagnostic table for each additive changepoint (and a few combinations).
 
-| Diagnostic Metric                      | Prophet (original) | Thanksgiving  | Christmas     | Halloween Season | Peak Fall Season | Post-Valentine's Day | Halloween & Post-Valentine's Day | Halloween, Post-Valentine' Day & Christmas |
+| Diagnostic Metric                      | Prophet (original) | Thanksgiving  | Christmas     | Halloween Season | Peak Fall Season | Post-Valentines Day | Halloween & Post-Valentines Day | Halloween, Post-Valentines Day & Christmas |
 |----------------------------------------|--------------------|---------------|---------------|------------------|------------------|--------------------|-------------------------------|--------------------------------------------|
-| **MSE**                                | 6400382.13         | 6399608.10    | 6403317.13    | 6349794.95       | 6486754.90       | 6398750.35         | 6365829.14                    | 6382343.11                                |
-| **RMSE**                               | 2529.90            | 2529.74       | 2530.48       | 2519.88          | 2546.91          | 2529.58            | 2523.06                       | 2526.33                                   |
-| **MAE**                                | 1809.24            | 1816.45       | 1808.29       | 1817.97          | 1822.93          | 1809.66            | 1813.58                       | 1809.90                                   |
-| **MAPE**                               | 7.41%              | 7.45%         | 7.37%         | 7.61%            | 7.43%            | 7.42%              | 7.50%                         | 7.39%                                     |
-| **R-squared**                          | -0.0518            | -0.0516       | -0.0523       | -0.0435          | -0.0660          | -0.0515            | -0.0461                       | -0.0488                                   |
-| **MASE**                               | 0.7315             | 0.7345        | 0.7312        | 0.7351           | 0.7371           | 0.7317             | 0.7333                        | 0.7318                                    |
-| **sMAPE**                              | 0.8125             | 0.8134        | 0.8123        | 0.8130           | 0.8134           | 0.8125             | 0.8133                        | 0.8134                                    |
+| **MSE**                                | 6400382.13         | 6399608.10    | 6403317.13    | **6349794.95**   | 6486754.90       | 6398750.35         | 6365829.14                    | 6382343.11                                |
+| **RMSE**                               | 2529.90            | 2529.74       | 2530.48       | **2519.88**      | 2546.91          | 2529.58            | 2523.06                       | 2526.33                                   |
+| **MAE**                                | 1809.24            | 1816.45       | **1808.29**   | 1817.97          | 1822.93          | 1809.66            | 1813.58                       | 1809.90                                   |
+| **MAPE**                               | 7.41%              | 7.45%         | **7.37%**     | 7.61%            | 7.43%            | 7.42%              | 7.50%                         | 7.39%                                     |
+| **R-squared**                          | -0.0518            | -0.0516       | -0.0523       | **-0.0435**      | -0.0660          | -0.0515            | -0.0461                       | -0.0488                                   |
+| **MASE**                               | 0.7315             | 0.7345        | **0.7312**    | 0.7351           | 0.7371           | 0.7317             | 0.7333                        | 0.7318                                    |
+| **sMAPE**                              | 0.8125             | **0.8123**    | **0.8123**    | 0.8130           | 0.8134           | 0.8125             | 0.8133                        | 0.8134                                    |
+
 
