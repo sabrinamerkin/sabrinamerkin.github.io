@@ -512,7 +512,7 @@ mase_value = mase(test_data$y, prophet_predicted) # Calculate MASE
 smape_value = smape(predicted = prophet_predicted, actual = test_data$y) # Calculate sMAPE (Symmetric Mean Absolute Percentage Error)
 ```
 
-| **Diagnostic Metric** | **ARIMA**                | **Prophet**               | **Better Model**  |
+| **Diagnostic Metric** | **ARIMA(0,1,1)**                | **Prophet**               | **Better Model**  |
 |-----------------------|---------------------------|---------------------------|------------------|
 | MSE                   | 6363458.45165793          | 6400382.13253398          | ARIMA            |
 | RMSE                  | **2522.58963203648**      | 2529.89765258083          | ARIMA            |
