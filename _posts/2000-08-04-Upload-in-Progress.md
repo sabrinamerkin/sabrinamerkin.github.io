@@ -391,3 +391,10 @@ Using the _prophet_plot_components_ function, we can take a closer look at trend
 
 As we expected earlier, a positive trend in sales over time was detected by the model. Looking at weekly seasonality, we see a large dip in the magnitude of sales (y-axis) on Wednesdays. Likewise, we can observe how sales trend across different times of the year. We see large spikes in sales towards the end of September, start of November, and beginning of March!
 
+For an even closer look at our forecast, we can create an interacitve plot using Dygraphs.
+
+```r
+dyplot.prophet(model, forecast)
+```
+
+<iframe src="/images/Sales Forecasting/Prophet Dygraph.html" width="100%" height="500px"></iframe>
