@@ -333,7 +333,7 @@ Prophet uses three main componets in its model: seasonality, trend, and holidays
 
 Where **g(t)** is a trend function modeling non-periodic changes, **s(t)** is a function modeling periodic changes like seasonality, and **h(t)** is a function modeling holiday effects at irregulart intervals (sometimes over one or more days). **ϵ<sub>t</sub>** is an error term assumed to follow a normal distribution.
 
-Implementation of Prophet is available as open source software in R and Python. We will continue our exploration by loading the library in R Studio.
+Implementation of Prophet is available as [open source software](https://facebook.github.io/prophet/docs/installation.html#r) in R and Python. We will continue our exploration by loading the library in R Studio.
 
 ```r
 library(prophet)
@@ -465,11 +465,11 @@ sales = train_data[,1:2]
 names(sales) = c("ds", "y")
 m = prophet(sales)
 future = make_future_dataframe(m, periods = nrow(test_data))
-forecast <- predict(m, future)
+forecast = predict(m, future)
 prophet_predicted = forecast$yhat[990:1237]
 
 # Add a column for Prophet predictions, initializing with NA
-combined$Prophet_Predicted <- NA
+combined$Prophet_Predicted = NA
 
 # Assign Prophet predictions to the test data
 combined$Prophet_Predicted[combined$Type == "Testing"] <- prophet_predicted
@@ -530,15 +530,15 @@ Below is an annotated version of our annual seasonality plot.
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Annotated Annual Seasonality.png)
 
-I've labled several popular US holidays in red. In yellow, I've highlighted significant changes in sales magnitude. The specific changepoints we will analyze are:
+Several popular US holidays are labeled in red, and significant changes to sales magnitude are labeled in yellow. We'll compare Prophet models with these seasonal components.
 
-- Thanksgiving
-- Christmas
-- Halloween Season
-- Peak Fall Season
-- Post-Valentine's Day
+- **Thanksgiving**: There tends to be a decrease in sales magnitude leading up to Thanksgiving. This magnitude increases soon after as we enter the winter holiday season.
+- **Christmas**: Sales magnitude increases in the weeks leading up to Christmas. This peak is followed by a decline as the year transitions into the post-holiday period.
+- **Halloween Season**: Sales begin to rise weeks before Halloween. This is likely due to early preparations and purchases for the holiday.
+- **Peak-Fall Season**: During the peak of the fall season, there is a significant rise in sales magnitude. This could be due to seasonal shopping trends, or preparations for upcoming holidays like Halloween and Thanksgiving.
+- **Post-Valentine's Day**: There is a large dip in sales magnitude following Valentine's Day. This could indicate a slowdown in consumer spending after the expensive holiday shopping spike.
 
-We'll begin by adding a holiday componet for Thanksgiving.
+We'll begin by constructing another Prophet model with an additive holiday componet for Thanksgiving.
 
 ```r
 #  List out all Thanksgiving dates in the training data
@@ -571,7 +571,7 @@ print(paste("MASE:", mase_value <- mase(test_data$y, prophet_predicted))) # Calc
 print(paste("sMAPE:", smape_value <- smape(predicted = prophet_predicted, actual = test_data$y))) # Calculate and print sMAPE
 ```
 
-With this code, we output model diagnostics for the new Prophet model with an additive changepoint for Thanksgiving. By mimicking this code structure, we can easily build out a model diagnostic table for each additive changepoint (and a few combinations).
+With this code, we output model diagnostics for the new Prophet model with an additive changepoint for Thanksgiving. Following similar logic, we can build out a model diagnostic table for each additive changepoint (and a few holiday combinations). Best-performing model diagnostics are boldened for readability.
 
 | Diagnostic Metric                      | Prophet (original) | Thanksgiving  | Christmas     | Halloween Season | Peak Fall Season | Post-Valentines Day | Halloween & Post-Valentines Day | Halloween, Post-Valentines Day & Christmas |
 |----------------------------------------|--------------------|---------------|---------------|------------------|------------------|--------------------|-------------------------------|--------------------------------------------|
@@ -583,4 +583,4 @@ With this code, we output model diagnostics for the new Prophet model with an ad
 | **MASE**                               | 0.7315             | 0.7345        | **0.7312**    | 0.7351           | 0.7371           | 0.7317             | 0.7333                        | 0.7318                                    |
 | **sMAPE**                              | 0.8125             | **0.8123**    | **0.8123**    | 0.8130           | 0.8134           | 0.8125             | 0.8133                        | 0.8134                                    |
 
-
+Looking at our results, the **Halloween Season** additive model is a top performer across multiple metrics (MSE, RMSE, and R²). The **Christmas** additive model also performed well, but its differences between MAE and MASE with the **Halloween Season** model is marginal. With that said, we managed to improve the base Prophet model by adding seasonality components for the Halloween season!
