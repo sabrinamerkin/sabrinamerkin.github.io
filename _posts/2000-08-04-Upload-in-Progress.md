@@ -398,3 +398,5 @@ dyplot.prophet(model, forecast)
 ```
 
 <iframe src="/images/Sales Forecasting/Prophet Dygraph.html" width="100%" height="500px"></iframe>
+
+Hover over the plot above to see actual and predicted data points along with their corresponding dates. To focus on specific periods of interest, use the slider below the plot to adjust the date range!
