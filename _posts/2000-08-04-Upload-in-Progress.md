@@ -333,7 +333,7 @@ Prophet uses three main componets in its model: seasonality, trend, and holidays
 
 Where **g(t)** is a trend function modeling non-periodic changes, **s(t)** is a function modeling periodic changes like seasonality, and **h(t)** is a function modeling holiday effects at irregulart intervals (sometimes over one or more days). **ϵ<sub>t</sub>** is an error term assumed to follow a normal distribution.
 
-Implementation of Prophet is available as open source software in R and Python. We will continue our exploration by loading the library into R Studio.
+Implementation of Prophet is available as open source software in R and Python. We will continue our exploration by loading the library in R Studio.
 
 ```r
 library(prophet)
