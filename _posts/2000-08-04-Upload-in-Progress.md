@@ -530,7 +530,7 @@ Below is an annotated version of our annual seasonality plot.
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Annotated Annual Seasonality.png)
 
-Several popular US holidays are labeled in red, and significant changes to sales magnitude are labeled in yellow. We'll compare Prophet models with these seasonal components.
+Several popular US holidays are labeled in red, and significant changes to sales magnitude are labeled in yellow. We'll compare new Prophet models with these seasonal components added.
 
 - **Thanksgiving**: There tends to be a decrease in sales magnitude leading up to Thanksgiving. This magnitude increases soon after as we enter the winter holiday season.
 - **Christmas**: Sales magnitude increases in the weeks leading up to Christmas. This peak is followed by a decline as the year transitions into the post-holiday period.
