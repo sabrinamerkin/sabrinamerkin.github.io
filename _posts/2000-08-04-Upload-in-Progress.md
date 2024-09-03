@@ -572,7 +572,7 @@ print(paste("MASE:", mase_value <- mase(test_data$y, prophet_predicted))) # Calc
 print(paste("sMAPE:", smape_value <- smape(predicted = prophet_predicted, actual = test_data$y))) # Calculate and print sMAPE
 ```
 
-With this code, we output model diagnostics for the new Prophet model with an additive changepoint for Thanksgiving. Following similar logic, we can build out a model diagnostic table for each additive changepoint (and a few holiday combinations). Best-performing model diagnostics are boldened for readability.
+This code outputs model diagnostics for our new Prophet model with an additive component for Thanksgiving. By modifying the holiday(s), we can build out a diagnostics table for the base model with different additive seasonal components. We'll bolden the metrics that performed the best for better readability.
 
 | Diagnostic Metric                      | Prophet (original) | Thanksgiving  | Christmas     | Halloween Season | Peak Fall Season | Post-Valentines Day | Halloween & Post-Valentines Day | Halloween, Post-Valentines Day & Christmas |
 |----------------------------------------|--------------------|---------------|---------------|------------------|------------------|--------------------|-------------------------------|--------------------------------------------|
