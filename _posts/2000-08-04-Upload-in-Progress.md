@@ -539,7 +539,7 @@ Several popular US holidays are labeled in red, and significant changes to sales
 - **Christmas**: Sales magnitude increases in the weeks leading up to Christmas. This peak is followed by a decline as the year transitions into the post-holiday period.
 
 
-We'll begin by constructing another Prophet model with an additive holiday componet for Thanksgiving.
+We'll construct the first Prophet model with an additive componet for Thanksgiving.
 
 ```r
 #  List out all Thanksgiving dates in the training data
