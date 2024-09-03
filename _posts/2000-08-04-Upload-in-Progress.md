@@ -532,11 +532,12 @@ Below is an annotated version of our annual seasonality plot.
 
 Several popular US holidays are labeled in red, and significant changes to sales magnitude are labeled in yellow. We'll compare new Prophet models with these seasonal components added.
 
+- **Post-Valentine's Day**: There is a large dip in sales magnitude following Valentine's Day. This could indicate a slowdown in consumer spending after the expensive holiday shopping spike.
+- **Peak-Fall Season**: During the peak of the fall season, there is a significant rise in sales magnitude. This could be due to seasonal shopping trends, or preparations for upcoming holidays like Halloween and Thanksgiving.
+- - **Halloween Season**: Sales begin to rise weeks before Halloween. This is likely due to early preparations and purchases for the holiday.
 - **Thanksgiving**: There tends to be a decrease in sales magnitude leading up to Thanksgiving. This magnitude increases soon after as we enter the winter holiday season.
 - **Christmas**: Sales magnitude increases in the weeks leading up to Christmas. This peak is followed by a decline as the year transitions into the post-holiday period.
-- **Halloween Season**: Sales begin to rise weeks before Halloween. This is likely due to early preparations and purchases for the holiday.
-- **Peak-Fall Season**: During the peak of the fall season, there is a significant rise in sales magnitude. This could be due to seasonal shopping trends, or preparations for upcoming holidays like Halloween and Thanksgiving.
-- **Post-Valentine's Day**: There is a large dip in sales magnitude following Valentine's Day. This could indicate a slowdown in consumer spending after the expensive holiday shopping spike.
+
 
 We'll begin by constructing another Prophet model with an additive holiday componet for Thanksgiving.
 
