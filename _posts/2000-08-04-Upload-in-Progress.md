@@ -1,8 +1,8 @@
 ---
-title: "Upload in Progress..."
-date: 2000-08-04
+title: "R: Forecasting Sales with Traditional & Modern Methods"
+date: 2024-09-02
 tags: [R, Time Series Analysis, Forecasting]
-excerpt: "Upload in Progress 8/4/24"
+excerpt: "Evaluate and optimize time series forecasting methods to predict daily sales"
 ---
 
 ## Background
