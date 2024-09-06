@@ -1,5 +1,5 @@
 ---
-title: "R: Forecasting Sales with Traditional & Modern Methods"
+title: "R: Time Series Forecasting with Traditional & Modern Methods"
 date: 2024-09-02
 tags: [R, Time Series Analysis, Forecasting]
 excerpt: "Evaluate and optimize time series forecasting methods to predict daily sales"
