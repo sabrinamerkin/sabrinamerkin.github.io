@@ -62,7 +62,7 @@ ggplot(sales_profit, aes(x = Order_Date, y = Total_Sales)) +
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Raw Sales Plot.png)
 
-Our plot of *total sales* shows a slight positive trend over time. We can also observe signs of seasonality in the data with sales spiking at various times of the year. This can be expected given that shopping habits often change due to holidays, promotional events, market conditions, and other factors.
+Our plot of *total sales* shows a slight positive trend over time. We can also observe signs of seasonality in the data with sales spiking at various times of the year. This is to be expected. Shopping habits often shift due to holidays, promotional events, market conditions, and other factors.
 
 A time series is considered *stationary* if its expected value, autocorrelation, and variance remain constant over time. When models are used to forecast a *non-stationary* time series, their predictions often lack accuracy. This is because they struggle to detect underlying patterns in the data like trends and seasonality. Due to our observations from the plot above, it's likely our time series is non-stationary. We will use an *Autocorrelation Function* (ACF) and *Partial Autocorrelation Function* (PACF) to test for stationarity in the data.
 
