@@ -133,7 +133,7 @@ A p-value of 0.01 tells us that our differenced time series is now stationary. O
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/ACF & PACF 2 (Differenced).png)
 
-As we can see, plots of the ACF and PACF show a decline in correlation as lags increase. Significant spikes up to lag 20 in the PACF suggest direct correlations at these lags. While the series is now stationary, there are still specific lag dependencies that should be considered in model selection.
+As we can see, plots of the ACF and PACF show a decline in correlation as lags increase. Significant spikes up to lag 20 in the PACF suggest direct correlations at these lags. While differencing made our series stationary, there are still specific lag dependencies that should be considered in model selection.
 
 Like the title of this section suggests, we'll be looking at more "traditional" forecasting methods to predict future sales. These models have been used in time series forecasting for quite some time.
 
