@@ -205,7 +205,7 @@ X-squared = 23.103, df = 20, p-value = 0.2838
 
 With a p-value of 0.2838, we fail to reject the null hypothesis and assume there is no significant autocorrelation in the residuals.
 
-Now that we've manually selected an ARIMA model, let's see how it compares to the model that R's auto.arima function identifies as the best fit. This function automatically selects ARIMA parameters from the original time series as we did.
+Now that we've selected an ARIMA model, let's see how it compares to the model that R's auto.arima function identifies as the best fit. This function automatically fits ARIMA parameters on the original time series.
 
 ```r
 # Check if proposed model matches auto.arima() function
