@@ -117,7 +117,7 @@ The mean of this new plot now appears to be around zero, indicating that differe
 Next, using the *Augmented Dicky-Fuller Test*, we will test for stationarity in the first-differenced time series. The ADF test evaluates a null hypothesis that a *unit root* is present in the time series. If the p-value of this test falls below 0.05, we can reject the null hypothesis. This would suggest that the series is stationary.
 
 ```r
-# Test stationarity using the Augmemted Dickey-Fuller Test
+# Test stationarity using the Augmented Dickey-Fuller Test
 library(tseries)
 adf.test(diff_sales_profit$Total_Sales) # Significant p-value suggests differenced series is stationary
 
