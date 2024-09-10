@@ -232,7 +232,7 @@ Training set 52.00244 2259.017 1487.412 -866.918 897.8833 0.7558027 0.03421496
 
 This function also selected an ARIMA(0,1,1) model!
 
-Let's try comparing our ARIMA model to some other approaches. First, we will consider an Exponential Smoothing State Space (ETS) model. ETS models can be a good alternative when forecasting time series with trends and seasonality. These models include componets for error, trend, and seasonality...
+Let's try comparing our ARIMA model to some other approaches. First, we will consider an Exponential Smoothing State Space (ETS) model. ETS models can be a good alternative when forecasting time series with trends and seasonality. These models include components for error, trend, and seasonality...
 
 ```r
 # Construct an ETS model
