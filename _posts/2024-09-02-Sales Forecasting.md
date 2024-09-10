@@ -389,9 +389,9 @@ Using the _prophet_plot_components_ function, we can take a closer look at trend
 
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Prophet Plot Components.png)
 
-As we expected earlier, the model detected a positive trend in sales over time. Looking at weekly seasonality, we see a large dip in the magnitude of sales (y-axis) on Wednesdays. Likewise, we can observe how sales trend across different times of the year. We see large spikes in sales towards the end of September, start of November, and beginning of March!
+As we expected earlier, the model detected a positive trend in sales over time. Looking at weekly seasonality, we see a large dip in the magnitude of sales (y-axis) on Wednesdays. Likewise, we can observe how sales trend across different times of the year. We see large spikes in sales towards the end of September, the start of November, and the beginning of March!
 
-For an even closer look at our forecast, we can create an interacitve plot using Dygraphs.
+For an even closer look at our forecast, we can create an interactive plot using Dygraphs.
 
 ```r
 dyplot.prophet(model, forecast)
@@ -401,7 +401,7 @@ dyplot.prophet(model, forecast)
 
 Hover over the plot above to see actual and predicted data points along with their corresponding dates. To focus on specific periods of interest, use the slider below the plot to adjust the date range.
 
-While the Prophet model appears more accurate than ARIMA (our previous model champion), we must confirm with model diagnostic tests to be certain. Rather than comparing diagnostics from model summary functions, we'll take a slightly modified approach this go around. This time, we will split our original time series into testing and training data. We will train new ARIMA and Prophet models on testing data and plot forecasted values from both models against testing data.
+While the Prophet model appears more accurate than ARIMA (our previous model champion), we must confirm with model diagnostic tests to be certain. Rather than comparing diagnostics from model summary functions, we'll take a slightly modified approach this time around. First, we'll split our original time series into testing and training data. Then, we'll train new ARIMA and Prophet models on testing data and plot forecasted values from both models against their testing data.
 
 ```r
 # Split into training & testing data (80% training, 20% testing)
@@ -522,9 +522,9 @@ smape_value = smape(predicted = prophet_predicted, actual = test_data$y) # Calcu
 | MASE                  | 0.823131108472401         | **0.73154186729987**      | Prophet          |
 | sMAPE                 | 0.854683605726403         | **0.812536143483654**     | Prophet          |
 
-Between both models, similar RMSE values indicate comparable performance in terms of overall prediction error. Prophet generally performs better in terms of MAE, MAPE, MASE, and sMAPE, indicating more accurate predictions and better relative performance. ARIMA performs slightly better in MSE and R², but it falls short in the other key metrics. Overall, Prophet appears to be the better model for forecasting our daily sales.
+Between both models, similar RMSE values indicate comparable performance in terms of overall prediction error. Prophet generally performs better in terms of MAE, MAPE, MASE, and sMAPE, indicating more accurate predictions and better relative performance. ARIMA performs slightly better in MSE and R² but falls short in the other key metrics. Overall, Prophet appears to be the better model for forecasting our daily sales.
 
-As mentioned earlier, the Prophet model is easily adjustable to capture patterns that an automated model might overlook. We observed several peaks and valleys in the magnitude of sales throughout the year in our model components plot above. Using Prophet's holiday parameter, we can specify seasonal changepoints to the model at different times of the year. We'll now investigate adding different seasonal changepoints to enhance forecast accuracy beyond the base model.
+As mentioned earlier, the Prophet model is easily adjustable to capture patterns that an automated model might overlook. We observed several peaks and valleys in the magnitude of sales throughout the year in our model components plot above. Using Prophet's holiday parameter, we can specify seasonal changepoints to the model at different times of the year. Let's investigate adding different seasonal changepoints to enhance forecast accuracy beyond the base model.
 
 Below is an annotated version of our annual seasonality plot. 
 
@@ -533,13 +533,13 @@ Below is an annotated version of our annual seasonality plot.
 Several popular US holidays are labeled in red, and significant changes to sales magnitude are labeled in yellow. We'll compare new Prophet models with these seasonal components added.
 
 - **Post-Valentine's Day**: There is a large dip in sales magnitude following Valentine's Day. This could indicate a slowdown in consumer spending after the expensive holiday shopping spike.
-- **Peak-Fall Season**: During the peak of the fall season, there is a significant rise in sales magnitude. This could be due to seasonal shopping trends, or preparations for upcoming holidays like Halloween and Thanksgiving.
+- **Peak-Fall Season**: During the peak of the fall season, there is a significant rise in sales magnitude. This could be due to seasonal shopping trends or preparations for upcoming holidays like Halloween and Thanksgiving.
 - **Halloween Season**: Sales begin to rise weeks before Halloween. This is likely due to early preparations and purchases for the holiday.
 - **Thanksgiving**: There tends to be a decrease in sales magnitude leading up to Thanksgiving. This magnitude increases soon after as we enter the winter holiday season.
 - **Christmas**: Sales magnitude increases in the weeks leading up to Christmas. This peak is followed by a decline as the year transitions into the post-holiday period.
 
 
-We'll construct the first Prophet model with an additive componet for Thanksgiving.
+We'll construct the first Prophet model with an additive component for Thanksgiving.
 
 ```r
 #  List out all Thanksgiving dates in the training data
@@ -584,4 +584,4 @@ This code outputs model diagnostics for our new Prophet model with an additive c
 | **MASE**                               | 0.7315             | 0.7345        | **0.7312**    | 0.7351           | 0.7371           | 0.7317             | 0.7333                        | 0.7318                                    |
 | **sMAPE**                              | 0.8125             | **0.8123**    | **0.8123**    | 0.8130           | 0.8134           | 0.8125             | 0.8133                        | 0.8134                                    |
 
-Looking at our results, the **Halloween Season** additive model is a top performer across multiple metrics (MSE, RMSE, and R²). The **Christmas** additive model also performed well, but its differences between MAE and MASE with the **Halloween Season** model is marginal. With that said, we managed to improve the base Prophet model by adding seasonality components for the Halloween season!
+Looking at our results, the **Halloween Season** additive model is a top performer across multiple metrics (MSE, RMSE, and R²). The **Christmas** additive model also performed well, but its differences between MAE and MASE with the **Halloween Season** model are marginal. With that said, we managed to improve the base Prophet model by adding seasonality components for the Halloween season!
