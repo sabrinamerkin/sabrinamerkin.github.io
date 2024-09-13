@@ -387,6 +387,10 @@ We can see Prophet appears to track seasonality and nuances in the data better t
 
 Using the _prophet_plot_components_ function, we can take a closer look at trends, weekly seasonality, and yearly seasonality captured in the model.
 
+```r
+prophet_plot_components(model, forecast)
+```
+
 ![]({{ site.url }}{{ site.baseurl }}/images/Sales Forecasting/Prophet Plot Components.png)
 
 As we expected earlier, the model detected a positive trend in sales over time. Looking at weekly seasonality, we see a large dip in the magnitude of sales (y-axis) on Wednesdays. Likewise, we can observe how sales trend across different times of the year. We see large spikes in sales towards the end of September, the start of November, and the beginning of March!
