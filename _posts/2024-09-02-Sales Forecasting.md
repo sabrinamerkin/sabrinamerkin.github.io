@@ -6,7 +6,7 @@ excerpt: "Evaluate and optimize time series forecasting methods to predict daily
 ---
 
 ## Background
-There are plenty of methods that can be used to forecast a time series. While data characteristics can point you toward an optimal forecasting model, it’s important to consider the strengths and weaknesses of any approach you choose. Models like ARIMA and exponential smoothing have long been favored for their robustness and simplicity. Meanwhile, newer models have simplified implementation and boosted overall performance on complex datasets. But by how much?
+There are plenty of methods used to forecast a time series. While data characteristics can point you toward an optimal forecasting model, it’s important to consider the strengths and weaknesses of any approach you choose. Models like ARIMA and exponential smoothing have long been favored for their robustness and simplicity. Meanwhile, newer models have simplified implementation and boosted overall performance on complex datasets. But by how much?
 
 Using daily sales from a [Superstore](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final), we'll evaluate traditional time series forecasting methods and explore Facebook's Prophet forecasting model in R. This data was sourced from Kaggle -- a platform that hosts a rich collection of real-world datasets.
 
