@@ -47,7 +47,7 @@ head(sales_profit)
 | 2014-01-07 | 87.2 | -72.0 |
 | 2014-01-09 | 40.5 | 10.9 |
 
-Our data was collected between January 2014 and December 2017. For each day in the series, we have a value for *total sales* and *total profit*. We will only focus on *total sales* for now. Let's look for any seasonality or trends present in the data.
+Our data was collected from January 2014 to December 2017. For each day in the series, we have a value for *total sales* and *total profit*. We will only focus on *total sales* for now. Let's look for any seasonality or trends present in the data.
 
 ```R
 # Plot sales time series
