@@ -405,7 +405,7 @@ dyplot.prophet(model, forecast)
 
 Hover over the plot above to see actual and predicted data points along with their corresponding dates. To focus on specific periods of interest, use the slider below the plot to adjust the date range.
 
-While the Prophet model appears more accurate than ARIMA (our previous model champion), we must confirm with model diagnostic tests to be certain. Rather than comparing diagnostics from model summary functions, we'll take a slightly modified approach this time around. First, we'll split our original time series into testing and training data. Then, we'll train new ARIMA and Prophet models on testing data and plot forecasted values from both models against their testing data.
+While the Prophet model appears more accurate than ARIMA (our previous model champion), we must confirm with model diagnostic tests to be certain. Rather than comparing diagnostics from model summary functions, we'll take a slightly modified approach this time around. First, we’ll divide the original time series into training and testing sets. Then, we’ll train ARIMA and Prophet models on the training data and plot their forecasted values against the testing data.
 
 ```r
 # Split into training & testing data (80% training, 20% testing)
