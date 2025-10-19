@@ -9,10 +9,10 @@ minimal_mistakes_skin    : "dirt" #"default" # "air", "aqua", "contrast", "dark"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Ethan Feiza"
+title                    : "Sabrina Merkin"
 title_separator          : "-"
-name                     : "Ethan Feiza"
-description              : "Business Intelligence Analyst | Express 4x4 Truck Rental"
+name                     : "Sabrina Merkin"
+description              : "Marketing and Programming Manager | TDWI"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -84,11 +84,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Ethan Feiza"
+  name             : "Sabrina Merkin"
   avatar           : "/images/Headshot 1.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Business Intelligence Analyst | Express 4x4 Truck Rental"
-  location         : "Greater Chicago Area, IL"
-  email            : "ethanfeiza@gmail.com"
+  bio              : "Marketing and Programming Manager | TDWI"
+  location         : "San Diego, CA"
+  email            : "sabrinamerkin00@gmail.com"
   uri              :
   home             : # null (default), "absolute or relative url to link to author home"
   bitbucket        :
@@ -97,13 +97,13 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "ethanfeiza"
+  github           : "sabrinamerkin"
   gitlab           :
   google_plus      :
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         : "ethanfeiza" # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
+  linkedin         : "sabrinamerkin" # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
   pinterest        :
   soundcloud       :
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
